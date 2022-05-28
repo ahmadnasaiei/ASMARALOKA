@@ -95,7 +95,7 @@ def registerClient():
         except:
             return render_template('index.html')
     else:
-        return render_template('clientRegister.html')
+        return render_template('agentDashboard.html')
 
 
 @app.route('/registerAgent', methods=['POST', 'GET'])
