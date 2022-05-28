@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Agent | ASMARALOKA</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet'
+        type='text/css'>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static' , filename='../static/css/clientRegister.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static' , filename='../static/images/favicon.png') }}">
+</head>
+
+<body>
+    <div class="testbox-agent">
+        <img src="{{ url_for('static' , filename='../static/images/logo-agent.png') }}" alt="">
+        <h1>Agent Sign Up</h1>
+
+        <form action="{{ url_for('registerAgent') }}" method="POST">
+            <label id="icon" for="name"><i class="icon-user"></i></label>
+            <input type="text" name="agent_First_Name" id="name" placeholder="First Name" required />
+            <input type="text" name="agent_Last_Name" id="name" placeholder="Last Name" required /><br>
+            <label id="icon" for="name"><i class="icon-envelope "></i></label>
+            <input type="text" name="agent_Email" id="email" placeholder="Email" required /><br>
+            <label id="icon" for="name"><i class="icon-lock"></i></label>
+            <input type="password" name="agent_Password" id="password" placeholder="Password" required /><br>
+            <label id="icon" for="name"><i class="icon-phone"></i></label>
+            <input type="text" name="agent_Phone_No" id="phone" placeholder="Phone Number" required /><br>
+            <label id="icon" for="name"><i class="icon-credit-card"></i></label>
+            <input type="text" name="agent_REN_No" id="ren" placeholder="Number" required /><br>
+            <label id="icon" for="name"><i class="icon-building"></i></label>
+            <input type="text" name="agent_Agency" id="agency" placeholder="Agency" style="margin-bottom: 20px;"
+                required /><br>
+            <p>By clicking Register, you agree on our <a href="#">terms and condition</a>.</p>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+
+</html>
