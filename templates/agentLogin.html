@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In Agent | ASMARALOKA</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet'
+        type='text/css'>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static' , filename='../static/css/clientRegister.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static' , filename='../static/images/favicon.png') }}">
+</head>
+
+<body>
+    <div class="testbox-login-agent">
+        <img src="{{ url_for('static' , filename='../static/images/logo.png') }}" alt="">
+        <h1>Sign In Agent</h1>
+
+        <form action="{{ url_for('registerClient') }}" method="POST">
+            <label id="icon" for="name"><i class="icon-envelope "></i></label>
+            <input type="text" name="client_Email" id="email" placeholder="Email" required /><br>
+            <label id="icon" for="name"><i class="icon-lock"></i></label>
+            <input type="password" name="client_Password" id="password" placeholder="Password" required
+                style="margin-bottom: 20px;" /><br>
+            <p>By clicking Register, you agree on our <a href="#">terms and condition</a>.</p>
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+
+</html>

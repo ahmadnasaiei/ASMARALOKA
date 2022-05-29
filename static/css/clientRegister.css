@@ -37,6 +37,34 @@ html{
   background-color: #ffffff;
 }
 
+.testbox-login-client {
+  margin: 100px auto;
+  width: 450px; 
+  height: 390px; 
+  -webkit-border-radius: 8px/7px; 
+  -moz-border-radius: 8px/7px; 
+  border-radius: 8px/7px; 
+  background-color: #ebebeb; 
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  border: solid 1px #cbc9c9;
+}
+
+.testbox-login-agent {
+  margin: 100px auto;
+  width: 450px; 
+  height: 390px; 
+  -webkit-border-radius: 8px/7px; 
+  -moz-border-radius: 8px/7px; 
+  border-radius: 8px/7px; 
+  background-color: #ebebeb; 
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  box-shadow: 1px 2px 5px rgba(0,0,0,.31); 
+  border: solid 1px #cbc9c9;
+}
+
 .testbox-client {
   margin: 100px auto;
   width: 450px; 
@@ -65,7 +93,16 @@ html{
   border: solid 1px #cbc9c9;
 }
 
-.testbox-agent img{
+.testbox-login-client img{
+  width: 200px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  display: block;
+}
+
+.testbox-login-agent img{
   width: 200px;
   height: auto;
   margin-left: auto;
@@ -76,6 +113,15 @@ html{
 
 .testbox-client img{
   width: 150px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  display: block;
+}
+
+.testbox-agent img{
+  width: 200px;
   height: auto;
   margin-left: auto;
   margin-right: auto;
@@ -191,7 +237,6 @@ button {
   font-weight: 600;
   color: white;
   margin: 0px 8px 20px 0px;
-  display: inline-block;
   float: right;
   text-decoration: none;
   width: 100px; height: 35px; 

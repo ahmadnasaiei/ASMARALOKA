@@ -1,5 +1,6 @@
 from http.client import FORBIDDEN
 from flask import Flask, render_template, request, redirect, url_for, session, flash, g
+from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_mysqldb import MySQL, MySQLdb
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -12,13 +13,10 @@ app.secret_key = "membuatLOginFlask1"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:''@localhost:3307/asmaraloka'
 db = SQLAlchemy(app)
 
-#app.config['MYSQL_HOST'] = 'localhost'
-#app.config['MYSQL_PORT'] = '3306'
-#app.config['MYSQL_USER'] = 'root'
-#app.config['MYSQL_PASSWORD'] = ''
-#app.config['MYSQL_DB'] = 'fypDB'
-#app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
-#mysql = MySQL(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
@@ -27,7 +25,7 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-class Client(db.Model):
+class Client(db.Model, UserMixin):
     client = "parents"
     client_ID = db.Column(db.Integer, primary_key=True)
     client_First_Name = db.Column(db.String(255),)
@@ -38,7 +36,10 @@ class Client(db.Model):
     client_Address = db.Column(db.String(255))
     childrens = db.relationship("child", backref="parents"),
     cascade = "all, delete"
-   #customer = db.relationship('Client', backref='feedback', lazy=True)
+    #customer = db.relationship('Client', backref='feedback', lazy=True)
+
+    def get_id(self):
+        return (self.client_ID)
 
     def __init__(self, client_First_Name, client_Last_Name, client_Email, client_Password, client_Phone_No, client_Address):
         self.client_First_Name = client_First_Name
@@ -47,6 +48,11 @@ class Client(db.Model):
         self.client_Password = client_Password
         self.client_Phone_No = client_Phone_No
         self.client_Address = client_Address
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Client.query.filter_by(client_ID=user_id).first()
 
 
 class Agent(db.Model):
@@ -58,6 +64,9 @@ class Agent(db.Model):
     agent_Phone_No = db.Column(db.String(255))
     agent_REN_No = db.Column(db.String(255))
     agent_Agency = db.Column(db.String(255))
+
+    def get_id(self):
+        return (self.agent_ID)
 
     def __init__(self, agent_First_Name, agent_Last_Name, agent_Email, agent_Password, agent_Phone_No, agent_REN_No, agent_Agency):
         self.agent_First_Name = agent_First_Name
@@ -95,7 +104,7 @@ def registerClient():
         except:
             return render_template('index.html')
     else:
-        return render_template('agentDashboard.html')
+        return render_template('agentRegister.html')
 
 
 @app.route('/registerAgent', methods=['POST', 'GET'])
@@ -110,6 +119,36 @@ def registerAgent():
             return render_template('index.html')
     else:
         return render_template('agentRegister.html')
+
+
+@app.route('/loginClient', methods=['GET', 'POST'])
+def loginClient():
+    if request.method == 'POST':
+        client_Email = request.form['client_Email']
+        client_Password = request.form['client_Password']
+        client = Client.query.filter_by(client_Email=client_Email).first()
+        if client:
+            if client.client_Password == client_Password:
+                login_user(client)
+                return redirect(url_for('index'))
+        else:
+            return "invalid email or password"
+    return render_template("clientLogin.html")
+
+
+@app.route('/loginAgent', methods=['GET', 'POST'])
+def loginAgent():
+    if request.method == 'POST':
+        agent_Email = request.form['agent_Email']
+        agent_Password = request.form['agent_Password']
+        agent = Agent.query.filter_by(agent_Email=agent_Email).first()
+        if agent:
+            if agent.agent_Password == agent_Password:
+                login_user(agent)
+                return redirect(url_for('index'))
+        else:
+            return "invalid email or password"
+    return render_template("agentLogin.html")
 
 
 @app.route('/home')
@@ -134,68 +173,6 @@ def question():
         return render_template('question.html')
     else:
         return render_template('index.html')
-
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'GET':
-        return render_template('login.html',)
-    else:
-        c = request.form['custEmail']
-        p = request.form['custPass']
-        data = Client.query.filter_by(custEmail=c, custPass=p).first()
-        if data is not None:
-            session['logged_in'] = True
-            print("dah login ke")
-            print(session)
-            return redirect(url_for('home'))
-            return render_template('home.html')
-        else:
-            return redirect(url_for('login'))
-            return render_template('login.html')
-
-# @app.route('/login', methods=['GET', 'POST'])
-# def login():
-#     if request.method == 'POST':
-#         session.pop('customer',None)
-#         p = request.form['custPass']
-#         data = Client.query.filter_by(custPass =p).first()
-#         if request.form['custPass'] == data:
-#             session['customer'] = request.form['custEmail']
-#             print (session)
-#             return redirect(url_for('protected'))
-
-#     return render_template('login.html')
-
-# @app.route('/protected')
-# def protected():
-#     if g.customer:
-#         return render_template('home.html', customer=session['customer'])
-#     return redirect(url_for('index'))
-
-# @app.before_request
-# def before_request():
-#     g.customer = None
-
-#     if 'customer' in session:
-#         g.customer = session['customer']
-
-
-@app.route('/loginAgent', methods=['GET', 'POST'])
-def loginAgent():
-    if request.method == 'GET':
-        return render_template('loginAgent.html')
-    else:
-        c = request.form['adminEmail']
-        p = request.form['adminPass']
-        data = Agent.query.filter_by(adminEmail=c, adminPass=p).first()
-        if data is not None:
-            session['logged_in'] = True
-            return redirect(url_for('allcust'))
-            return render_template('home.html')
-        else:
-            return redirect(url_for('loginAgent'))
-            return render_template('loginAgent.html')
 
 
 @app.route('/about')
