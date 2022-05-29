@@ -55,7 +55,12 @@ def load_user(user_id):
     return Client.query.filter_by(client_ID=user_id).first()
 
 
-class Agent(db.Model):
+@login_manager.user_loader
+def load_user(user_id):
+    return Agent.query.filter_by(agent_ID=user_id).first()
+
+
+class Agent(db.Model, UserMixin):
     agent_ID = db.Column(db.Integer, primary_key=True)
     agent_First_Name = db.Column(db.String(255))
     agent_Last_Name = db.Column(db.String(255))
@@ -91,6 +96,27 @@ class Booking(db.Model):
 @app.route('/')
 def index():
     return render_template('index.html')
+
+
+@app.route('/agentDashboard')
+def agentDashboard():
+    return render_template('agentDashboard.html')
+
+
+@app.route('/home')
+def home():
+    if session.get('logged_in'):
+
+        print("ID YANG DAH PASS")
+
+        return render_template('home.html')
+    else:
+        return render_template('index.html')
+
+
+@app.route('/clientLoggedIn')
+def clientLoggedIn():
+    return render_template('clientLoggedIn.html')
 
 
 @app.route('/registerClient', methods=['POST', 'GET'])
@@ -130,7 +156,7 @@ def loginClient():
         if client:
             if client.client_Password == client_Password:
                 login_user(client)
-                return redirect(url_for('index'))
+                return redirect(url_for('clientLoggedIn'))
         else:
             return "invalid email or password"
     return render_template("clientLogin.html")
@@ -145,21 +171,16 @@ def loginAgent():
         if agent:
             if agent.agent_Password == agent_Password:
                 login_user(agent)
-                return redirect(url_for('index'))
+                return redirect(url_for('agentDashboard'))
         else:
             return "invalid email or password"
     return render_template("agentLogin.html")
 
 
-@app.route('/home')
-def home():
-    if session.get('logged_in'):
-
-        print("ID YANG DAH PASS")
-
-        return render_template('home.html')
-    else:
-        return render_template('index.html')
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('index'))
 
 
 @app.route('/selfbuildin')
@@ -297,12 +318,6 @@ def component():
         return render_template("component.html", component=result)
     else:
         return render_template('index.html')
-
-
-@app.route('/logout')
-def logout():
-    session.clear()
-    return redirect(url_for('index'))
 
 
 if __name__ == "__main__":

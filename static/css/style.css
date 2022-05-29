@@ -522,7 +522,7 @@ header
 
 .dropdown-partition{
   display: block;
-  padding: 0.85rem 1.5rem;
+  padding: 0.85rem 1.5rem 0rem 1.5rem;
   font-size: 10px;
   font-weight: 700;
   color: #8d949c;

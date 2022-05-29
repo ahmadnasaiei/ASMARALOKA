@@ -19,11 +19,11 @@
         <img src="{{ url_for('static' , filename='../static/images/logo.png') }}" alt="">
         <h1>Sign In Agent</h1>
 
-        <form action="{{ url_for('registerClient') }}" method="POST">
+        <form action="{{ url_for('loginAgent') }}" method="POST">
             <label id="icon" for="name"><i class="icon-envelope "></i></label>
-            <input type="text" name="client_Email" id="email" placeholder="Email" required /><br>
+            <input type="text" name="agent_Email" id="email" placeholder="Email" required /><br>
             <label id="icon" for="name"><i class="icon-lock"></i></label>
-            <input type="password" name="client_Password" id="password" placeholder="Password" required
+            <input type="password" name="agent_Password" id="password" placeholder="Password" required
                 style="margin-bottom: 20px;" /><br>
             <p>By clicking Register, you agree on our <a href="#">terms and condition</a>.</p>
             <button type="submit">Register</button>
