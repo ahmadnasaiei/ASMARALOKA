@@ -103,20 +103,29 @@ def agentDashboard():
     return render_template('agentDashboard.html')
 
 
+@app.route('/clientDashboard')
+def clientDashboard():
+    return render_template('clientDashboard.html')
+
+
 @app.route('/home')
 def home():
-    if session.get('logged_in'):
-
-        print("ID YANG DAH PASS")
-
-        return render_template('home.html')
-    else:
-        return render_template('index.html')
+    return render_template('home.html')
 
 
 @app.route('/clientLoggedIn')
 def clientLoggedIn():
     return render_template('clientLoggedIn.html')
+
+
+@app.route('/clientAccount')
+def clientAccount():
+    return render_template('clientAccount.html')
+
+
+@app.route('/properties')
+def properties():
+    return render_template('properties.html')
 
 
 @app.route('/registerClient', methods=['POST', 'GET'])
@@ -130,7 +139,7 @@ def registerClient():
         except:
             return render_template('index.html')
     else:
-        return render_template('agentRegister.html')
+        return render_template('clientRegister.html')
 
 
 @app.route('/registerAgent', methods=['POST', 'GET'])

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In Agent | ASMARALOKA</title>
+    <title>Log In Agent | ASMARALOKA</title>
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet'
         type='text/css'>
@@ -17,7 +17,7 @@
 <body>
     <div class="testbox-login-agent">
         <img src="{{ url_for('static' , filename='../static/images/logo.png') }}" alt="">
-        <h1>Sign In Agent</h1>
+        <h1>Log In Agent</h1>
 
         <form action="{{ url_for('loginAgent') }}" method="POST">
             <label id="icon" for="name"><i class="icon-envelope "></i></label>
@@ -26,7 +26,7 @@
             <input type="password" name="agent_Password" id="password" placeholder="Password" required
                 style="margin-bottom: 20px;" /><br>
             <p>By clicking Register, you agree on our <a href="#">terms and condition</a>.</p>
-            <button type="submit">Register</button>
+            <button type="submit">Log In</button>
         </form>
     </div>
 </body>

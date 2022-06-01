@@ -169,7 +169,7 @@ header
 */
 
 .background-header {
-  background: rgba(250,250,250,0.99) !important;
+  background: rgb(250, 250, 250) !important;
   height: 80px!important;
   position: fixed!important;
   top: 0px;
@@ -198,7 +198,7 @@ header
   right: 0px;
   z-index: 100;
   height: 80px;
-  background: rgba(250,250,250,0.1);
+  background: rgba(0, 0, 0, 0.226);
   -webkit-transition: all .5s ease 0s;
   -moz-transition: all .5s ease 0s;
   -o-transition: all .5s ease 0s;
