@@ -179,3 +179,9 @@ height: 100%;
   cursor: pointer;
   border: solid 1px #BA68C8
 }
+
+#price{
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="30"><text x="9" y="27" style="font: 16px Open Sans;">RM</text></svg>') no-repeat;
+  box-sizing: border-box;
+  padding-left: 45px;
+}

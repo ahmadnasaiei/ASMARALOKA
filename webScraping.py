@@ -116,7 +116,8 @@ print(total_pages)
 
 # DATA VARIABLES
 property_Title = []
-property_Location = []
+property_District = []
+property_State = []
 property_Price = []
 property_Sqft = []
 property_Bedroom = []
@@ -168,8 +169,11 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['title_t'])
-        property_Location.append(result['district_s_lower'] +
-                                 ", " + result['state_s_lower'])
+        property_State.append(result['state_s_lower'])
+        try:
+            property_District.append(result['district_s_lower'])
+        except:
+            property_District.append('N/A')
         property_Price.append(result['field_prop_asking_price_d'])
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
@@ -229,8 +233,11 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['title_t'])
-        property_Location.append(result['district_s_lower'] +
-                                 ", " + result['state_s_lower'])
+        property_State.append(result['state_s_lower'])
+        try:
+            property_District.append(result['district_s_lower'])
+        except:
+            property_District.append('N/A')
         property_Price.append(result['field_prop_asking_price_d'])
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
@@ -290,8 +297,11 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['title_t'])
-        property_Location.append(result['district_s_lower'] +
-                                 ", " + result['state_s_lower'])
+        property_State.append(result['state_s_lower'])
+        try:
+            property_District.append(result['district_s_lower'])
+        except:
+            property_District.append('N/A')
         property_Price.append(result['field_prop_asking_price_d'])
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
@@ -351,8 +361,11 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['title_t'])
-        property_Location.append(result['district_s_lower'] +
-                                 ", " + result['state_s_lower'])
+        property_State.append(result['state_s_lower'])
+        try:
+            property_District.append(result['district_s_lower'])
+        except:
+            property_District.append('N/A')
         property_Price.append(result['field_prop_asking_price_d'])
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
@@ -412,8 +425,11 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['title_t'])
-        property_Location.append(result['district_s_lower'] +
-                                 ", " + result['state_s_lower'])
+        property_State.append(result['state_s_lower'])
+        try:
+            property_District.append(result['district_s_lower'])
+        except:
+            property_District.append('N/A')
         property_Price.append(result['field_prop_asking_price_d'])
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
@@ -473,8 +489,11 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['title_t'])
-        property_Location.append(result['district_s_lower'] +
-                                 ", " + result['state_s_lower'])
+        property_State.append(result['state_s_lower'])
+        try:
+            property_District.append(result['district_s_lower'])
+        except:
+            property_District.append('N/A')
         property_Price.append(result['field_prop_asking_price_d'])
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
@@ -534,8 +553,11 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['title_t'])
-        property_Location.append(result['district_s_lower'] +
-                                 ", " + result['state_s_lower'])
+        property_State.append(result['state_s_lower'])
+        try:
+            property_District.append(result['district_s_lower'])
+        except:
+            property_District.append('N/A')
         property_Price.append(result['field_prop_asking_price_d'])
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
@@ -595,8 +617,11 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['title_t'])
-        property_Location.append(result['district_s_lower'] +
-                                 ", " + result['state_s_lower'])
+        property_State.append(result['state_s_lower'])
+        try:
+            property_District.append(result['district_s_lower'])
+        except:
+            property_District.append('N/A')
         property_Price.append(result['field_prop_asking_price_d'])
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
@@ -662,8 +687,11 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['title_t'])
-        property_Location.append(result['district_s_lower'] +
-                                 ", " + result['state_s_lower'])
+        property_State.append(result['state_s_lower'])
+        try:
+            property_District.append(result['district_s_lower'])
+        except:
+            property_District.append('N/A')
         property_Price.append(result['field_prop_asking_price_d'])
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
@@ -723,8 +751,11 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['title_t'])
-        property_Location.append(result['district_s_lower'] +
-                                 ", " + result['state_s_lower'])
+        property_State.append(result['state_s_lower'])
+        try:
+            property_District.append(result['district_s_lower'])
+        except:
+            property_District.append('N/A')
         property_Price.append(result['field_prop_asking_price_d'])
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
@@ -784,8 +815,11 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['title_t'])
-        property_Location.append(result['district_s_lower'] +
-                                 ", " + result['state_s_lower'])
+        property_State.append(result['state_s_lower'])
+        try:
+            property_District.append(result['district_s_lower'])
+        except:
+            property_District.append('N/A')
         property_Price.append(result['field_prop_asking_price_d'])
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
@@ -845,8 +879,11 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['title_t'])
-        property_Location.append(result['district_s_lower'] +
-                                 ", " + result['state_s_lower'])
+        property_State.append(result['state_s_lower'])
+        try:
+            property_District.append(result['district_s_lower'])
+        except:
+            property_District.append('N/A')
         property_Price.append(result['field_prop_asking_price_d'])
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
@@ -906,8 +943,11 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['title_t'])
-        property_Location.append(result['district_s_lower'] +
-                                 ", " + result['state_s_lower'])
+        property_State.append(result['state_s_lower'])
+        try:
+            property_District.append(result['district_s_lower'])
+        except:
+            property_District.append('N/A')
         property_Price.append(result['field_prop_asking_price_d'])
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
@@ -967,8 +1007,11 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['title_t'])
-        property_Location.append(result['district_s_lower'] +
-                                 ", " + result['state_s_lower'])
+        property_State.append(result['state_s_lower'])
+        try:
+            property_District.append(result['district_s_lower'])
+        except:
+            property_District.append('N/A')
         property_Price.append(result['field_prop_asking_price_d'])
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
@@ -1028,8 +1071,11 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['title_t'])
-        property_Location.append(result['district_s_lower'] +
-                                 ", " + result['state_s_lower'])
+        property_State.append(result['state_s_lower'])
+        try:
+            property_District.append(result['district_s_lower'])
+        except:
+            property_District.append('N/A')
         property_Price.append(result['field_prop_asking_price_d'])
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
@@ -1079,8 +1125,8 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['attributes']['subject'])
-        property_Location.append(result['attributes']['subarea_name'] +
-                                 ", " + result['attributes']['region_name'])
+        property_District.append(result['attributes']['subarea_name'])
+        property_State.append(result['attributes']['region_name'])
         property_Price.append(result['attributes']['price'])
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
@@ -1128,8 +1174,8 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['attributes']['subject'])
-        property_Location.append(result['attributes']['subarea_name'] +
-                                 ", " + result['attributes']['region_name'])
+        property_District.append(result['attributes']['subarea_name'])
+        property_State.append(result['attributes']['region_name'])
         property_Price.append(result['attributes']['price'])
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
@@ -1177,8 +1223,8 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['attributes']['subject'])
-        property_Location.append(result['attributes']['subarea_name'] +
-                                 ", " + result['attributes']['region_name'])
+        property_District.append(result['attributes']['subarea_name'])
+        property_State.append(result['attributes']['region_name'])
         property_Price.append(result['attributes']['price'])
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
@@ -1226,8 +1272,8 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['attributes']['subject'])
-        property_Location.append(result['attributes']['subarea_name'] +
-                                 ", " + result['attributes']['region_name'])
+        property_District.append(result['attributes']['subarea_name'])
+        property_State.append(result['attributes']['region_name'])
         property_Price.append(result['attributes']['price'])
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
@@ -1275,8 +1321,8 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['attributes']['subject'])
-        property_Location.append(result['attributes']['subarea_name'] +
-                                 ", " + result['attributes']['region_name'])
+        property_District.append(result['attributes']['subarea_name'])
+        property_State.append(result['attributes']['region_name'])
         property_Price.append(result['attributes']['price'])
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
@@ -1324,8 +1370,8 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['attributes']['subject'])
-        property_Location.append(result['attributes']['subarea_name'] +
-                                 ", " + result['attributes']['region_name'])
+        property_District.append(result['attributes']['subarea_name'])
+        property_State.append(result['attributes']['region_name'])
         property_Price.append(result['attributes']['price'])
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
@@ -1373,8 +1419,8 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['attributes']['subject'])
-        property_Location.append(result['attributes']['subarea_name'] +
-                                 ", " + result['attributes']['region_name'])
+        property_District.append(result['attributes']['subarea_name'])
+        property_State.append(result['attributes']['region_name'])
         property_Price.append(result['attributes']['price'])
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
@@ -1422,8 +1468,8 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['attributes']['subject'])
-        property_Location.append(result['attributes']['subarea_name'] +
-                                 ", " + result['attributes']['region_name'])
+        property_District.append(result['attributes']['subarea_name'])
+        property_State.append(result['attributes']['region_name'])
         property_Price.append(result['attributes']['price'])
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
@@ -1471,8 +1517,8 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['attributes']['subject'])
-        property_Location.append(result['attributes']['subarea_name'] +
-                                 ", " + result['attributes']['region_name'])
+        property_District.append(result['attributes']['subarea_name'])
+        property_State.append(result['attributes']['region_name'])
         property_Price.append(result['attributes']['price'])
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
@@ -1520,8 +1566,8 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['attributes']['subject'])
-        property_Location.append(result['attributes']['subarea_name'] +
-                                 ", " + result['attributes']['region_name'])
+        property_District.append(result['attributes']['subarea_name'])
+        property_State.append(result['attributes']['region_name'])
         property_Price.append(result['attributes']['price'])
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
@@ -1569,8 +1615,8 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['attributes']['subject'])
-        property_Location.append(result['attributes']['subarea_name'] +
-                                 ", " + result['attributes']['region_name'])
+        property_District.append(result['attributes']['subarea_name'])
+        property_State.append(result['attributes']['region_name'])
         property_Price.append(result['attributes']['price'])
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
@@ -1618,8 +1664,8 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['attributes']['subject'])
-        property_Location.append(result['attributes']['subarea_name'] +
-                                 ", " + result['attributes']['region_name'])
+        property_District.append(result['attributes']['subarea_name'])
+        property_State.append(result['attributes']['region_name'])
         property_Price.append(result['attributes']['price'])
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
@@ -1667,8 +1713,8 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['attributes']['subject'])
-        property_Location.append(result['attributes']['subarea_name'] +
-                                 ", " + result['attributes']['region_name'])
+        property_District.append(result['attributes']['subarea_name'])
+        property_State.append(result['attributes']['region_name'])
         property_Price.append(result['attributes']['price'])
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
@@ -1716,8 +1762,8 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['attributes']['subject'])
-        property_Location.append(result['attributes']['subarea_name'] +
-                                 ", " + result['attributes']['region_name'])
+        property_District.append(result['attributes']['subarea_name'])
+        property_State.append(result['attributes']['region_name'])
         property_Price.append(result['attributes']['price'])
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
@@ -1765,8 +1811,8 @@ for i in range(0, 3):
 
     for result in result_items:
         property_Title.append(result['attributes']['subject'])
-        property_Location.append(result['attributes']['subarea_name'] +
-                                 ", " + result['attributes']['region_name'])
+        property_District.append(result['attributes']['subarea_name'])
+        property_State.append(result['attributes']['region_name'])
         property_Price.append(result['attributes']['price'])
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
@@ -1786,8 +1832,8 @@ for i in range(0, 3):
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
 
 
-df_edge = pd.DataFrame({'Title': property_Title, 'Location': property_Location, 'Price': property_Price, 'Area': property_Sqft,
-                        'Bedroom': property_Bedroom, 'Bathroom': property_Bathroom, 'Agent Name': property_Agent_Name, 'Phone Number': property_Agent_Phone_No, 'Origin URL': property_Origin_URL})
+df_edge = pd.DataFrame({'property_Title': property_Title, 'property_District': property_District, 'property_State': property_State, 'property_Price': property_Price, 'property_Sqft': property_Sqft,
+                        'property_Bedroom': property_Bedroom, 'property_Bathroom': property_Bathroom, 'property_Agent_Name': property_Agent_Name, 'property_Agent_Phone_No': property_Agent_Phone_No, 'property_Origin_URL': property_Origin_URL})
 
 df_edge.to_excel('edgeprop_property_listing.xlsx', index=False)
 
@@ -1799,6 +1845,6 @@ print(df_edge)
 # df_edge.to_sql('property', engine)
 
 # MYSQL
-# engine = sqlalchemy.create_engine(
-#     'mysql://root:''@localhost:3307/asmaraloka')
-# df_edge.to_sql('property', engine)
+engine = sqlalchemy.create_engine(
+    'mysql://root:''@localhost:3307/asmaraloka')
+df_edge.to_sql('property', engine, if_exists='replace')

@@ -83,6 +83,32 @@ class Agent(db.Model, UserMixin):
         self.agent_Agency = agent_Agency
 
 
+class Property(db.Model):
+    index = db.Column(db.Integer, primary_key=True)
+    property_Title = db.Column(db.String(255))
+    property_District = db.Column(db.String(255))
+    property_State = db.Column(db.String(255))
+    property_Price = db.Column(db.Integer)
+    property_Sqft = db.Column(db.String(255))
+    property_Bedroom = db.Column(db.String(255))
+    property_Bathroom = db.Column(db.String(255))
+    property_Agent_Name = db.Column(db.String(255))
+    property_Agent_Phone_No = db.Column(db.String(255))
+    property_Origin_URL = db.Column(db.String(255))
+
+    def __init__(self, property_Title, property_District, property_State, property_Price, property_Sqft, property_Bedroom, property_Bathroom, property_Agent_Name, property_Agent_Phone_No, property_Origin_URL):
+        self.property_Title = property_Title
+        self.property_District = property_District
+        self.property_State = property_State
+        self.property_Price = property_Price
+        self.property_Sqft = property_Sqft
+        self.property_Bedroom = property_Bedroom
+        self.property_Bathroom = property_Bathroom
+        self.property_Agent_Name = property_Agent_Name
+        self.property_Agent_Phone_No = property_Agent_Phone_No
+        self.property_Origin_URL = property_Origin_URL
+
+
 class Booking(db.Model):
     booking_ID = db.Column(db.Integer, primary_key=True)
     booking_Date = db.Column(db.DateTime, default=datetime.utcnow)
@@ -101,6 +127,11 @@ def index():
 @app.route('/agentDashboard')
 def agentDashboard():
     return render_template('agentDashboard.html')
+
+
+@app.route('/agentCreateListing')
+def agentCreateListing():
+    return render_template('agentCreateListing.html')
 
 
 @app.route('/clientDashboard')
@@ -184,6 +215,20 @@ def loginAgent():
         else:
             return "invalid email or password"
     return render_template("agentLogin.html")
+
+
+@app.route('/createProperty', methods=['POST', 'GET'])
+def createProperty():
+    if request.method == 'POST':
+        try:
+            db.session.add(Property(property_Title=request.form['property_Title'], property_District=request.form['property_District'], property_State=request.form['property_State'],
+                           property_Price=request.form['property_Price'], property_Sqft=request.form['property_Sqft'], property_Bedroom=request.form['property_Bedroom'], property_Bathroom=request.form['property_Bathroom'], property_Agent_Name=request.form['property_Agent_Name'], property_Agent_Phone_No=request.form['property_Agent_Phone_No'], property_Origin_URL=request.form['property_Origin_URL']))
+            db.session.commit()
+            return redirect(url_for('agentDashboard'))
+        except:
+            return render_template('index.html')
+    else:
+        return render_template('agentDashboard')
 
 
 @app.route('/logout')

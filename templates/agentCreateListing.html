@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Listing | ASMARALOKA</title>
+    <link rel="stylesheet" href="{{ url_for('static' , filename='../static/css/agentDashboard.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static' , filename='../static/images/favicon.png') }}">
+</head>
+
+<body>
+    <div class="area">
+        <div class="container rounded bg-white mt-5 mb-5">
+            <h2 class="text-right">CREATE NEW LISTING</h2>
+            <div class="row">
+                <div class="col-md-3 border-right">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <h4 class="text-right">Photos for Your Ads</h4>
+                        <a href="#"><img class="ps-5 pe-5 pt-5 pb-5 mt-5 mb-2 border border-2" width="210px"
+                                src="{{ url_for('static' , filename='../static/images/upload.png') }}"></a>
+                    </div>
+                </div>
+                <div class="col-md-5 border-right">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+
+                        </div>
+                        <form action="{{ url_for('createProperty') }}" method="POST">
+                            <div class="row mt-3">
+                                <div class="col-md-12"><label class="labels">Title</label><input type="text"
+                                        class="form-control pb-2 pt-2" name="property_Title" value=""></div>
+                                <div class="col-md-12 mt-3"><label class="labels">District</label><input type="text"
+                                        class="form-control pb-2 pt-2" name="property_District" value=""></div>
+                                <div class="col-md-12 mt-3"><label class="labels">State</label>
+                                    <select class="form-select pb-2 pt-2" name="property_State"
+                                        aria-label="Default select example">
+                                        <option selected disabled>-</option>
+                                        <option value="Selangor">Selangor</option>
+                                        <option value="Johor">Johor</option>
+                                        <option value="Penang">Penang</option>
+                                        <option value="Perak">Perak</option>
+                                        <option value="Negeri Sembilan">Negeri Sembilan</option>
+                                        <option value="Sabah">Sabah</option>
+                                        <option value="Sarawak">Sarawak</option>
+                                        <option value="Kedah">Kedah</option>
+                                        <option value="Kelantan">Kelantan</option>
+                                        <option value="Pahang">Pahang</option>
+                                        <option value="Melaka">Melaka</option>
+                                        <option value="Terengganu">Terengganu</option>
+                                        <option value="Putrajaya">Putrajaya</option>
+                                        <option value="Perlis">Perlis</option>
+                                        <option value="Labuan">Labuan</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12 mt-3"><label class="labels">Price</label><input type="text"
+                                        class="form-control pb-2 pt-2" id="price" name="property_Price" value=""></div>
+                                <div class="col-md-12 mt-3"><label class="labels">sqft</label><input type="text"
+                                        class="form-control pb-2 pt-2" name="property_Sqft" value=""></div>
+                                <div class="col-md-12 mt-3"><label class="labels">Bathroom</label>
+                                    <select class="form-select pb-2 pt-2" name="property_Bedroom"
+                                        aria-label="Default select example">
+                                        <option selected disabled>-</option>
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10+">10+</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12 mt-3"><label class="labels">Bedroom</label>
+                                    <select class="form-select pb-2 pt-2" name="property_Bathroom"
+                                        aria-label="Default select example">
+                                        <option selected disabled>-</option>
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10+">10+</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mt-5 text-center"><button type="submit"
+                                    class="btn btn-primary profile-button">Publish</button></div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center experience"><span>Edit
+                                Experience</span><span class="border px-3 p-1 add-experience"><i
+                                    class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
+                        <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text"
+                                class="form-control" placeholder="experience" value=""></div> <br>
+                        <div class="col-md-12"><label class="labels">Additional Details</label><input type="text"
+                                class="form-control" placeholder="additional details" value=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- SIDEBAR MENU -->
+    <nav class="main-menu">
+        <ul>
+            <li>
+                <img src="{{ url_for('static' , filename='../static/images/logo-agent.png') }}" alt="logo.png">
+
+            </li>
+            <li>
+                <a href="agentDashboard">
+                    <i class="fa fa-home fa-2x"></i>
+                    <span class="nav-text">
+                        Dashboard
+                    </span>
+                </a>
+
+            </li>
+            <li class="has-subnav">
+                <a href="#">
+                    <i class="fa fa-laptop fa-2x"></i>
+                    <span class="nav-text">
+                        Stars Components
+                    </span>
+                </a>
+
+            </li>
+            <li class="has-subnav">
+                <a href="agentCreateListing">
+                    <i class="fa fa-list fa-2x"></i>
+                    <span class="nav-text">
+                        Create Listing
+                    </span>
+                </a>
+
+            </li>
+            <li class="has-subnav">
+                <a href="#">
+                    <i class="fa fa-folder-open fa-2x"></i>
+                    <span class="nav-text">
+                        Pages
+                    </span>
+                </a>
+
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-bar-chart-o fa-2x"></i>
+                    <span class="nav-text">
+                        Graphs and Statistics
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-font fa-2x"></i>
+                    <span class="nav-text">
+                        Quotes
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-table fa-2x"></i>
+                    <span class="nav-text">
+                        Tables
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-map-marker fa-2x"></i>
+                    <span class="nav-text">
+                        Maps
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-info fa-2x"></i>
+                    <span class="nav-text">
+                        Documentation
+                    </span>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="logout">
+            <li>
+                <a href="logout">
+                    <i class="fa fa-power-off fa-2x"></i>
+                    <span class="nav-text">
+                        Logout
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</body>
+
+</html>
