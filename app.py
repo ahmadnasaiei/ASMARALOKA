@@ -162,7 +162,7 @@ def agentUpdateAccount():
 
 @app.route('/propertyDetails')
 def propertyDetails():
-    return render_template('property-details.html')
+    return render_template('propertyDetails.html')
 
 
 @app.route('/properties')
