@@ -1,6 +1,7 @@
 from http.client import FORBIDDEN
 from flask import Flask, render_template, request, redirect, url_for, session, flash, g
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
+from flask_paginate import Pagination, get_page_args
 from flask_mysqldb import MySQL, MySQLdb
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -23,6 +24,16 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Client.query.filter_by(client_ID=user_id).first()
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Agent.query.filter_by(agent_ID=user_id).first()
 
 
 class Client(db.Model, UserMixin):
@@ -48,16 +59,6 @@ class Client(db.Model, UserMixin):
         self.client_Password = client_Password
         self.client_Phone_No = client_Phone_No
         self.client_Address = client_Address
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    return Client.query.filter_by(client_ID=user_id).first()
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    return Agent.query.filter_by(agent_ID=user_id).first()
 
 
 class Agent(db.Model, UserMixin):
@@ -154,9 +155,20 @@ def clientAccount():
     return render_template('clientAccount.html')
 
 
+@app.route('/agentUpdateAccount')
+def agentUpdateAccount():
+    return render_template('agentUpdateAccount.html')
+
+
+@app.route('/propertyDetails')
+def propertyDetails():
+    return render_template('property-details.html')
+
+
 @app.route('/properties')
 def properties():
-    return render_template('properties.html')
+    all_data = Property.query.all()
+    return render_template("properties.html", property_data=all_data)
 
 
 @app.route('/registerClient', methods=['POST', 'GET'])
@@ -231,147 +243,51 @@ def createProperty():
         return render_template('agentDashboard')
 
 
+@app.route('/updateClient/<int:client_ID>', methods=['GET', 'POST'])
+def updateClient(client_ID):
+    all_data = Client.query.all()
+    client_to_update = Client.query.filter_by(client_ID=client_ID).first()
+    if request.method == 'POST':
+        client_to_update.client_First_Name = request.form['client_First_Name']
+        client_to_update.client_Last_Name = request.form['client_Last_Name']
+        client_to_update.client_Email = request.form['client_Email']
+        client_to_update.client_Password = request.form['client_Password']
+        client_to_update.client_Phone_No = request.form['client_Phone_No']
+        client_to_update.client_Address = request.form['client_Address']
+        client_to_update.client = Client(client_First_Name=client_to_update.client_First_Name, client_Last_Name=client_to_update.client_Last_Name,
+                                         client_Email=client_to_update.client_Email, client_Password=client_to_update.client_Password, client_Phone_No=client_to_update.client_Phone_No, client_Address=client_to_update.client_Address)
+
+        db.session.commit()
+        return redirect('/clientLoggedIn')
+
+    return render_template('clientLoggedIn.html', client_to_update=client_to_update, client=all_data)
+
+
+@app.route('/updateAgent/<int:agent_ID>', methods=['GET', 'POST'])
+def updateAgent(agent_ID):
+    all_data = Agent.query.all()
+    agent_to_update = Agent.query.filter_by(agent_ID=agent_ID).first()
+    if request.method == 'POST':
+        agent_to_update.agent_First_Name = request.form['agent_First_Name']
+        agent_to_update.agent_Last_Name = request.form['agent_Last_Name']
+        agent_to_update.agent_Email = request.form['agent_Email']
+        agent_to_update.agent_Password = request.form['agent_Password']
+        agent_to_update.agent_Phone_No = request.form['agent_Phone_No']
+        agent_to_update.agent_REN_No = request.form['agent_REN_No']
+        agent_to_update.agent_Agency = request.form['agent_Agency']
+        agent_to_update.feedback = Agent(agent_First_Name=agent_to_update.agent_First_Name, agent_Last_Name=agent_to_update.agent_Last_Name,
+                                         agent_Email=agent_to_update.agent_Email, agent_Password=agent_to_update.agent_Password, agent_Phone_No=agent_to_update.agent_Phone_No, agent_REN_No=agent_to_update.agent_REN_No, agent_Agency=agent_to_update.agent_Agency)
+
+        db.session.commit()
+        return redirect('/agentDashboard')
+
+    return render_template('agentUpdateAccount.html', agent_to_update=agent_to_update, agent=all_data)
+
+
 @app.route('/logout')
 def logout():
     session.clear()
     return redirect(url_for('index'))
-
-
-@app.route('/selfbuildin')
-def selfbuildin():
-    return render_template("product-self1.html")
-
-
-@app.route('/question')
-def question():
-    if session.get('logged_in'):
-        return render_template('question.html')
-    else:
-        return render_template('index.html')
-
-
-@app.route('/about')
-def about():
-    if session.get('logged_in'):
-        return render_template('about.html')
-    else:
-        return render_template('index.html')
-
-
-@app.route('/aboutbeforelogin')
-def aboutbeforelogin():
-    return render_template('aboutbeforelogin.html')
-
-
-@app.route('/contact')
-def contact():
-    if session.get('logged_in'):
-        return render_template('contact.html')
-    else:
-        return render_template('index.html')
-
-
-@app.route('/myfeedback')
-def myfeedback():
-
-    if session.get('logged_in'):
-        result = db.engine.execute(
-            "SELECT * FROM feedbacks WHERE custEmail = custemail")
-        #all_data = text('SELECT feedbacks.fbID,customer.custID,customer.custName,feedbacks.fbType,feedbacks.fbDesc FROM feedbacks INNER JOIN customer ON (feedbacks.fbID = customer.custID)')
-        #all_data = Feedbacks.query.all()
-        return render_template("myfeedback.html", feedbacks=result)
-    else:
-        return render_template('index.html')
-
-
-@app.route('/contactbeforelogin')
-def contactbeforelogin():
-    return render_template("contactbeforelogin.html")
-
-
-@app.route('/insert')
-def insert():
-    if request.method == 'POST':
-
-        custName = request.form['custName']
-        custEmail = request.form['custEmail']
-        custPhoneNo = request.form['custPhoneNo']
-        custAdd = request.form['custAdd']
-        custPass = request.form['custPass']
-
-        my_data = Client(custName, custEmail, custPhoneNo, custAdd, custPass)
-        db.session.add(my_data)
-        db.session.commit()
-        return redirect(url_for('home'))
-
-
-@app.route('/productself1')
-def productself1():
-    if session.get('logged_in'):
-        return render_template('productself1.html')
-    else:
-        return render_template('index.html')
-
-
-@app.route('/allcust')
-def allcust():
-    if session.get('logged_in'):
-        all_data = Client.query.all()
-        return render_template("allcust.html", customer=all_data)
-    else:
-        return render_template('index.html')
-
-
-@app.route('/feedbacks')
-def feedbacks():
-    if session.get('logged_in'):
-        result = db.engine.execute(
-            "SELECT feedbacks.fbID,customer.custEmail,customer.custName,feedbacks.fbType,feedbacks.fbDate,feedbacks.fbDesc FROM feedbacks INNER JOIN customer ON (feedbacks.custEmail = customer.custEmail)")
-        #all_data = text('SELECT feedbacks.fbID,customer.custID,customer.custName,feedbacks.fbType,feedbacks.fbDesc FROM feedbacks INNER JOIN customer ON (feedbacks.fbID = customer.custID)')
-        #all_data = Feedbacks.query.all()
-        return render_template("feedbacks.html", feedbacks=result)
-    else:
-        return render_template('index.html')
-
-
-@app.route('/complaints')
-def complaints():
-    if session.get('logged_in'):
-        result = db.engine.execute(
-            "SELECT feedbacks.fbID,customer.custEmail,customer.custName,feedbacks.fbType,feedbacks.fbDate,feedbacks.fbDesc FROM feedbacks INNER JOIN customer ON (feedbacks.custEmail = customer.custEmail) WHERE fbType = 'Complain'")
-        return render_template("complaints.html", complaints=result)
-    else:
-        return render_template('index.html')
-
-
-@app.route('/suggestions')
-def suggestions():
-    if session.get('logged_in'):
-        result = db.engine.execute(
-            "SELECT feedbacks.fbID,customer.custEmail,customer.custName,feedbacks.fbType,feedbacks.fbDate,feedbacks.fbDesc FROM feedbacks INNER JOIN customer ON (feedbacks.custEmail = customer.custEmail) WHERE fbType = 'Suggestion'")
-        return render_template("suggestions.html", suggestions=result)
-    else:
-        return render_template('index.html')
-
-
-@app.route('/reviews')
-def reviews():
-    if session.get('logged_in'):
-        result = db.engine.execute(
-            "SELECT feedbacks.fbID,customer.custEmail,customer.custName,feedbacks.fbType,feedbacks.fbDate,feedbacks.fbDesc FROM feedbacks INNER JOIN customer ON (feedbacks.custEmail = customer.custEmail) WHERE fbType = 'Review'")
-        return render_template("reviews.html", reviews=result)
-    else:
-        return render_template('index.html')
-
-
-@app.route('/component')
-def component():
-    if session.get('logged_in'):
-        result = db.engine.execute(
-            "SELECT component.compID,category.catName,component.compName,component.compBrand,component.compPrice FROM component INNER JOIN category ON (component.catID = category.catID) ORDER BY 1 ")
-        return render_template("component.html", component=result)
-    else:
-        return render_template('index.html')
 
 
 if __name__ == "__main__":

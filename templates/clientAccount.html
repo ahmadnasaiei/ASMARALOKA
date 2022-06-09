@@ -97,20 +97,12 @@
                 <div class="card-body">
                     <h2 class="title">Hello, {{current_user.client_Email}}</h2>
                     <div class="input-group">
-                        <input class="input--style-1" id="fname" type="text" placeholder="First Name" name="name"
+                        <input class="input--style-1" id="fname" type="text" name="client_First_Name"
                             value="{{current_user.client_First_Name}}">
                     </div>
                     <div class="input-group">
-                        <input class="input--style-1" id="lname" type="text" placeholder="Last Name" name="name"
-                            value="{{current_user.client_First_Name}}">
-                    </div>
-                    <div class="row row-space">
-                        <div class="col-2">
-                            <div class="input-group">
-                                <input class="input--style-1" type="text" placeholder="REGISTRATION CODE"
-                                    name="res_code">
-                            </div>
-                        </div>
+                        <input class="input--style-1" id="lname" type="text" name="client_Last_Name"
+                            value="{{current_user.client_Last_Name}}">
                     </div>
                     <div class="p-t-20">
                         <button class="btn btn--radius btn--green" type="submit">Submit</button>

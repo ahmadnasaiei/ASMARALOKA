@@ -185,3 +185,9 @@ height: 100%;
   box-sizing: border-box;
   padding-left: 45px;
 }
+
+#ren{
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="30"><text x="9" y="24" style="font: 16px Open Sans;">REN</text></svg>') no-repeat;
+  box-sizing: border-box;
+  padding-left: 45px;
+}
