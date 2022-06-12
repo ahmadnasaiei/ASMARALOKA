@@ -172,7 +172,7 @@
 
             <!-- ----------------------------- FILTERING END ----------------------------- -->
             <div class="card-container">
-                {% for row in property_data %}
+                {% for row in agent_property %}
                 <div class="property-card">
                     <div class="property-card__item">
                         <!-- Banner -->
@@ -221,13 +221,13 @@
                             </div>
                         </div>
                         <!-- Button -->
-                        <a href="{{row.property_Origin_URL}}" target="_blank"><button class="btn">See More
+                        <a href="propertyDetails" target="_blank"><button class="btn">See More
                                 ></button></a>
                     </div>
                 </div>
                 {% endfor %}
-                
-                {% for row in property_data %}
+
+                {% for row in scrape_property %}
                 <div class="property-card">
                     <div class="property-card__item">
                         <!-- Banner -->
@@ -276,145 +276,13 @@
                             </div>
                         </div>
                         <!-- Button -->
-                        <a href="{{row.property_Origin_URL}}" target="_blank"><button class="btn">See More
-                                ></button></a>
+                        <a href="{{row.property_Origin_URL}}" target="_blank">
+                            <button class="btn">See More></button>
+                        </a>
                     </div>
                 </div>
                 {% endfor %}
             </div>
-
-
-
-            <!-- <div class="row">
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="{{ url_for('static' , filename='../static/images/product-1-720x480.jpg') }}"
-                                alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>
-                                <del><sup>$</sup>80 000</del> <sup>$</sup>70 000
-                            </span>
-
-                            <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-
-                            <p>House &nbsp;/&nbsp; For Sale &nbsp;/&nbsp; 100 sq m &nbsp;/&nbsp; 2010</p>
-
-                            <ul class="social-icons">
-                                <li><a href="property-details.html">+ View More</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="{{ url_for('static' , filename='../static/images/product-2-720x480.jpg') }}"
-                                alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>
-                                <del><sup>$</sup>80 000</del> <sup>$</sup>70 000
-                            </span>
-
-                            <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-
-                            <p>House &nbsp;/&nbsp; For Sale &nbsp;/&nbsp; 100 sq m &nbsp;/&nbsp; 2010</p>
-
-                            <ul class="social-icons">
-                                <li><a href="property-details.html">+ View More</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="{{ url_for('static' , filename='../static/images/product-3-720x480.jpg') }}"
-                                alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>
-                                <del><sup>$</sup>80 000</del> <sup>$</sup>70 000
-                            </span>
-
-                            <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-
-                            <p>House &nbsp;/&nbsp; For Sale &nbsp;/&nbsp; 100 sq m &nbsp;/&nbsp; 2010</p>
-
-                            <ul class="social-icons">
-                                <li><a href="property-details.html">+ View More</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="{{ url_for('static' , filename='../static/images/product-4-720x480.jpg') }}"
-                                alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>
-                                <del><sup>$</sup>80 000</del> <sup>$</sup>70 000
-                            </span>
-
-                            <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-
-                            <p>House &nbsp;/&nbsp; For Sale &nbsp;/&nbsp; 100 sq m &nbsp;/&nbsp; 2010</p>
-
-                            <ul class="social-icons">
-                                <li><a href="property-details.html">+ View More</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="{{ url_for('static' , filename='../static/images/product-5-720x480.jpg') }}"
-                                alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>
-                                <del><sup>$</sup>80 000</del> <sup>$</sup>70 000
-                            </span>
-
-                            <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-
-                            <p>House &nbsp;/&nbsp; For Sale &nbsp;/&nbsp; 100 sq m &nbsp;/&nbsp; 2010</p>
-
-                            <ul class="social-icons">
-                                <li><a href="property-details.html">+ View More</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="{{ url_for('static' , filename='../static/images/product-6-720x480.jpg') }}"
-                                alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>
-                                <del><sup>$</sup>80 000</del> <sup>$</sup>70 000
-                            </span>
-
-                            <h4>Lorem ipsum dolor sit amet, consectetur</h4>
-
-                            <p>House &nbsp;/&nbsp; For Sale &nbsp;/&nbsp; 100 sq m &nbsp;/&nbsp; 2010</p>
-
-                            <ul class="social-icons">
-                                <li><a href="property-details.html">+ View More</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
             <br>
 
             <nav>

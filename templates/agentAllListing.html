@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Property Lisiting | ASMARALOKA</title>
+    <link rel="stylesheet" href="{{ url_for('static' , filename='../static/css/agentDashboard.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static' , filename='../static/images/favicon.png') }}">
+</head>
+
+<body>
+    <div class="area">
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row mw-100">
+                <h2 class="text-right"><b>| MY LISTING</b></h2>
+                <div class="col-lg-15 border-right">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">No.</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">District</th>
+                                <th scope="col">State</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in agent_property %}
+                            <tr>
+                                <th scope="row">{{row.property_ID}}</th>
+                                <td>{{row.property_Title}}</td>
+                                <td>{{row.property_District}}</td>
+                                <td>{{row.property_State}}</td>
+                                <td>RM{{row.property_Price}}</td>
+                                <td>
+                                    <a class="btn btn-primary" href="/updateProperty/{{row.property_ID}}">Update</a>
+                                    <a class="btn btn-danger" href="/deleteProperty/{{row.property_ID}}">Delete</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SIDEBAR MENU -->
+
+    <nav class="main-menu">
+        <ul>
+            <li>
+                <img src="{{ url_for('static' , filename='../static/images/logo-agent.png') }}" alt="logo.png">
+
+            </li>
+            <li>
+                <a href="agentDashboard">
+                    <i class="fa fa-home fa-2x"></i>
+                    <span class="nav-text">
+                        Dashboard
+                    </span>
+                </a>
+
+            </li>
+            <li class="has-subnav">
+                <a href="/updateAgent/{{current_user.agent_ID}}">
+                    <i class="fa fa-user fa-2x"></i>
+                    <span class="nav-text">
+                        Update Account
+                    </span>
+                </a>
+
+            </li>
+            <li class="has-subnav">
+                <a href="createProperty">
+                    <i class="fa fa-list fa-2x"></i>
+                    <span class="nav-text">
+                        Add New Listing
+                    </span>
+                </a>
+
+            </li>
+            <li class="has-subnav">
+                <a href="agentAllListing">
+                    <i class="fa fa-folder-open fa-2x"></i>
+                    <span class="nav-text">
+                        My Listing
+                    </span>
+                </a>
+
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-bar-chart-o fa-2x"></i>
+                    <span class="nav-text">
+                        Graphs and Statistics
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-font fa-2x"></i>
+                    <span class="nav-text">
+                        Quotes
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-table fa-2x"></i>
+                    <span class="nav-text">
+                        Tables
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-map-marker fa-2x"></i>
+                    <span class="nav-text">
+                        Maps
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-info fa-2x"></i>
+                    <span class="nav-text">
+                        Documentation
+                    </span>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="logout">
+            <li>
+                <a href="logout">
+                    <i class="fa fa-power-off fa-2x"></i>
+                    <span class="nav-text">
+                        Logout
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- END SIDEBAR MENU -->
+</body>
+
+</html>

@@ -96,43 +96,43 @@
                 </div>
                 <div class="card-body">
                     <h2 class="title">Hello, {{current_user.client_First_Name}} {{current_user.client_Last_Name}}.</h2>
-                    <div class="input-group">
-                        <label for="">First Name</label>
-                        <input class="input--style-1" id="lname" type="text" name="client_First_Name"
-                            value="{{current_user.client_First_Name}}" disabled>
-                    </div>
-                    <div class="input-group">
-                        <label for="">Last Name</label>
-                        <input class="input--style-1" id="fname" type="text" name="client_Last_Name"
-                            value="{{current_user.client_Last_Name}}" disabled>
-                    </div>
-                    <div class="input-group">
-                        <label for="">Email</label>
-                        <input class="input--style-1" id="lname" type="text" name="client_Email"
-                            value="{{current_user.client_Email}}" disabled>
-                    </div>
-                    <div class="input-group">
-                        <label for="">Password</label>
-                        <input class="input--style-1" id="lname" type="password" name="client_Password"
-                            value="{{current_user.client_Password}}" disabled>
-                    </div>
-                    <div class="input-group">
-                        <label for="">Phone No.</label>
-                        <input class="input--style-1" id="lname" type="text" name="client_Phone_No"
-                            value="{{current_user.client_Phone_No}}" disabled>
-                    </div>
-                    <div class="input-group">
-                        <label for="">Address</label>
-                        <input class="input--style-1" id="lname" type="text" name="client_Address"
-                            value="{{current_user.client_Address}}" disabled>
-                        <input class="input--style-1" id="lname" type="hidden" name="account_type"
-                            value="{{current_user.account_type}}">
-                    </div>
-                    <div class="p-t-20">
-                        <a href="/updateClient/{{current_user.client_ID}}">
-                            <button class="btn btn--radius btn--green" type="submit">Edit Profile</button>
-                        </a>
-                    </div>
+                    <form action="/updateClient/{{client_to_update.client_ID}}" method="post">
+                        <div class="input-group">
+                            <label for="">First Name</label>
+                            <input class="input--style-1" id="lname" type="text" name="client_First_Name"
+                                value="{{client_to_update.client_First_Name}}" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="">Last Name</label>
+                            <input class="input--style-1" id="fname" type="text" name="client_Last_Name"
+                                value="{{client_to_update.client_Last_Name}}" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="">Email</label>
+                            <input class="input--style-1" id="lname" type="text" name="client_Email"
+                                value="{{client_to_update.client_Email}}" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="">Password</label>
+                            <input class="input--style-1" id="lname" type="text" name="client_Password"
+                                value="{{client_to_update.client_Password}}" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="">Phone No.</label>
+                            <input class="input--style-1" id="lname" type="text" name="client_Phone_No"
+                                value="{{client_to_update.client_Phone_No}}" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="">Address</label>
+                            <input class="input--style-1" id="lname" type="text" name="client_Address"
+                                value="{{client_to_update.client_Address}}" required>
+                            <input class="input--style-1" id="lname" type="hidden" name="account_type"
+                                value="{{client_to_update.account_type}}">
+                        </div>
+                        <div class="p-t-20">
+                            <button class="btn btn--radius btn--green" type="submit">Update</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
