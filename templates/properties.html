@@ -226,6 +226,61 @@
                     </div>
                 </div>
                 {% endfor %}
+                
+                {% for row in property_data %}
+                <div class="property-card">
+                    <div class="property-card__item">
+                        <!-- Banner -->
+                        <div class="property-card__banner">
+                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
+                                alt="House 1">
+                        </div>
+                        <!-- Info -->
+                        <div class="property-card__info">
+                            <div class="property-card__headings">
+                                <h4 class="property-card__heading">{{row.property_Title}}</h4>
+                                <small class="property-card__heading--small">{{row.property_District}},
+                                    {{row.property_State}}</small>
+                            </div>
+                            <div class="property-card__details">
+                                <img id="detail-img"
+                                    src="{{ url_for('static' , filename='../static/images/bedroom.svg') }}" alt="">
+                                <div class="property-card__details--text">
+                                    <p>Bedroom</p>
+                                    <p>{{row.property_Bedroom}} beds</p>
+                                </div>
+                            </div>
+                            <div class="property-card__details">
+                                <img id="detail-img"
+                                    src="{{ url_for('static' , filename='../static/images/bathroom.svg') }}" alt="">
+                                <div class="property-card__details--text">
+                                    <p>Bathroom</p>
+                                    <p>{{row.property_Bathroom}} bath</p>
+                                </div>
+                            </div>
+                            <div class="property-card__details">
+                                <img id="detail-img"
+                                    src="{{ url_for('static' , filename='../static/images/sqft.svg') }}" alt="">
+                                <div class="property-card__details--text">
+                                    <p>Area</p>
+                                    <p>{{row.property_Sqft}}</p>
+                                </div>
+                            </div>
+                            <div class="property-card__details">
+                                <img id="detail-img"
+                                    src="{{ url_for('static' , filename='../static/images/money-bag.svg') }}" alt="">
+                                <div class="property-card__details--text">
+                                    <p>Price</p>
+                                    <p>RM{{row.property_Price}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Button -->
+                        <a href="{{row.property_Origin_URL}}" target="_blank"><button class="btn">See More
+                                ></button></a>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
 
 

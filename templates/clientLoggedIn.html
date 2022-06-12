@@ -63,17 +63,30 @@
                                 </div>
                             </li>
                             <li><a href="contact.html">Contact</a></li>
+                            {% if user.is_authenticated %}
                             <li class="dropdown">
                                 <a class="fa-solid fa-user" data-toggle="dropdown" role="button" aria-haspopup="true"
                                     aria-expanded="false" style="font-size: 25px; cursor:pointer;"></a>
-
                                 <div class="dropdown-menu">
-                                    <span class="dropdown-partition">AGENT OPTIONS</span>
                                     <a class="dropdown-item" href="clientAccount">My Profile</a>
                                     <a class="dropdown-item" href="registerClient">Account settings</a>
                                     <a class="dropdown-item" href="logout" style="padding-bottom: 45px;">Logout</a>
                                 </div>
                             </li>
+                            {% else %}
+                            <li class="dropdown">
+                                <a class="fa-solid fa-user" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                    aria-expanded="false" style="font-size: 25px; cursor:pointer;"></a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="loginClient">Login</a>
+                                    <a class="dropdown-item" href="registerClient">Register</a>
+                                    <span class="dropdown-partition">AGENT OPTIONS</span>
+                                    <a class="dropdown-item" href="loginAgent">Login Agent</a>
+                                    <a class="dropdown-item" href="registerAgent" style="padding-bottom: 45px;">Register
+                                        Agent</a>
+                                </div>
+                            </li>
+                            {% endif %}
                         </ul>
                         <!-- ***** Menu End ***** -->
                     </nav>

@@ -122,15 +122,15 @@ property_Price = []
 property_Sqft = []
 property_Bedroom = []
 property_Bathroom = []
-property_Agent_Name = []
-property_Agent_Phone_No = []
+# property_Agent_Name = []
+# property_Agent_Phone_No = []
 property_Origin_URL = []
 
 
 # -------------- EDGEPROP ------------- #
 
 # SELANGOR
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://www.edgeprop.my/jwdsonic/api/v1/property/search?&listing_type=sale&state=Selangor&property_type=rl&start=" + \
         str(i) + "&size=20"
@@ -187,13 +187,12 @@ for i in range(0, 3):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['agent_name_s_lower'])
-        property_Agent_Phone_No.append(result['agent_contact_s_lower'])
+
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
 
 # JOHOR
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://www.edgeprop.my/jwdsonic/api/v1/property/search?&listing_type=sale&state=Johor&property_type=rl&start=" + \
         str(i) + "&size=20"
@@ -251,13 +250,12 @@ for i in range(0, 3):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['agent_name_s_lower'])
-        property_Agent_Phone_No.append(result['agent_contact_s_lower'])
+
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
 
 # PENANG
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://www.edgeprop.my/jwdsonic/api/v1/property/search?&listing_type=sale&state=Penang&property_type=rl&start=" + \
         str(i) + "&size=20"
@@ -315,13 +313,12 @@ for i in range(0, 3):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['agent_name_s_lower'])
-        property_Agent_Phone_No.append(result['agent_contact_s_lower'])
+
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
 
 # PERAK
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://www.edgeprop.my/jwdsonic/api/v1/property/search?&listing_type=sale&state=Perak&property_type=rl&start=" + \
         str(i) + "&size=20"
@@ -379,13 +376,12 @@ for i in range(0, 3):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['agent_name_s_lower'])
-        property_Agent_Phone_No.append(result['agent_contact_s_lower'])
+
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
 
 # NEGERI SEMBILAN
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://www.edgeprop.my/jwdsonic/api/v1/property/search?&listing_type=sale&state=Negeri^%^20Sembilan&property_type=rl&start=" + \
         str(i) + "&size=20"
@@ -443,13 +439,12 @@ for i in range(0, 3):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['agent_name_s_lower'])
-        property_Agent_Phone_No.append(result['agent_contact_s_lower'])
+
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
 
 # SABAH
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://www.edgeprop.my/jwdsonic/api/v1/property/search?&listing_type=sale&state=Sabah&property_type=rl&start=" + \
         str(i) + "&size=20"
@@ -507,13 +502,12 @@ for i in range(0, 3):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['agent_name_s_lower'])
-        property_Agent_Phone_No.append(result['agent_contact_s_lower'])
+
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
 
 # SARAWAK
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://www.edgeprop.my/jwdsonic/api/v1/property/search?&listing_type=sale&state=Sarawak&property_type=rl&start=" + \
         str(i) + "&size=20"
@@ -571,13 +565,12 @@ for i in range(0, 3):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['agent_name_s_lower'])
-        property_Agent_Phone_No.append(result['agent_contact_s_lower'])
+
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
 
 # KEDAH
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://www.edgeprop.my/jwdsonic/api/v1/property/search?&listing_type=sale&state=Kedah&property_type=rl&start=" + \
         str(i) + "&size=20"
@@ -635,13 +628,12 @@ for i in range(0, 3):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['agent_name_s_lower'])
-        property_Agent_Phone_No.append(result['agent_contact_s_lower'])
+
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
 
 # KELANTAN
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://www.edgeprop.my/jwdsonic/api/v1/property/search?&listing_type=sale&state=Kelantan&property_type=rl&start=" + \
         str(i) + "&size=20"
@@ -705,13 +697,12 @@ for i in range(0, 3):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['agent_name_s_lower'])
-        property_Agent_Phone_No.append(result['agent_contact_s_lower'])
+
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
 
 # PAHANG
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://www.edgeprop.my/jwdsonic/api/v1/property/search?&listing_type=sale&state=Pahang&property_type=rl&start=" + \
         str(i) + "&size=20"
@@ -769,13 +760,12 @@ for i in range(0, 3):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['agent_name_s_lower'])
-        property_Agent_Phone_No.append(result['agent_contact_s_lower'])
+
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
 
 # MELAKA
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://www.edgeprop.my/jwdsonic/api/v1/property/search?&listing_type=sale&state=Melaka&property_type=rl&start=" + \
         str(i) + "&size=20"
@@ -833,13 +823,12 @@ for i in range(0, 3):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['agent_name_s_lower'])
-        property_Agent_Phone_No.append(result['agent_contact_s_lower'])
+
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
 
 # TERENGGANU
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://www.edgeprop.my/jwdsonic/api/v1/property/search?&listing_type=sale&state=Terengganu&property_type=rl&start=" + \
         str(i) + "&size=20"
@@ -897,13 +886,12 @@ for i in range(0, 3):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['agent_name_s_lower'])
-        property_Agent_Phone_No.append(result['agent_contact_s_lower'])
+
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
 
 # PUTRAJAYA
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://www.edgeprop.my/jwdsonic/api/v1/property/search?&listing_type=sale&state=Putrajaya&property_type=rl&start=" + \
         str(i) + "&size=20"
@@ -961,13 +949,12 @@ for i in range(0, 3):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['agent_name_s_lower'])
-        property_Agent_Phone_No.append(result['agent_contact_s_lower'])
+
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
 
 # PERLIS
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://www.edgeprop.my/jwdsonic/api/v1/property/search?&listing_type=sale&state=Perlis&property_type=rl&start=" + \
         str(i) + "&size=20"
@@ -1025,13 +1012,12 @@ for i in range(0, 3):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['agent_name_s_lower'])
-        property_Agent_Phone_No.append(result['agent_contact_s_lower'])
+
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
 
 # LABUAN
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://www.edgeprop.my/jwdsonic/api/v1/property/search?&listing_type=sale&state=Labuan&property_type=rl&start=" + \
         str(i) + "&size=20"
@@ -1089,8 +1075,7 @@ for i in range(0, 3):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['agent_name_s_lower'])
-        property_Agent_Phone_No.append(result['agent_contact_s_lower'])
+
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
 
@@ -1098,7 +1083,7 @@ for i in range(0, 3):
 # -------------- MUDAH ------------- #
 next_page = 0
 # SELANGOR
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://search.mudah.my/v1/search?category=2040&from=" + \
         str(next_page) + "&include=extra_images^%^2Cbody&limit=40&region=8&type=sell"
@@ -1140,14 +1125,13 @@ for i in range(0, 3):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['attributes']['name'])
-        property_Agent_Phone_No.append(result['attributes']['user_id'])
+
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
 
 next_page = 0
 # JOHOR
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://search.mudah.my/v1/search?category=2040&from=" + \
         str(next_page) + "&include=extra_images^%^2Cbody&limit=40&region=12&type=sell"
@@ -1189,14 +1173,13 @@ for i in range(0, 3):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['attributes']['name'])
-        property_Agent_Phone_No.append(result['attributes']['user_id'])
+
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
 
 next_page = 0
 # PENANG
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://search.mudah.my/v1/search?category=2040&from=" + \
         str(next_page) + "&include=extra_images^%^2Cbody&limit=40&region=3&type=sell"
@@ -1238,14 +1221,13 @@ for i in range(0, 3):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['attributes']['name'])
-        property_Agent_Phone_No.append(result['attributes']['user_id'])
+
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
 
 next_page = 0
 # PERAK
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://search.mudah.my/v1/search?category=2040&from=" + \
         str(next_page) + "&include=extra_images^%^2Cbody&limit=40&region=6&type=sell"
@@ -1287,14 +1269,13 @@ for i in range(0, 3):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['attributes']['name'])
-        property_Agent_Phone_No.append(result['attributes']['user_id'])
+
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
 
 next_page = 0
 # NEGERI SEMBILAN
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://search.mudah.my/v1/search?category=2040&from=" + \
         str(next_page) + "&include=extra_images^%^2Cbody&limit=40&region=10&type=sell"
@@ -1336,14 +1317,13 @@ for i in range(0, 3):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['attributes']['name'])
-        property_Agent_Phone_No.append(result['attributes']['user_id'])
+
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
 
 next_page = 0
 # SABAH
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://search.mudah.my/v1/search?category=2040&from=" + \
         str(next_page) + "&include=extra_images^%^2Cbody&limit=40&region=14&type=sell"
@@ -1385,14 +1365,13 @@ for i in range(0, 3):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['attributes']['name'])
-        property_Agent_Phone_No.append(result['attributes']['user_id'])
+
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
 
 next_page = 0
 # SARAWAK
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://search.mudah.my/v1/search?category=2040&from=" + \
         str(next_page) + "&include=extra_images^%^2Cbody&limit=40&region=13&type=sell"
@@ -1434,14 +1413,13 @@ for i in range(0, 3):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['attributes']['name'])
-        property_Agent_Phone_No.append(result['attributes']['user_id'])
+
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
 
 next_page = 0
 # KELANTAN
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://search.mudah.my/v1/search?category=2040&from=" + \
         str(next_page) + "&include=extra_images^%^2Cbody&limit=40&region=4&type=sell"
@@ -1483,14 +1461,13 @@ for i in range(0, 3):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['attributes']['name'])
-        property_Agent_Phone_No.append(result['attributes']['user_id'])
+
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
 
 next_page = 0
 # KEDAH
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://search.mudah.my/v1/search?category=2040&from=" + \
         str(next_page) + "&include=extra_images^%^2Cbody&limit=40&region=2&type=sell"
@@ -1532,14 +1509,13 @@ for i in range(0, 3):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['attributes']['name'])
-        property_Agent_Phone_No.append(result['attributes']['user_id'])
+
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
 
 next_page = 0
 # PAHANG
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://search.mudah.my/v1/search?category=2040&from=" + \
         str(next_page) + "&include=extra_images^%^2Cbody&limit=40&region=7&type=sell"
@@ -1581,14 +1557,13 @@ for i in range(0, 3):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['attributes']['name'])
-        property_Agent_Phone_No.append(result['attributes']['user_id'])
+
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
 
 next_page = 0
 # MELAKA
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://search.mudah.my/v1/search?category=2040&from=" + \
         str(next_page) + "&include=extra_images^%^2Cbody&limit=40&region=11&type=sell"
@@ -1630,14 +1605,13 @@ for i in range(0, 3):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['attributes']['name'])
-        property_Agent_Phone_No.append(result['attributes']['user_id'])
+
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
 
 next_page = 0
 # TERENGGANU
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://search.mudah.my/v1/search?category=2040&from=" + \
         str(next_page) + "&include=extra_images^%^2Cbody&limit=40&region=5&type=sell"
@@ -1679,14 +1653,13 @@ for i in range(0, 3):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['attributes']['name'])
-        property_Agent_Phone_No.append(result['attributes']['user_id'])
+
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
 
 next_page = 0
 # PUTRAJAYA
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://search.mudah.my/v1/search?category=2040&from=" + \
         str(next_page) + "&include=extra_images^%^2Cbody&limit=40&region=16&type=sell"
@@ -1728,14 +1701,13 @@ for i in range(0, 3):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['attributes']['name'])
-        property_Agent_Phone_No.append(result['attributes']['user_id'])
+
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
 
 next_page = 0
 # PERLIS
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://search.mudah.my/v1/search?category=2040&from=" + \
         str(next_page) + "&include=extra_images^%^2Cbody&limit=40&region=1&type=sell"
@@ -1777,14 +1749,13 @@ for i in range(0, 3):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['attributes']['name'])
-        property_Agent_Phone_No.append(result['attributes']['user_id'])
+
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
 
 next_page = 0
 # LABUAN
-for i in range(0, 3):
+for i in range(0, 1):
 
     current_pages = "https://search.mudah.my/v1/search?category=2040&from=" + \
         str(next_page) + "&include=extra_images^%^2Cbody&limit=40&region=17&type=sell"
@@ -1826,14 +1797,13 @@ for i in range(0, 3):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
-        property_Agent_Name.append(result['attributes']['name'])
-        property_Agent_Phone_No.append(result['attributes']['user_id'])
+
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
 
 
 df_edge = pd.DataFrame({'property_Title': property_Title, 'property_District': property_District, 'property_State': property_State, 'property_Price': property_Price, 'property_Sqft': property_Sqft,
-                        'property_Bedroom': property_Bedroom, 'property_Bathroom': property_Bathroom, 'property_Agent_Name': property_Agent_Name, 'property_Agent_Phone_No': property_Agent_Phone_No, 'property_Origin_URL': property_Origin_URL})
+                        'property_Bedroom': property_Bedroom, 'property_Bathroom': property_Bathroom, 'property_Origin_URL': property_Origin_URL})
 
 df_edge.to_excel('edgeprop_property_listing.xlsx', index=False)
 
@@ -1847,4 +1817,4 @@ print(df_edge)
 # MYSQL
 engine = sqlalchemy.create_engine(
     'mysql://root:''@localhost:3307/asmaraloka')
-df_edge.to_sql('property', engine, if_exists='replace')
+df_edge.to_sql('scrape_property', engine, if_exists='replace')

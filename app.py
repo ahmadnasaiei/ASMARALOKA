@@ -14,16 +14,17 @@ app.secret_key = "membuatLOginFlask1"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:''@localhost:3307/asmaraloka'
 db = SQLAlchemy(app)
 
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = 'login'
-
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+login_manager = LoginManager()
+login_manager.login_view = 'login'
+login_manager.init_app(app)
 
 
 @login_manager.user_loader
@@ -45,6 +46,7 @@ class Client(db.Model, UserMixin):
     client_Password = db.Column(db.String(255))
     client_Phone_No = db.Column(db.String(255))
     client_Address = db.Column(db.String(255))
+    client_Role = db.Column(db.String(255))
     childrens = db.relationship("child", backref="parents"),
     cascade = "all, delete"
     #customer = db.relationship('Client', backref='feedback', lazy=True)
@@ -52,16 +54,18 @@ class Client(db.Model, UserMixin):
     def get_id(self):
         return (self.client_ID)
 
-    def __init__(self, client_First_Name, client_Last_Name, client_Email, client_Password, client_Phone_No, client_Address):
+    def __init__(self, client_First_Name, client_Last_Name, client_Email, client_Password, client_Phone_No, client_Address, client_Role):
         self.client_First_Name = client_First_Name
         self.client_Last_Name = client_Last_Name
         self.client_Email = client_Email
         self.client_Password = client_Password
         self.client_Phone_No = client_Phone_No
         self.client_Address = client_Address
+        self.client_Role = client_Role
 
 
 class Agent(db.Model, UserMixin):
+    agent = "parents"
     agent_ID = db.Column(db.Integer, primary_key=True)
     agent_First_Name = db.Column(db.String(255))
     agent_Last_Name = db.Column(db.String(255))
@@ -70,11 +74,14 @@ class Agent(db.Model, UserMixin):
     agent_Phone_No = db.Column(db.String(255))
     agent_REN_No = db.Column(db.String(255))
     agent_Agency = db.Column(db.String(255))
+    agent_Role = db.Column(db.String(255))
+    childrens = db.relationship("child", backref="parents"),
+    cascade = "all, delete"
 
     def get_id(self):
         return (self.agent_ID)
 
-    def __init__(self, agent_First_Name, agent_Last_Name, agent_Email, agent_Password, agent_Phone_No, agent_REN_No, agent_Agency):
+    def __init__(self, agent_First_Name, agent_Last_Name, agent_Email, agent_Password, agent_Phone_No, agent_REN_No, agent_Agency, agent_Role):
         self.agent_First_Name = agent_First_Name
         self.agent_Last_Name = agent_Last_Name
         self.agent_Email = agent_Email
@@ -82,10 +89,12 @@ class Agent(db.Model, UserMixin):
         self.agent_Phone_No = agent_Phone_No
         self.agent_REN_No = agent_REN_No
         self.agent_Agency = agent_Agency
+        self.agent_Role = agent_Role
 
 
 class Property(db.Model):
-    index = db.Column(db.Integer, primary_key=True)
+    property = "children"
+    property_ID = db.Column(db.Integer, primary_key=True)
     property_Title = db.Column(db.String(255))
     property_District = db.Column(db.String(255))
     property_State = db.Column(db.String(255))
@@ -93,11 +102,10 @@ class Property(db.Model):
     property_Sqft = db.Column(db.String(255))
     property_Bedroom = db.Column(db.String(255))
     property_Bathroom = db.Column(db.String(255))
-    property_Agent_Name = db.Column(db.String(255))
-    property_Agent_Phone_No = db.Column(db.String(255))
-    property_Origin_URL = db.Column(db.String(255))
+    agent_ID = db.Column(db.Integer, db.ForeignKey(
+        'agent.agent_ID'), nullable=False)
 
-    def __init__(self, property_Title, property_District, property_State, property_Price, property_Sqft, property_Bedroom, property_Bathroom, property_Agent_Name, property_Agent_Phone_No, property_Origin_URL):
+    def __init__(self, property_Title, property_District, property_State, property_Price, property_Sqft, property_Bedroom, property_Bathroom, agent_ID):
         self.property_Title = property_Title
         self.property_District = property_District
         self.property_State = property_State
@@ -105,19 +113,21 @@ class Property(db.Model):
         self.property_Sqft = property_Sqft
         self.property_Bedroom = property_Bedroom
         self.property_Bathroom = property_Bathroom
-        self.property_Agent_Name = property_Agent_Name
-        self.property_Agent_Phone_No = property_Agent_Phone_No
-        self.property_Origin_URL = property_Origin_URL
+        self.agent_ID = agent_ID
 
 
 class Booking(db.Model):
+    booking = "children"
     booking_ID = db.Column(db.Integer, primary_key=True)
     booking_Date = db.Column(db.DateTime, default=datetime.utcnow)
     booking_Time = db.Column(db.DateTime)
+    client_ID = db.Column(db.Integer, db.ForeignKey(
+        'client.client_ID'), nullable=False)
 
-    def __init__(self, booking_Date, booking_Time):
+    def __init__(self, booking_Date, booking_Time, client_ID):
         self.booking_Date = booking_Date
         self.booking_Time = booking_Time
+        self.client_ID = client_ID
 
 
 @app.route('/')
@@ -128,11 +138,6 @@ def index():
 @app.route('/agentDashboard')
 def agentDashboard():
     return render_template('agentDashboard.html')
-
-
-@app.route('/agentCreateListing')
-def agentCreateListing():
-    return render_template('agentCreateListing.html')
 
 
 @app.route('/clientDashboard')
@@ -146,8 +151,9 @@ def home():
 
 
 @app.route('/clientLoggedIn')
+@login_required
 def clientLoggedIn():
-    return render_template('clientLoggedIn.html')
+    return render_template('clientLoggedIn.html', user=current_user)
 
 
 @app.route('/clientAccount')
@@ -176,7 +182,7 @@ def registerClient():
     if request.method == 'POST':
         try:
             db.session.add(Client(client_First_Name=request.form['client_First_Name'], client_Last_Name=request.form['client_Last_Name'], client_Email=request.form['client_Email'],
-                           client_Password=request.form['client_Password'], client_Phone_No=request.form['client_Phone_No'], client_Address=request.form['client_Address']))
+                           client_Password=request.form['client_Password'], client_Phone_No=request.form['client_Phone_No'], client_Address=request.form['client_Address'], client_Role=request.form['client_Role']))
             db.session.commit()
             return redirect(url_for('index'))
         except:
@@ -190,7 +196,7 @@ def registerAgent():
     if request.method == 'POST':
         try:
             db.session.add(Agent(agent_First_Name=request.form['agent_First_Name'], agent_Last_Name=request.form['agent_Last_Name'], agent_Email=request.form['agent_Email'],
-                           agent_Password=request.form['agent_Password'], agent_Phone_No=request.form['agent_Phone_No'], agent_REN_No=request.form['agent_REN_No'], agent_Agency=request.form['agent_Agency']))
+                           agent_Password=request.form['agent_Password'], agent_Phone_No=request.form['agent_Phone_No'], agent_REN_No=request.form['agent_REN_No'], agent_Agency=request.form['agent_Agency'], agent_Role=request.form['agent_Role']))
             db.session.commit()
             return redirect(url_for('index'))
         except:
@@ -204,13 +210,16 @@ def loginClient():
     if request.method == 'POST':
         client_Email = request.form['client_Email']
         client_Password = request.form['client_Password']
+
         client = Client.query.filter_by(client_Email=client_Email).first()
         if client:
             if client.client_Password == client_Password:
+                flash('Logged in successfully!', category='success')
                 login_user(client)
                 return redirect(url_for('clientLoggedIn'))
         else:
-            return "invalid email or password"
+            flash('Invalid password or email. Please try again.', category='error')
+
     return render_template("clientLogin.html")
 
 
@@ -234,13 +243,13 @@ def createProperty():
     if request.method == 'POST':
         try:
             db.session.add(Property(property_Title=request.form['property_Title'], property_District=request.form['property_District'], property_State=request.form['property_State'],
-                           property_Price=request.form['property_Price'], property_Sqft=request.form['property_Sqft'], property_Bedroom=request.form['property_Bedroom'], property_Bathroom=request.form['property_Bathroom'], property_Agent_Name=request.form['property_Agent_Name'], property_Agent_Phone_No=request.form['property_Agent_Phone_No'], property_Origin_URL=request.form['property_Origin_URL']))
+                           property_Price=request.form['property_Price'], property_Sqft=request.form['property_Sqft'], property_Bedroom=request.form['property_Bedroom'], property_Bathroom=request.form['property_Bathroom']))
             db.session.commit()
-            return redirect(url_for('agentDashboard'))
+            return redirect(url_for('createProperty'))
         except:
             return render_template('index.html')
     else:
-        return render_template('agentDashboard')
+        return render_template('agentCreateListing.html')
 
 
 @app.route('/updateClient/<int:client_ID>', methods=['GET', 'POST'])
@@ -285,6 +294,7 @@ def updateAgent(agent_ID):
 
 
 @app.route('/logout')
+@login_required
 def logout():
     session.clear()
     return redirect(url_for('index'))

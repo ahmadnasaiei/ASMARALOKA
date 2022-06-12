@@ -31,11 +31,16 @@
                         </div>
                         <form action="{{ url_for('createProperty') }}" method="POST">
                             <div class="row mt-3">
-                                <div class="col-md-12"><label class="labels">Title</label><input type="text"
-                                        class="form-control pb-2 pt-2" name="property_Title" value=""></div>
-                                <div class="col-md-12 mt-3"><label class="labels">District</label><input type="text"
-                                        class="form-control pb-2 pt-2" name="property_District" value=""></div>
-                                <div class="col-md-12 mt-3"><label class="labels">State</label>
+                                <div class="col-md-12">
+                                    <label class="labels">Title</label>
+                                    <input type="text" class="form-control pb-2 pt-2" name="property_Title" value="">
+                                </div>
+                                <div class="col-md-12 mt-3">
+                                    <label class="labels">District</label>
+                                    <input type="text" class="form-control pb-2 pt-2" name="property_District" value="">
+                                </div>
+                                <div class="col-md-12 mt-3">
+                                    <label class="labels">State</label>
                                     <select class="form-select pb-2 pt-2" name="property_State"
                                         aria-label="Default select example">
                                         <option selected disabled>-</option>
@@ -56,11 +61,17 @@
                                         <option value="Labuan">Labuan</option>
                                     </select>
                                 </div>
-                                <div class="col-md-12 mt-3"><label class="labels">Price</label><input type="text"
-                                        class="form-control pb-2 pt-2" id="price" name="property_Price" value=""></div>
-                                <div class="col-md-12 mt-3"><label class="labels">Area (sqft)</label><input type="text"
-                                        class="form-control pb-2 pt-2" name="property_Sqft" value=""></div>
-                                <div class="col-md-12 mt-3"><label class="labels">Bathroom</label>
+                                <div class="col-md-12 mt-3">
+                                    <label class="labels">Price</label>
+                                    <input type="text" class="form-control pb-2 pt-2" id="price" name="property_Price"
+                                        value="">
+                                </div>
+                                <div class="col-md-12 mt-3">
+                                    <label class="labels">Area (sqft)</label>
+                                    <input type="text" class="form-control pb-2 pt-2" name="property_Sqft" value="">
+                                </div>
+                                <div class="col-md-12 mt-3">
+                                    <label class="labels">Bathroom</label>
                                     <select class="form-select pb-2 pt-2" name="property_Bedroom"
                                         aria-label="Default select example">
                                         <option selected disabled>-</option>
@@ -77,7 +88,8 @@
                                         <option value="10+">10+</option>
                                     </select>
                                 </div>
-                                <div class="col-md-12 mt-3"><label class="labels">Bedroom</label>
+                                <div class="col-md-12 mt-3">
+                                    <label class="labels">Bedroom</label>
                                     <select class="form-select pb-2 pt-2" name="property_Bathroom"
                                         aria-label="Default select example">
                                         <option selected disabled>-</option>
@@ -95,8 +107,9 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="mt-5 text-center"><button type="submit"
-                                    class="btn btn-primary profile-button">Publish</button></div>
+                            <div class="mt-5 text-center">
+                                <button type="submit" class="btn btn-primary profile-button">Publish</button>
+                            </div>
                         </form>
                     </div>
                 </div>
