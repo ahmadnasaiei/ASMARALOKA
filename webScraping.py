@@ -124,6 +124,7 @@ property_Bedroom = []
 property_Bathroom = []
 # property_Agent_Name = []
 # property_Agent_Phone_No = []
+property_Image = []
 property_Origin_URL = []
 
 
@@ -174,7 +175,8 @@ for i in range(0, 1):
             property_District.append(result['district_s_lower'])
         except:
             property_District.append('N/A')
-        property_Price.append(result['field_prop_asking_price_d'])
+        property_Price.append("{:,}".format(
+            result['field_prop_asking_price_d']))
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
         except:
@@ -187,6 +189,11 @@ for i in range(0, 1):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(result['field_prop_images_txt'][0])
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
@@ -237,7 +244,8 @@ for i in range(0, 1):
             property_District.append(result['district_s_lower'])
         except:
             property_District.append('N/A')
-        property_Price.append(result['field_prop_asking_price_d'])
+        property_Price.append("{:,}".format(
+            result['field_prop_asking_price_d']))
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
         except:
@@ -250,6 +258,11 @@ for i in range(0, 1):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(result['field_prop_images_txt'][0])
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
@@ -300,7 +313,8 @@ for i in range(0, 1):
             property_District.append(result['district_s_lower'])
         except:
             property_District.append('N/A')
-        property_Price.append(result['field_prop_asking_price_d'])
+        property_Price.append("{:,}".format(
+            result['field_prop_asking_price_d']))
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
         except:
@@ -313,6 +327,11 @@ for i in range(0, 1):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(result['field_prop_images_txt'][0])
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
@@ -363,7 +382,8 @@ for i in range(0, 1):
             property_District.append(result['district_s_lower'])
         except:
             property_District.append('N/A')
-        property_Price.append(result['field_prop_asking_price_d'])
+        property_Price.append("{:,}".format(
+            result['field_prop_asking_price_d']))
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
         except:
@@ -376,6 +396,11 @@ for i in range(0, 1):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(result['field_prop_images_txt'][0])
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
@@ -426,7 +451,8 @@ for i in range(0, 1):
             property_District.append(result['district_s_lower'])
         except:
             property_District.append('N/A')
-        property_Price.append(result['field_prop_asking_price_d'])
+        property_Price.append("{:,}".format(
+            result['field_prop_asking_price_d']))
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
         except:
@@ -439,6 +465,11 @@ for i in range(0, 1):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(result['field_prop_images_txt'][0])
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
@@ -489,7 +520,8 @@ for i in range(0, 1):
             property_District.append(result['district_s_lower'])
         except:
             property_District.append('N/A')
-        property_Price.append(result['field_prop_asking_price_d'])
+        property_Price.append("{:,}".format(
+            result['field_prop_asking_price_d']))
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
         except:
@@ -502,6 +534,11 @@ for i in range(0, 1):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(result['field_prop_images_txt'][0])
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
@@ -552,7 +589,8 @@ for i in range(0, 1):
             property_District.append(result['district_s_lower'])
         except:
             property_District.append('N/A')
-        property_Price.append(result['field_prop_asking_price_d'])
+        property_Price.append("{:,}".format(
+            result['field_prop_asking_price_d']))
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
         except:
@@ -565,6 +603,11 @@ for i in range(0, 1):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(result['field_prop_images_txt'][0])
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
@@ -615,7 +658,8 @@ for i in range(0, 1):
             property_District.append(result['district_s_lower'])
         except:
             property_District.append('N/A')
-        property_Price.append(result['field_prop_asking_price_d'])
+        property_Price.append("{:,}".format(
+            result['field_prop_asking_price_d']))
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
         except:
@@ -628,6 +672,11 @@ for i in range(0, 1):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(result['field_prop_images_txt'][0])
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
@@ -684,7 +733,8 @@ for i in range(0, 1):
             property_District.append(result['district_s_lower'])
         except:
             property_District.append('N/A')
-        property_Price.append(result['field_prop_asking_price_d'])
+        property_Price.append("{:,}".format(
+            result['field_prop_asking_price_d']))
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
         except:
@@ -697,6 +747,11 @@ for i in range(0, 1):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(result['field_prop_images_txt'][0])
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
@@ -747,7 +802,8 @@ for i in range(0, 1):
             property_District.append(result['district_s_lower'])
         except:
             property_District.append('N/A')
-        property_Price.append(result['field_prop_asking_price_d'])
+        property_Price.append("{:,}".format(
+            result['field_prop_asking_price_d']))
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
         except:
@@ -760,6 +816,11 @@ for i in range(0, 1):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(result['field_prop_images_txt'][0])
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
@@ -810,7 +871,8 @@ for i in range(0, 1):
             property_District.append(result['district_s_lower'])
         except:
             property_District.append('N/A')
-        property_Price.append(result['field_prop_asking_price_d'])
+        property_Price.append("{:,}".format(
+            result['field_prop_asking_price_d']))
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
         except:
@@ -823,6 +885,11 @@ for i in range(0, 1):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(result['field_prop_images_txt'][0])
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
@@ -873,7 +940,8 @@ for i in range(0, 1):
             property_District.append(result['district_s_lower'])
         except:
             property_District.append('N/A')
-        property_Price.append(result['field_prop_asking_price_d'])
+        property_Price.append("{:,}".format(
+            result['field_prop_asking_price_d']))
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
         except:
@@ -886,6 +954,11 @@ for i in range(0, 1):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(result['field_prop_images_txt'][0])
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
@@ -936,7 +1009,8 @@ for i in range(0, 1):
             property_District.append(result['district_s_lower'])
         except:
             property_District.append('N/A')
-        property_Price.append(result['field_prop_asking_price_d'])
+        property_Price.append("{:,}".format(
+            result['field_prop_asking_price_d']))
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
         except:
@@ -949,6 +1023,11 @@ for i in range(0, 1):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(result['field_prop_images_txt'][0])
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
@@ -999,7 +1078,8 @@ for i in range(0, 1):
             property_District.append(result['district_s_lower'])
         except:
             property_District.append('N/A')
-        property_Price.append(result['field_prop_asking_price_d'])
+        property_Price.append("{:,}".format(
+            result['field_prop_asking_price_d']))
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
         except:
@@ -1012,6 +1092,11 @@ for i in range(0, 1):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(result['field_prop_images_txt'][0])
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
@@ -1062,7 +1147,8 @@ for i in range(0, 1):
             property_District.append(result['district_s_lower'])
         except:
             property_District.append('N/A')
-        property_Price.append(result['field_prop_asking_price_d'])
+        property_Price.append("{:,}".format(
+            result['field_prop_asking_price_d']))
         try:
             property_Sqft.append(f"{result['field_prop_built_up_d']} sqft")
         except:
@@ -1075,6 +1161,11 @@ for i in range(0, 1):
             property_Bathroom.append(result['field_prop_bathrooms_i'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(result['field_prop_images_txt'][0])
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.edgeprop.my/listing/{result['url_s']}")
@@ -1112,7 +1203,7 @@ for i in range(0, 1):
         property_Title.append(result['attributes']['subject'])
         property_District.append(result['attributes']['subarea_name'])
         property_State.append(result['attributes']['region_name'])
-        property_Price.append(result['attributes']['price'])
+        property_Price.append("{:,}".format(result['attributes']['price']))
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
         except:
@@ -1125,6 +1216,12 @@ for i in range(0, 1):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(
+                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
@@ -1160,7 +1257,7 @@ for i in range(0, 1):
         property_Title.append(result['attributes']['subject'])
         property_District.append(result['attributes']['subarea_name'])
         property_State.append(result['attributes']['region_name'])
-        property_Price.append(result['attributes']['price'])
+        property_Price.append("{:,}".format(result['attributes']['price']))
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
         except:
@@ -1173,6 +1270,12 @@ for i in range(0, 1):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(
+                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
@@ -1208,7 +1311,7 @@ for i in range(0, 1):
         property_Title.append(result['attributes']['subject'])
         property_District.append(result['attributes']['subarea_name'])
         property_State.append(result['attributes']['region_name'])
-        property_Price.append(result['attributes']['price'])
+        property_Price.append("{:,}".format(result['attributes']['price']))
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
         except:
@@ -1221,6 +1324,12 @@ for i in range(0, 1):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(
+                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
@@ -1256,7 +1365,7 @@ for i in range(0, 1):
         property_Title.append(result['attributes']['subject'])
         property_District.append(result['attributes']['subarea_name'])
         property_State.append(result['attributes']['region_name'])
-        property_Price.append(result['attributes']['price'])
+        property_Price.append("{:,}".format(result['attributes']['price']))
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
         except:
@@ -1269,6 +1378,12 @@ for i in range(0, 1):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(
+                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
@@ -1304,7 +1419,7 @@ for i in range(0, 1):
         property_Title.append(result['attributes']['subject'])
         property_District.append(result['attributes']['subarea_name'])
         property_State.append(result['attributes']['region_name'])
-        property_Price.append(result['attributes']['price'])
+        property_Price.append("{:,}".format(result['attributes']['price']))
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
         except:
@@ -1317,6 +1432,12 @@ for i in range(0, 1):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(
+                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
@@ -1352,7 +1473,7 @@ for i in range(0, 1):
         property_Title.append(result['attributes']['subject'])
         property_District.append(result['attributes']['subarea_name'])
         property_State.append(result['attributes']['region_name'])
-        property_Price.append(result['attributes']['price'])
+        property_Price.append("{:,}".format(result['attributes']['price']))
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
         except:
@@ -1365,6 +1486,12 @@ for i in range(0, 1):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(
+                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
@@ -1400,7 +1527,7 @@ for i in range(0, 1):
         property_Title.append(result['attributes']['subject'])
         property_District.append(result['attributes']['subarea_name'])
         property_State.append(result['attributes']['region_name'])
-        property_Price.append(result['attributes']['price'])
+        property_Price.append("{:,}".format(result['attributes']['price']))
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
         except:
@@ -1413,6 +1540,12 @@ for i in range(0, 1):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(
+                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
@@ -1448,7 +1581,7 @@ for i in range(0, 1):
         property_Title.append(result['attributes']['subject'])
         property_District.append(result['attributes']['subarea_name'])
         property_State.append(result['attributes']['region_name'])
-        property_Price.append(result['attributes']['price'])
+        property_Price.append("{:,}".format(result['attributes']['price']))
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
         except:
@@ -1461,6 +1594,12 @@ for i in range(0, 1):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(
+                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
@@ -1496,7 +1635,7 @@ for i in range(0, 1):
         property_Title.append(result['attributes']['subject'])
         property_District.append(result['attributes']['subarea_name'])
         property_State.append(result['attributes']['region_name'])
-        property_Price.append(result['attributes']['price'])
+        property_Price.append("{:,}".format(result['attributes']['price']))
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
         except:
@@ -1509,6 +1648,12 @@ for i in range(0, 1):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(
+                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
@@ -1544,7 +1689,7 @@ for i in range(0, 1):
         property_Title.append(result['attributes']['subject'])
         property_District.append(result['attributes']['subarea_name'])
         property_State.append(result['attributes']['region_name'])
-        property_Price.append(result['attributes']['price'])
+        property_Price.append("{:,}".format(result['attributes']['price']))
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
         except:
@@ -1557,6 +1702,12 @@ for i in range(0, 1):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(
+                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
@@ -1592,7 +1743,7 @@ for i in range(0, 1):
         property_Title.append(result['attributes']['subject'])
         property_District.append(result['attributes']['subarea_name'])
         property_State.append(result['attributes']['region_name'])
-        property_Price.append(result['attributes']['price'])
+        property_Price.append("{:,}".format(result['attributes']['price']))
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
         except:
@@ -1605,6 +1756,12 @@ for i in range(0, 1):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(
+                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
@@ -1640,7 +1797,7 @@ for i in range(0, 1):
         property_Title.append(result['attributes']['subject'])
         property_District.append(result['attributes']['subarea_name'])
         property_State.append(result['attributes']['region_name'])
-        property_Price.append(result['attributes']['price'])
+        property_Price.append("{:,}".format(result['attributes']['price']))
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
         except:
@@ -1653,6 +1810,12 @@ for i in range(0, 1):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(
+                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
@@ -1688,7 +1851,7 @@ for i in range(0, 1):
         property_Title.append(result['attributes']['subject'])
         property_District.append(result['attributes']['subarea_name'])
         property_State.append(result['attributes']['region_name'])
-        property_Price.append(result['attributes']['price'])
+        property_Price.append("{:,}".format(result['attributes']['price']))
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
         except:
@@ -1701,6 +1864,12 @@ for i in range(0, 1):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(
+                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
@@ -1736,7 +1905,7 @@ for i in range(0, 1):
         property_Title.append(result['attributes']['subject'])
         property_District.append(result['attributes']['subarea_name'])
         property_State.append(result['attributes']['region_name'])
-        property_Price.append(result['attributes']['price'])
+        property_Price.append("{:,}".format(result['attributes']['price']))
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
         except:
@@ -1749,6 +1918,12 @@ for i in range(0, 1):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(
+                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
@@ -1784,7 +1959,7 @@ for i in range(0, 1):
         property_Title.append(result['attributes']['subject'])
         property_District.append(result['attributes']['subarea_name'])
         property_State.append(result['attributes']['region_name'])
-        property_Price.append(result['attributes']['price'])
+        property_Price.append("{:,}".format(result['attributes']['price']))
         try:
             property_Sqft.append(f"{result['attributes']['size']} sqft")
         except:
@@ -1797,13 +1972,19 @@ for i in range(0, 1):
             property_Bathroom.append(result['attributes']['bathroom_id'])
         except:
             property_Bathroom.append('N/A')
+        try:
+            property_Image.append(
+                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+        except:
+            property_Image.append(
+                'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
 
         property_Origin_URL.append(
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
 
 
-df_edge = pd.DataFrame({'property_Title': property_Title, 'property_District': property_District, 'property_State': property_State, 'property_Price': property_Price, 'property_Sqft': property_Sqft,
-                        'property_Bedroom': property_Bedroom, 'property_Bathroom': property_Bathroom, 'property_Origin_URL': property_Origin_URL})
+df_edge = pd.DataFrame({'property_Title': property_Title, 'property_District': property_District, 'property_State': property_State, 'property_Price': property_Price,
+                       'property_Sqft': property_Sqft, 'property_Bedroom': property_Bedroom, 'property_Bathroom': property_Bathroom, 'property_Image': property_Image, 'property_Origin_URL': property_Origin_URL})
 
 df_edge.to_excel('edgeprop_property_listing.xlsx', index=False)
 

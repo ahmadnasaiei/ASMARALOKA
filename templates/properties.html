@@ -15,42 +15,57 @@
     <link rel="stylesheet" href="{{ url_for('static' , filename='../static/css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static' , filename='../static/css/properties.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static' , filename='../static/images/favicon.png') }}">
+    <script src="https://kit.fontawesome.com/21bc1afb81.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
     <!-- ***** Header Area Start ***** -->
-    <header class="header-area header-sticky">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">ASMARA<em>LOKA</em></a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li><a href="clientLoggedIn">Home</a></li>
-                            <li><a href="properties" class="active">Properties</a></li>
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                                    aria-haspopup="true" aria-expanded="false">About</a>
+    <header class="header-area header-sticky background-header">
+        <div class="shadow-sm mb-5 bg-white rounded">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="main-nav">
+                            <!-- ***** Logo Start ***** -->
+                            <a href="/" class="logo">ASMARA<em>LOKA</em></a>
+                            <!-- ***** Logo End ***** -->
+                            <!-- ***** Menu Start ***** -->
+                            <ul class="nav">
+                                <li><a href="/" class="active">Home</a></li>
+                                <li><a href="properties">Properties</a></li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                        aria-haspopup="true" aria-expanded="false">About</a>
 
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="about.html">About Us</a>
-                                    <a class="dropdown-item" href="team.html">Team</a>
-                                    <a class="dropdown-item" href="blog.html">Blog</a>
-                                    <a class="dropdown-item" href="testimonials.html">Testimonials</a>
-                                    <a class="dropdown-item" href="terms.html">Terms</a>
-                                </div>
-                            </li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                        <a class='menu-trigger'>
-                            <span>Menu</span>
-                        </a>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="about.html">About Us</a>
+                                        <a class="dropdown-item" href="team.html">Team</a>
+                                        <a class="dropdown-item" href="blog.html">Blog</a>
+                                        <a class="dropdown-item" href="testimonials.html">Testimonials</a>
+                                        <a class="dropdown-item" href="terms.html">Terms</a>
+                                    </div>
+                                </li>
+                                <li><a href="contact.html">Contact</a></li>
+                                <li class="dropdown">
+                                    <a class="fa-solid fa-user" data-toggle="dropdown" role="button"
+                                        aria-haspopup="true" aria-expanded="false"
+                                        style="font-size: 25px; cursor:pointer;"></a>
+
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="loginClient">Login</a>
+                                        <a class="dropdown-item" href="registerClient">Register</a>
+                                        <span class="dropdown-partition">AGENT OPTIONS</span>
+                                        <a class="dropdown-item" href="loginAgent">Login Agent</a>
+                                        <a class="dropdown-item" href="registerAgent"
+                                            style="padding-bottom: 45px;">Register
+                                            Agent</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!-- ***** Menu End ***** -->
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
@@ -58,7 +73,7 @@
     <!-- ***** Header Area End ***** -->
 
     <!-- ***** Call to Action Start ***** -->
-    <section class="section section-bg" id="call-to-action"
+    <!-- <section class="section section-bg" id="call-to-action"
         style="background-image: url(static/images/banner-image-1-1920x500.jpg)">
         <div class="container">
             <div class="row">
@@ -72,7 +87,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- ***** Call to Action End ***** -->
 
     <!-- ***** Fleet Starts ***** -->
@@ -84,7 +99,7 @@
 
             <!-- ----------------------------- FILTERING START ----------------------------- -->
 
-            <div class="contact-form">
+            <div class="contact-form mt-5 pt-5">
                 <form action="#" id="contact">
                     <div class="row">
                         <div class="col-md-4 col-sm-6 col-xs-12">
@@ -171,6 +186,7 @@
             </div>
 
             <!-- ----------------------------- FILTERING END ----------------------------- -->
+
             <div class="card-container">
                 {% for row in agent_property %}
                 <div class="property-card">
@@ -184,7 +200,7 @@
                         <div class="property-card__info">
                             <div class="property-card__headings">
                                 <h4 class="property-card__heading">{{row.property_Title}}</h4>
-                                <small class="property-card__heading--small">{{row.property_District}},
+                                <small class="property-card__heading--small">{{row.property_City}},
                                     {{row.property_State}}</small>
                             </div>
                             <div class="property-card__details">
@@ -216,12 +232,12 @@
                                     src="{{ url_for('static' , filename='../static/images/money-bag.svg') }}" alt="">
                                 <div class="property-card__details--text">
                                     <p>Price</p>
-                                    <p>RM{{row.property_Price}}</p>
+                                    <p>RM{{"{:,}".format(row.property_Price)}}</p>
                                 </div>
                             </div>
                         </div>
                         <!-- Button -->
-                        <a href="propertyDetails" target="_blank"><button class="btn">See More
+                        <a href="/propertyDetails/{{row.property_ID}}"><button class="btn">See More
                                 ></button></a>
                     </div>
                 </div>
@@ -232,8 +248,7 @@
                     <div class="property-card__item">
                         <!-- Banner -->
                         <div class="property-card__banner">
-                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ"
-                                alt="House 1">
+                            <img src="{{row.property_image}}" alt="House 1">
                         </div>
                         <!-- Info -->
                         <div class="property-card__info">

@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <script src="https://kit.fontawesome.com/21bc1afb81.js" crossorigin="anonymous"></script>
   <link
     href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
     rel="stylesheet">
@@ -24,13 +25,23 @@
   <!--Font Awesome (added because you use icons in your prepend/append)-->
   <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
 
+  <!-- DATETIMEPICKER CONFIG -->
+  <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"> -->
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  <script>
+    $(function () {
+      $("#datepicker").datepicker();
+    });
+  </script>
+
   <!-- Inline CSS based on choices in "Settings" tab -->
   <style>
     .bootstrap-iso .formden_header h2,
     .bootstrap-iso .formden_header p,
     .bootstrap-iso form {
       font-family: Arial, Helvetica, sans-serif;
-      color: black
+      color: rgb(255, 255, 255)
     }
 
     .bootstrap-iso form button,
@@ -46,47 +57,49 @@
 
 
   <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <nav class="main-nav">
-            <!-- ***** Logo Start ***** -->
-            <a href="/" class="logo">ASMARA<em>LOKA</em></a>
-            <!-- ***** Logo End ***** -->
-            <!-- ***** Menu Start ***** -->
-            <ul class="nav">
-              <li><a href="clientLoggedIn" class="active">Home</a></li>
-              <li><a href="properties">Properties</a></li>
-              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                  aria-expanded="false">About</a>
+  <header class="header-area header-sticky background-header">
+    <div class="shadow-sm mb-5 bg-white rounded">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <nav class="main-nav">
+              <!-- ***** Logo Start ***** -->
+              <a href="/" class="logo">ASMARA<em>LOKA</em></a>
+              <!-- ***** Logo End ***** -->
+              <!-- ***** Menu Start ***** -->
+              <ul class="nav">
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="properties">Properties</a></li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                    aria-expanded="false">About</a>
 
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="about.html">About Us</a>
-                  <a class="dropdown-item" href="team.html">Team</a>
-                  <a class="dropdown-item" href="blog.html">Blog</a>
-                  <a class="dropdown-item" href="testimonials.html">Testimonials</a>
-                  <a class="dropdown-item" href="terms.html">Terms</a>
-                </div>
-              </li>
-              <li><a href="propertyDetails">Contact</a></li>
-              <li class="dropdown">
-                <a class="fa fa-solid fa-user" data-toggle="dropdown" role="button" aria-haspopup="true"
-                  aria-expanded="false" style="font-size: 25px; cursor:pointer;"></a>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="about.html">About Us</a>
+                    <a class="dropdown-item" href="team.html">Team</a>
+                    <a class="dropdown-item" href="blog.html">Blog</a>
+                    <a class="dropdown-item" href="testimonials.html">Testimonials</a>
+                    <a class="dropdown-item" href="terms.html">Terms</a>
+                  </div>
+                </li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="dropdown">
+                  <a class="fa-solid fa-user" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    aria-expanded="false" style="font-size: 25px; cursor:pointer;"></a>
 
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="loginClient">Login</a>
-                  <a class="dropdown-item" href="registerClient">Register</a>
-                  <span class="dropdown-partition">AGENT OPTIONS</span>
-                  <a class="dropdown-item" href="loginAgent">Login Agent</a>
-                  <a class="dropdown-item" href="registerAgent" style="padding-bottom: 45px;">Register
-                    Agent</a>
-                </div>
-              </li>
-            </ul>
-            <!-- ***** Menu End ***** -->
-          </nav>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="loginClient">Login</a>
+                    <a class="dropdown-item" href="registerClient">Register</a>
+                    <span class="dropdown-partition">AGENT OPTIONS</span>
+                    <a class="dropdown-item" href="loginAgent">Login Agent</a>
+                    <a class="dropdown-item" href="registerAgent" style="padding-bottom: 45px;">Register
+                      Agent</a>
+                  </div>
+                </li>
+              </ul>
+              <!-- ***** Menu End ***** -->
+            </nav>
+          </div>
         </div>
       </div>
     </div>
@@ -94,7 +107,7 @@
   <!-- ***** Header Area End ***** -->
 
   <!-- ***** Call to Action Start ***** -->
-  <section class="section section-bg" id="call-to-action"
+  <!-- <section class="section section-bg" id="call-to-action"
     style="background-image: url(static/images/banner-image-1-1920x500.jpg)">
     <div class="container">
       <div class="row">
@@ -108,12 +121,12 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
   <!-- ***** Call to Action End ***** -->
 
   <!-- ***** Fleet Starts ***** -->
   <section class="section" id="trainers">
-    <div class="container">
+    <div class="container mt-4">
       <br>
       <br>
 
@@ -153,6 +166,23 @@
       <br>
       <br>
 
+      <div class="row">
+        <div class="property-header col-lg-8 ml-4">
+          <h2>{{property_to_view.property_Title}}</h2>
+          <p>{{property_to_view.property_Address}}, {{property_to_view.property_Zip}}
+            {{property_to_view.property_City}}, {{property_to_view.property_State}}</p>
+        </div>
+        <div class="property-price col-lg-3">
+          <section class="float-right">
+            <p>FOR SALE</p>
+            <h2>RM {{"{:,}".format(property_to_view.property_Price)}}</h2>
+          </section>
+        </div>
+      </div>
+
+      <br>
+      <br>
+
       <div class="row" id="tabs">
         <div class="col-lg-4">
           <ul>
@@ -169,72 +199,35 @@
 
               <div class="row">
                 <div class="col-sm-6">
-                  <label>Type</label>
-
-                  <p>House</p>
+                  <label>Property Type</label>
+                  <p>{{property_to_view.property_Type}}</p>
                 </div>
-
                 <div class="col-sm-6">
-                  <label>Bedroom</label>
-
-                  <p>4</p>
+                  <label>Tenure Type</label>
+                  <p>{{property_to_view.property_Tenure}}</p>
                 </div>
-
-                <div class="col-sm-6">
-                  <label>Bathroom</label>
-
-                  <p>4</p>
-                </div>
-
                 <div class="col-sm-6">
                   <label>Floor area</label>
-
-                  <p>80 sq m</p>
+                  <p>{{property_to_view.property_Sqft}} sqft</p>
                 </div>
-
                 <div class="col-sm-6">
-                  <label>Country</label>
-
-                  <p>United Kingdom</p>
+                  <label>Location</label>
+                  <p>{{property_to_view.property_City}}, {{property_to_view.property_State}}</p>
                 </div>
-
                 <div class="col-sm-6">
-                  <label>State</label>
-
-                  <p>London</p>
+                  <label>Bedroom</label>
+                  <p>{{property_to_view.property_Bedroom}} beds</p>
                 </div>
-
                 <div class="col-sm-6">
-                  <label>City</label>
-
-                  <p>London</p>
-                </div>
-
-                <div class="col-sm-6">
-                  <label>Zip code</label>
-
-                  <p>SE7 8HW</p>
+                  <label>Bathroom</label>
+                  <p>{{property_to_view.property_Bathroom}} bath</p>
                 </div>
               </div>
             </article>
 
             <article id='tabs-2'>
               <h4>Property Description</h4>
-
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia doloremque sit, enim sint odio
-                corporis illum perferendis, unde repellendus aut dolore doloribus minima qui ullam vel possimus magnam
-                ipsa deleniti.</p>
-
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus ducimus ab numquam magnam
-                aliquid, odit provident consectetur corporis eius blanditiis alias nulla commodi qui voluptatibus
-                laudantium quaerat tempore possimus esse nam sed accusantium inventore? Sapiente minima dicta sed quia
-                sunt?</p>
-
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum qui, corrupti consequuntur. Officia
-                consectetur error amet debitis esse minus quasi, dicta suscipit tempora, natus, vitae voluptatem quae
-                libero. Sunt nulla culpa impedit! Aliquid cupiditate, impedit reiciendis dolores, illo adipisci, omnis
-                dolor distinctio voluptas expedita maxime officiis maiores cumque sequi quaerat culpa blanditiis. Quia
-                tenetur distinctio rem, quibusdam officiis voluptatum neque!</p>
+              <p>{{property_to_view.property_Description}}</p>
             </article>
 
             <article id='tabs-3'>
@@ -261,66 +254,38 @@
                 </div>
               </div>
             </article>
-
             <article id='tabs-4'>
               <h4>Book Property Viewing</h4>
 
-              <div class="row">
-                <div class="col-sm-6">
-                  <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
-                  <div class="bootstrap-iso">
-                    <div class="container-fluid">
-                      <div class="row">
-                        <div class="col-md-12 col-sm-6 col-xs-12">
-                          <form class="form-horizontal" method="post">
-                            <div class="form-group ">
-                              <label class="control-label col-sm-2 requiredField" for="date">
-                                Date
-                              </label>
-                              <div class="col-sm-10">
-                                <div class="input-group">
-                                  <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY"
-                                    type="text" />
-                                  <div class="input-group-addon">
-                                    <i class="fa fa-calendar">
-                                    </i>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <label class="control-label col-sm-2 requiredField" for="date">
-                                Time Slot
-                              </label>
-                              <div class="col-sm-10">
-                                <div class="input-group">
-                                  <input type="text" class="form-control" name="time-slot" />
-                                </div>
-                              </div>
-                            </div>
-                            <div class="form-group">
-                              <div class="col-sm-10 col-sm-offset-2">
-                                <button class="btn btn-primary " name="submit" type="submit">
-                                  Submit
-                                </button>
-                              </div>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
+              <section class="container-info" style="margin-left: 0px; margin-top: 35px;">
+                <form action="" method="post">
+                  <div class="col-6" style="padding-left: 0px;">
+                    <div class="input-group date">
+                      <label for="date" class="col-form-label">Date</label>
+                      <input type="text" class="form-control ml-4" id="datepicker" />
+                      <span class="input-group-append">
+                        <span class="input-group-text bg-light d-block">
+                          <i class="fa fa-calendar"></i>
+                        </span>
+                      </span>
                     </div>
                   </div>
-
-                  <div class="col-sm-6">
+                  <br>
+                  <div class="col-6" style="padding-left: 0px;">
+                    <div class="input-group date">
+                      <label for="date" class="col-form-label">Time</label>
+                      <input type="text" class="form-control ml-4" />
+                    </div>
                   </div>
-
-                  <div class="col-sm-6">
+                  <br>
+                  <div class="col-6">
+                    <div class="float-right">
+                      <input type="submit" class="btn btn-primary" />
+                    </div>
                   </div>
+                </form>
+              </section>
 
-                  <div class="col-sm-6">
-                  </div>
-
-                </div>
             </article>
           </section>
         </div>
@@ -328,43 +293,6 @@
     </div>
   </section>
   <!-- ***** Fleet Ends ***** -->
-
-  <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
-  <!-- Include jQuery -->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-  <!-- Include Date Range Picker -->
-  <script type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css" />
-
-  <script>
-    $(document).ready(function () {
-      var date_input = $('input[name="date"]'); //our date input has the name "date"
-      var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-      date_input.datepicker({
-        format: 'mm/dd/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      })
-    })
-  </script>
-
-  <!-- ***** Footer Start ***** -->
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <p>
-            Copyright © 2020 Company Name
-            - Template by: <a href="https://www.phpjabbers.com/">PHPJabbers.com</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  </footer>
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

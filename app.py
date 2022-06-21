@@ -37,14 +37,14 @@ login_manager.init_app(app)
 #         return None
 
 
-@login_manager.user_loader
-def load_user(user_id):
-    return Client.query.filter_by(client_ID=user_id).first()
-
-
 # @login_manager.user_loader
 # def load_user(user_id):
-#     return Agent.query.filter_by(agent_ID=user_id).first()
+#     return Client.query.filter_by(client_ID=user_id).first()
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Agent.query.filter_by(agent_ID=user_id).first()
 
 
 class Client(db.Model, UserMixin):
@@ -106,8 +106,13 @@ class Property(db.Model):
     property = "children"
     property_ID = db.Column(db.Integer, primary_key=True)
     property_Title = db.Column(db.String(255))
-    property_District = db.Column(db.String(255))
+    property_Address = db.Column(db.String(255))
+    property_City = db.Column(db.String(255))
     property_State = db.Column(db.String(255))
+    property_Zip = db.Column(db.String(255))
+    property_Description = db.Column(db.String(255))
+    property_Type = db.Column(db.String(255))
+    property_Tenure = db.Column(db.String(255))
     property_Price = db.Column(db.Integer)
     property_Sqft = db.Column(db.String(255))
     property_Bedroom = db.Column(db.String(255))
@@ -115,10 +120,15 @@ class Property(db.Model):
     agent_ID = db.Column(db.Integer, db.ForeignKey(
         'agent.agent_ID'), nullable=False)
 
-    def __init__(self, property_Title, property_District, property_State, property_Price, property_Sqft, property_Bedroom, property_Bathroom, agent_ID):
+    def __init__(self, property_Title, property_Address, property_City, property_Zip, property_Description, property_Type, property_Tenure, property_State, property_Price, property_Sqft, property_Bedroom, property_Bathroom, agent_ID):
         self.property_Title = property_Title
-        self.property_District = property_District
+        self.property_Address = property_Address
+        self.property_City = property_City
         self.property_State = property_State
+        self.property_Zip = property_Zip
+        self.property_Description = property_Description
+        self.property_Type = property_Type
+        self.property_Tenure = property_Tenure
         self.property_Price = property_Price
         self.property_Sqft = property_Sqft
         self.property_Bedroom = property_Bedroom
@@ -135,9 +145,10 @@ class scrape_property(db.Model):
     property_Sqft = db.Column(db.String(255))
     property_Bedroom = db.Column(db.String(255))
     property_Bathroom = db.Column(db.String(255))
+    property_Image = db.Column(db.String(255))
     property_Origin_URL = db.Column(db.String(255))
 
-    def __init__(self, property_Title, property_District, property_State, property_Price, property_Sqft, property_Bedroom, property_Bathroom, property_Origin_URL):
+    def __init__(self, property_Title, property_District, property_State, property_Price, property_Sqft, property_Bedroom, property_Bathroom, property_Image, property_Origin_URL):
         self.property_Title = property_Title
         self.property_District = property_District
         self.property_State = property_State
@@ -145,6 +156,7 @@ class scrape_property(db.Model):
         self.property_Sqft = property_Sqft
         self.property_Bedroom = property_Bedroom
         self.property_Bathroom = property_Bathroom
+        self.property_Image = property_Image
         self.property_Origin_URL = property_Origin_URL
 
 
@@ -155,11 +167,14 @@ class Booking(db.Model):
     booking_Time = db.Column(db.DateTime)
     client_ID = db.Column(db.Integer, db.ForeignKey(
         'client.client_ID'), nullable=False)
+    property_ID = db.Column(db.Integer, db.ForeignKey(
+        'property.property_ID'), nullable=False)
 
-    def __init__(self, booking_Date, booking_Time, client_ID):
+    def __init__(self, booking_Date, booking_Time, client_ID, property_ID):
         self.booking_Date = booking_Date
         self.booking_Time = booking_Time
         self.client_ID = client_ID
+        self.property_ID = property_ID
 
 
 @app.route('/')
@@ -198,9 +213,12 @@ def agentUpdateAccount():
     return render_template('agentUpdateAccount.html')
 
 
-@app.route('/propertyDetails')
-def propertyDetails():
-    return render_template('propertyDetails.html')
+@app.route('/propertyDetails/<int:property_ID>')
+def propertyDetails(property_ID):
+    all_data = Property.query.all()
+    property_to_view = Property.query.filter_by(
+        property_ID=property_ID).first()
+    return render_template('propertyDetails.html', property_to_view=property_to_view, property_data=all_data)
 
 
 @app.route('/properties')
@@ -275,7 +293,7 @@ def loginAgent():
 def createProperty():
     if request.method == 'POST':
         try:
-            db.session.add(Property(property_Title=request.form['property_Title'], property_District=request.form['property_District'], property_State=request.form['property_State'],
+            db.session.add(Property(property_Title=request.form['property_Title'], property_Address=request.form['property_Address'], property_City=request.form['property_City'], property_State=request.form['property_State'], property_Zip=request.form['property_Zip'], property_Description=request.form['property_Description'], property_Type=request.form['property_Type'], property_Tenure=request.form['property_Tenure'],
                            property_Price=request.form['property_Price'], property_Sqft=request.form['property_Sqft'], property_Bedroom=request.form['property_Bedroom'], property_Bathroom=request.form['property_Bathroom'], agent_ID=request.form['agent_ID']))
             db.session.commit()
             return redirect(url_for('createProperty'))
@@ -335,16 +353,20 @@ def updateProperty(property_ID):
         property_ID=property_ID).first()
     if request.method == 'POST':
         property_to_update.property_Title = request.form['property_Title']
-        property_to_update.property_District = request.form['property_District']
+        property_to_update.property_Address = request.form['property_Address']
+        property_to_update.property_City = request.form['property_City']
         property_to_update.property_State = request.form['property_State']
+        property_to_update.property_Zip = request.form['property_Zip']
+        property_to_update.property_Description = request.form['property_Description']
+        property_to_update.property_Type = request.form['property_Type']
+        property_to_update.property_Tenure = request.form['property_Tenure']
         property_to_update.property_Price = request.form['property_Price']
         property_to_update.property_Sqft = request.form['property_Sqft']
         property_to_update.property_Bedroom = request.form['property_Bedroom']
         property_to_update.property_Bathroom = request.form['property_Bathroom']
         property_to_update.agent_ID = request.form['agent_ID']
-        property_to_update.property = Property(property_Title=property_to_update.property_Title, property_District=property_to_update.property_District,
-                                               property_State=property_to_update.property_State, property_Price=property_to_update.property_Price, property_Sqft=property_to_update.property_Sqft, property_Bedroom=property_to_update.property_Bedroom, property_Bathroom=property_to_update.property_Bathroom, agent_ID=property_to_update.agent_ID)
-
+        property_to_update.property = Property(property_Title=property_to_update.property_Title, property_Address=property_to_update.property_Address,
+                                               property_City=property_to_update.property_City, property_State=property_to_update.property_State, property_Zip=property_to_update.property_Zip, property_Description=property_to_update.property_Description, property_Type=property_to_update.property_Type, property_Tenure=property_to_update.property_Tenure, property_Price=property_to_update.property_Price, property_Sqft=property_to_update.property_Sqft, property_Bedroom=property_to_update.property_Bedroom, property_Bathroom=property_to_update.property_Bathroom, agent_ID=property_to_update.agent_ID)
         db.session.commit()
         return redirect('/agentAllListing')
 
