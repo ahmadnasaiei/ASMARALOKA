@@ -27,35 +27,60 @@
     <div class="area">
         <div class="container rounded bg-white mt-5 mb-5">
             <div class="row mw-100">
-                <h2 class="text-right"><b>| MY LISTING</b></h2>
+                <h2 class="text-right"><b>| MY APPOINTMENT</b></h2>
                 <div class="col-lg-15 border-right">
                     <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">No.</th>
-                                <th scope="col">Title</th>
-                                <th scope="col">Type</th>
-                                <th scope="col">Location</th>
-                                <th scope="col">Size Area</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Actions</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Phone Number</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Property Title</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for row in agent_property %}
                             <tr>
-                                <th scope="row" class="counterCell"></th>
-                                <td>{{row.property_Title}}</td>
-                                <td>{{row.property_Type}}</td>
-                                <td>{{row.property_City}}, {{row.property_State}}</td>
-                                <td>{{row.property_Sqft}} sqft</td>
-                                <td>RM{{"{:,}".format(row.property_Price)}}</td>
+                                <th class="counterCell"></th>
+                                <td>Hafiz Roslan</td>
+                                <td>0123456789</td>
+                                <td>27-07-2022</td>
+                                <td>8:00 AM</td>
+                                <td>Oakleaf Park</td>
                                 <td>
-                                    <a class="btn btn-primary" href="/updateProperty/{{row.property_ID}}">Update</a>
-                                    <a class="btn btn-danger" href="/deleteProperty/{{row.property_ID}}">Delete</a>
+                                    <a class="btn btn-primary" href="#">Update</a>
+                                    <a class="btn btn-danger" href="#">Delete</a>
+                                    <a class="btn btn-success" href="#">View Listing</a>
                                 </td>
                             </tr>
-                            {% endfor %}
+                            <tr>
+                                <th class="counterCell"></th>
+                                <td>Adam Syahir</td>
+                                <td>013567891</td>
+                                <td>21-04-2022</td>
+                                <td>12:00 PM</td>
+                                <td>Kemensah Heights</td>
+                                <td>
+                                    <a class="btn btn-primary" href="#">Update</a>
+                                    <a class="btn btn-danger" href="#">Delete</a>
+                                    <a class="btn btn-success" href="#">View Listing</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="counterCell"></th>
+                                <td>Arif Azhar</td>
+                                <td>0183829142</td>
+                                <td>24-01-2022</td>
+                                <td>3:00 AM</td>
+                                <td>2-Storey Sering Ukay, Ukay Perdana</td>
+                                <td>
+                                    <a class="btn btn-primary" href="#">Update</a>
+                                    <a class="btn btn-danger" href="#">Delete</a>
+                                    <a class="btn btn-success" href="#">View Listing</a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -72,7 +97,7 @@
 
             </li>
             <li>
-                <a href="agentDashboard">
+                <a href="agentUpdateAppointment">
                     <i class="fa fa-home fa-2x"></i>
                     <span class="nav-text">
                         Dashboard

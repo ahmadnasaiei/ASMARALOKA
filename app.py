@@ -164,7 +164,7 @@ class Booking(db.Model):
     booking = "children"
     booking_ID = db.Column(db.Integer, primary_key=True)
     booking_Date = db.Column(db.DateTime, default=datetime.utcnow)
-    booking_Time = db.Column(db.DateTime)
+    booking_Time = db.Column(db.TIMESTAMP)
     client_ID = db.Column(db.Integer, db.ForeignKey(
         'client.client_ID'), nullable=False)
     property_ID = db.Column(db.Integer, db.ForeignKey(
@@ -187,9 +187,9 @@ def agentDashboard():
     return render_template('agentDashboard.html')
 
 
-@app.route('/clientDashboard')
-def clientDashboard():
-    return render_template('clientDashboard.html')
+# @app.route('/clientDashboard')
+# def clientDashboard():
+#     return render_template('clientDashboard.html')
 
 
 @app.route('/home')
@@ -211,6 +211,16 @@ def clientAccount():
 @app.route('/agentUpdateAccount')
 def agentUpdateAccount():
     return render_template('agentUpdateAccount.html')
+
+
+@app.route('/agentAllAppointment')
+def agentAllAppointment():
+    return render_template('agentAllAppointment.html')
+
+
+@app.route('/agentUpdateAppointment')
+def agentUpdateAppointment():
+    return render_template('agentUpdateAppointment.html')
 
 
 @app.route('/propertyDetails/<int:property_ID>')
@@ -380,6 +390,15 @@ def agentAllListing():
     result = db.engine.execute(
         "SELECT * FROM property WHERE agent_ID = %s", agent_ID)
     return render_template("agentAllListing.html", agent_property=result)
+
+
+# @app.route('/agentAllAppointment')
+# def agentAllAppointment():
+#     agent_ID = current_user.agent_ID
+#     # all_data = scrape_property.query.all()
+#     result = db.engine.execute(
+#         "SELECT * FROM property WHERE agent_ID = %s", agent_ID)
+#     return render_template("agentAllAppointment.html", agent_property=result)
 
 
 @app.route('/logout')

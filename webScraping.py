@@ -8,105 +8,6 @@ from pprint import pprint
 from csv import writer
 import sqlalchemy
 
-
-# EARLY CODE
-{
-    # cookies = {
-    #     'visid_incap_2031621': '7+g4gMIsTyixCmx9sZLYTJlz4WEAAAAAQUIPAAAAAAAs1Wqe++yhxnjlxOiOQS6J',
-    #     'nlbi_2031621': 'Yr8KF4E6r3JY1TES7CcVqwAAAADOf/RXrJdbyr9HYyjVYdq6',
-    #     'show_map_v3': 'false',
-    #     'userFingerprint': 'KEZZfclxgGapRJFpyqkoi',
-    #     'incap_ses_1130_2031621': 'aK+WSazrMC558mwBpJGuD5o0VGIAAAAAvj2G7qjQ3o7Ra0XJOnsQlA==',
-    #     'incap_ses_1133_2031621': 'TDhXLy9iNlXdF0mlDzq5D2ddVGIAAAAAR6Bqf5zFUM3aGKu1pZzdJw==',
-    #     'G_ENABLED_IDPS': 'google',
-    #     'incap_ses_1134_2031621': 'XSMbFk1Ho2ozchhJjse8D46VVWIAAAAACji1Vn8pfOiszC2Pqxd0oQ==',
-    #     'viewed_properties': '^[^{^%^22PropertyID^%^22:1596584^%^2C^%^22PropertyIDType^%^22:^%^22m^%^22^%^2C^%^22PropertyListingType^%^22:^%^22sale^%^22^%^2C^%^22district^%^22:^%^22Tumpat^%^22^%^2C^%^22state^%^22:^%^22Kelantan^%^22^}^%^2C^{^%^22PropertyID^%^22:1550545^%^2C^%^22PropertyIDType^%^22:^%^22m^%^22^%^2C^%^22PropertyListingType^%^22:^%^22sale^%^22^%^2C^%^22district^%^22:^%^22Wakaf^%^20Baru^%^22^%^2C^%^22state^%^22:^%^22Kelantan^%^22^}^%^2C^{^%^22PropertyID^%^22:1533626^%^2C^%^22PropertyIDType^%^22:^%^22m^%^22^%^2C^%^22PropertyListingType^%^22:^%^22sale^%^22^%^2C^%^22district^%^22:^%^22Kota^%^20Bharu^%^22^%^2C^%^22state^%^22:^%^22Kelantan^%^22^}^%^2C^{^%^22PropertyID^%^22:1245916^%^2C^%^22PropertyIDType^%^22:^%^22m^%^22^%^2C^%^22PropertyListingType^%^22:^%^22sale^%^22^%^2C^%^22district^%^22:^%^22Kota^%^20Bharu^%^22^%^2C^%^22state^%^22:^%^22Kelantan^%^22^}^%^2C^{^%^22PropertyID^%^22:1245916^%^2C^%^22PropertyIDType^%^22:^%^22m^%^22^%^2C^%^22PropertyListingType^%^22:^%^22sale^%^22^%^2C^%^22district^%^22:^%^22Kota^%^20Bharu^%^22^%^2C^%^22state^%^22:^%^22Kelantan^%^22^}^]',
-    #     'incap_ses_1139_2031621': 'jw/JMfOEYHVorP0z/orODxCiVWIAAAAANGmRC2UpGPmbJlEkl2KPkg==',
-    #     'incap_ses_1131_2031621': '2IhLaZAxgVT7LGhXGR+yD52pVWIAAAAAyn3t6Qak2eybJWtx6v7FdA==',
-    #     'incap_ses_1136_2031621': '/enAO/JS4lAW3A4+ieLDD56pVWIAAAAAXEynbLhWX8d3pEHRej0xsw==',
-    #     'incap_ses_1135_2031621': 'fJidS9Jx5Bj1Tj6aClXAD+OpVWIAAAAAu4IN3IJ5LmrlrGeuDpCKrQ==',
-    #     'incap_ses_1138_2031621': 'FISuUUzx6m7ycpM5ff3KDx2vVWIAAAAAtM2q4FhAO1hrdiXGCeFqXw==',
-    #     'incap_ses_1128_2031621': '9dOMK2S7bSm7JYK2rXanD1azVWIAAAAAtSHauEhdDrZpPhVV/y+qRQ==',
-    #     'incap_ses_1137_2031621': 'IwpaI4DDXB2wKfrmB3DHD+q8VWIAAAAAVi5WH/Hxezld13qZDNKBNw==',
-    #     'incap_ses_1132_2031621': 'krf6NDK5qWZbNTUAkay1D1q/VWIAAAAA2KvFSfBfAxFQ8R+H3ylUxw==',
-    # }
-
-    # headers = {
-    #     'authority': 'www.edgeprop.my',
-    #     'accept': '*/*',
-    #     'accept-language': 'en-US,en;q=0.9',
-    #     'referer': 'https://www.edgeprop.my/buy/kelantan/all-residential?page=1',
-    #     'sec-fetch-dest': 'empty',
-    #     'sec-fetch-mode': 'cors',
-    #     'sec-fetch-site': 'same-origin',
-    #     'sec-gpc': '1',
-    #     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.79 Safari/537.36',
-    # }
-
-    # response = requests.get(
-    #     'https://www.edgeprop.my/jwdsonic/api/v1/property/search?&listing_type=sale&state=Kelantan&property_type=rl&start=0&size=20', headers=headers, cookies=cookies)
-    # # print(response.content)
-    # # print(response)
-
-    # result_json = response.json()
-
-    # result_json.keys()
-
-    # # STARTING POINT
-    # result_items = result_json['property']
-    # pprint(result_items[0])
-
-    # Title
-    # pprint(result_items[0]['title_t'])
-    # # location
-    # pprint(result_items[0]['district_s_lower'] + ", " + result_items[0]['state_s_lower'])
-    # # price
-    # pprint(f"RM{result_items[0]['field_prop_asking_price_d']}")
-    # # sqft
-    # pprint(f"{result_items[0]['field_prop_built_up_d']} sqft")
-    # # # bedroom
-    # # pprint(f"{result_items[0]['field_prop_bedrooms_i']} beds")
-    # # # bathroom
-    # # pprint(f"{result_items[0]['field_prop_bathrooms_i']} bath")
-    # # agent name
-    # pprint(result_items[0]['agent_name_s_lower'])
-    # # agent phone number
-    # pprint(result_items[0]['agent_contact_s_lower'])
-
-    # title = []
-    # location = []
-    # price = []
-    # sqft = []
-    # bedroom = []
-    # bathroom = []
-    # agent_name = []
-    # agent_phone_no = []
-
-    # for result in result_items:
-    #     title.append(result['title_t'])
-    #     location.append(result['district_s_lower'] +
-    #                     ", " + result['state_s_lower'])
-    #     price.append(f"RM {result['field_prop_asking_price_d']}")
-    #     try:
-    #         sqft.append(f"{result['field_prop_land_area_d']} sqft")
-    #     except KeyError:
-    #         sqft.append(f"{result['field_prop_built_up_d']} sqft")
-    #     try:
-    #         bedroom.append(result['field_prop_bedrooms_i'])
-    #     except:
-    #         bedroom.append('N/A')
-    #     try:
-    #         bathroom.append(result['field_prop_bathrooms_i'])
-    #     except:
-    #         bathroom.append('N/A')
-    #     agent_name.append(result['agent_name_s_lower'])
-    #     agent_phone_no.append(result['agent_contact_s_lower'])
-
-    # df_edge = pd.DataFrame({'Title': title, 'Location': location, 'Price': price, 'Area': sqft,
-    #                        'Bedroom': bedroom, 'Bathroom': bathroom, 'Agent Name': agent_name, 'Phone Number': agent_phone_no})
-    # print(df_edge)
-}
-
 # GETTING TOTAL PAGINATION
 url = 'https://www.edgeprop.my/jwdsonic/api/v1/property/search?=&listing_type=sale&state=Kelantan&property_type=rl&start=0&size=20'
 data = requests.get(url).json()
@@ -122,8 +23,6 @@ property_Price = []
 property_Sqft = []
 property_Bedroom = []
 property_Bathroom = []
-# property_Agent_Name = []
-# property_Agent_Phone_No = []
 property_Image = []
 property_Origin_URL = []
 
@@ -135,7 +34,6 @@ for i in range(0, 1):
 
     current_pages = "https://www.edgeprop.my/jwdsonic/api/v1/property/search?&listing_type=sale&state=Selangor&property_type=rl&start=" + \
         str(i) + "&size=20"
-    print(current_pages)
 
     cookies = {
         'nlbi_2031621': 'BUh4dt2qqlrLfz+97CcVqwAAAACI3pDnu8ohq42PO/s+Frq2',
@@ -1218,7 +1116,7 @@ for i in range(0, 1):
             property_Bathroom.append('N/A')
         try:
             property_Image.append(
-                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+                f"https://img.rnudah.com/grids{result['attributes']['image']}")
         except:
             property_Image.append(
                 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
@@ -1272,7 +1170,7 @@ for i in range(0, 1):
             property_Bathroom.append('N/A')
         try:
             property_Image.append(
-                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+                f"https://img.rnudah.com/grids{result['attributes']['image']}")
         except:
             property_Image.append(
                 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
@@ -1326,7 +1224,7 @@ for i in range(0, 1):
             property_Bathroom.append('N/A')
         try:
             property_Image.append(
-                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+                f"https://img.rnudah.com/grids{result['attributes']['image']}")
         except:
             property_Image.append(
                 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
@@ -1380,7 +1278,7 @@ for i in range(0, 1):
             property_Bathroom.append('N/A')
         try:
             property_Image.append(
-                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+                f"https://img.rnudah.com/grids{result['attributes']['image']}")
         except:
             property_Image.append(
                 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
@@ -1434,7 +1332,7 @@ for i in range(0, 1):
             property_Bathroom.append('N/A')
         try:
             property_Image.append(
-                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+                f"https://img.rnudah.com/grids{result['attributes']['image']}")
         except:
             property_Image.append(
                 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
@@ -1488,7 +1386,7 @@ for i in range(0, 1):
             property_Bathroom.append('N/A')
         try:
             property_Image.append(
-                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+                f"https://img.rnudah.com/grids{result['attributes']['image']}")
         except:
             property_Image.append(
                 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
@@ -1542,7 +1440,7 @@ for i in range(0, 1):
             property_Bathroom.append('N/A')
         try:
             property_Image.append(
-                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+                f"https://img.rnudah.com/grids{result['attributes']['image']}")
         except:
             property_Image.append(
                 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
@@ -1596,7 +1494,7 @@ for i in range(0, 1):
             property_Bathroom.append('N/A')
         try:
             property_Image.append(
-                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+                f"https://img.rnudah.com/grids{result['attributes']['image']}")
         except:
             property_Image.append(
                 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
@@ -1650,7 +1548,7 @@ for i in range(0, 1):
             property_Bathroom.append('N/A')
         try:
             property_Image.append(
-                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+                f"https://img.rnudah.com/grids{result['attributes']['image']}")
         except:
             property_Image.append(
                 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
@@ -1704,7 +1602,7 @@ for i in range(0, 1):
             property_Bathroom.append('N/A')
         try:
             property_Image.append(
-                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+                f"https://img.rnudah.com/grids{result['attributes']['image']}")
         except:
             property_Image.append(
                 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
@@ -1758,7 +1656,7 @@ for i in range(0, 1):
             property_Bathroom.append('N/A')
         try:
             property_Image.append(
-                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+                f"https://img.rnudah.com/grids{result['attributes']['image']}")
         except:
             property_Image.append(
                 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
@@ -1812,7 +1710,7 @@ for i in range(0, 1):
             property_Bathroom.append('N/A')
         try:
             property_Image.append(
-                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+                f"https://img.rnudah.com/grids{result['attributes']['image']}")
         except:
             property_Image.append(
                 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
@@ -1866,7 +1764,7 @@ for i in range(0, 1):
             property_Bathroom.append('N/A')
         try:
             property_Image.append(
-                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+                f"https://img.rnudah.com/grids{result['attributes']['image']}")
         except:
             property_Image.append(
                 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
@@ -1920,7 +1818,7 @@ for i in range(0, 1):
             property_Bathroom.append('N/A')
         try:
             property_Image.append(
-                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+                f"https://img.rnudah.com/grids{result['attributes']['image']}")
         except:
             property_Image.append(
                 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
@@ -1974,7 +1872,7 @@ for i in range(0, 1):
             property_Bathroom.append('N/A')
         try:
             property_Image.append(
-                f"https://img.rnudah.com/images{result['attributes']['extra_images'][0]}")
+                f"https://img.rnudah.com/grids{result['attributes']['image']}")
         except:
             property_Image.append(
                 'https://www.dia.org/sites/default/files/No_Img_Avail.jpg')
@@ -1983,17 +1881,12 @@ for i in range(0, 1):
             f"https://www.mudah.my/{result['attributes']['subject']}.htm")
 
 
-df_edge = pd.DataFrame({'property_Title': property_Title, 'property_District': property_District, 'property_State': property_State, 'property_Price': property_Price,
-                       'property_Sqft': property_Sqft, 'property_Bedroom': property_Bedroom, 'property_Bathroom': property_Bathroom, 'property_Image': property_Image, 'property_Origin_URL': property_Origin_URL})
+df_edge = pd.DataFrame({'property_Title': property_Title, 'property_District': property_District,
+                        'property_State': property_State, 'property_Price': property_Price, 'property_Sqft': property_Sqft,
+                        'property_Bedroom': property_Bedroom, 'property_Bathroom': property_Bathroom,
+                        'property_Image': property_Image, 'property_Origin_URL': property_Origin_URL})
 
 df_edge.to_excel('edgeprop_property_listing.xlsx', index=False)
-
-print(df_edge)
-
-# POSTGRESQL
-# engine = sqlalchemy.create_engine(
-#     'postgresql://postgres:12345@localhost:5433')
-# df_edge.to_sql('property', engine)
 
 # MYSQL
 engine = sqlalchemy.create_engine(
