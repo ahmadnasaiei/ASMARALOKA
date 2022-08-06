@@ -194,6 +194,9 @@
         </div>
         <div class="col-lg-8">
           <section class='tabs-content' style="width: 100%;">
+
+            <!-- ---------------------- PROPERTY SPEC ---------------------- -->
+
             <article id='tabs-1'>
               <h4>Property Specs</h4>
 
@@ -225,10 +228,14 @@
               </div>
             </article>
 
+            <!-- ---------------------- PROPERTY DESCRIPTION ---------------------- -->
+
             <article id='tabs-2'>
               <h4>Property Description</h4>
               <p>{{property_to_view.property_Description}}</p>
             </article>
+
+            <!-- ---------------------- CONTACT DETAILS ---------------------- -->
 
             <article id='tabs-3'>
               <h4>Contact Details</h4>
@@ -254,37 +261,27 @@
                 </div>
               </div>
             </article>
+
+            <!-- ---------------------- PROPERTY VIEWING ---------------------- -->
+
             <article id='tabs-4'>
               <h4>Book Property Viewing</h4>
 
-              <section class="container-info" style="margin-left: 0px; margin-top: 35px;">
-                <form action="" method="post">
-                  <div class="col-6" style="padding-left: 0px;">
-                    <div class="input-group date">
-                      <label for="date" class="col-form-label">Date</label>
-                      <input type="text" class="form-control ml-4" id="datepicker" />
-                      <span class="input-group-append">
-                        <span class="input-group-text bg-light d-block">
-                          <i class="fa fa-calendar"></i>
-                        </span>
-                      </span>
-                    </div>
+              <form action="createAppointment" method="POST">
+                <div class="row mt-4">
+                  <div class="col-sm-1">
+                    <p class="mt-2">Date:</p>
+                    <p class="mt-2">Time:</p>
                   </div>
-                  <br>
-                  <div class="col-6" style="padding-left: 0px;">
-                    <div class="input-group date">
-                      <label for="date" class="col-form-label">Time</label>
-                      <input type="text" class="form-control ml-4" />
-                    </div>
+                  <div class="col-sm-4 mb-5">
+                    <input type="date" class="w-100 mb-2 pb-1 pt-1" name="appointment_Date"><br>
+                    <input type="time" class="w-100 mt-2 pb-1 pt-1" name="appointment_Time"><br>
+                    <input type="hidden" name="property_ID" value="{{property_to_view.property_ID}}" />
+                    <input type="hidden" name="client_ID" value="{{current_user.client_ID}}" />
+                    <input type="submit" class="btn btn-primary mt-3" style="margin-left: 175px;" value="Submit">
                   </div>
-                  <br>
-                  <div class="col-6">
-                    <div class="float-right">
-                      <input type="submit" class="btn btn-primary" />
-                    </div>
-                  </div>
-                </form>
-              </section>
+                </div>
+              </form>
 
             </article>
           </section>

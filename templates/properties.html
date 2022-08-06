@@ -73,7 +73,7 @@
     <!-- ***** Header Area End ***** -->
 
     <!-- ***** Call to Action Start ***** -->
-    <!-- <section class="section section-bg" id="call-to-action"
+    <section class="section section-bg" id="call-to-action"
         style="background-image: url(static/images/banner-image-1-1920x500.jpg)">
         <div class="container">
             <div class="row">
@@ -87,7 +87,7 @@
                 </div>
             </div>
         </div>
-    </section> -->
+    </section>
     <!-- ***** Call to Action End ***** -->
 
     <!-- ***** Fleet Starts ***** -->
@@ -187,6 +187,8 @@
 
             <!-- ----------------------------- FILTERING END ----------------------------- -->
 
+            <!-- ----------------------------- AGENT PROPERTY ---------------------------- -->
+
             <div class="card-container">
                 {% for row in agent_property %}
                 <div class="property-card">
@@ -199,7 +201,9 @@
                         <!-- Info -->
                         <div class="property-card__info">
                             <div class="property-card__headings">
-                                <h4 class="property-card__heading">{{row.property_Title}}</h4>
+                                <a href="/propertyDetails/{{row.property_ID}}">
+                                    <h4 class="property-title property-card__heading">{{row.property_Title}}</h4>
+                                </a>
                                 <small class="property-card__heading--small">{{row.property_City}},
                                     {{row.property_State}}</small>
                             </div>
@@ -243,6 +247,9 @@
                 </div>
                 {% endfor %}
 
+
+                <!-- ----------------------------- SCRAPE PROPERTY ---------------------------- -->
+
                 {% for row in scrape_property %}
                 <div class="property-card">
                     <div class="property-card__item">
@@ -253,7 +260,9 @@
                         <!-- Info -->
                         <div class="property-card__info">
                             <div class="property-card__headings">
-                                <h4 class="property-card__heading">{{row.property_Title}}</h4>
+                                <a href="{{row.property_Origin_URL}}" target="_blank">
+                                    <h4 class="property-title property-card__heading">{{row.property_Title}}</h4>
+                                </a>
                                 <small class="property-card__heading--small">{{row.property_District}},
                                     {{row.property_State}}</small>
                             </div>

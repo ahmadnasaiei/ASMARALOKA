@@ -56,7 +56,7 @@ body {
     }
     
     &__heading {
-        color: #209CD8;
+        color: #ED563B;
         font-size: 1.125rem;
         
         // &--small {
@@ -91,7 +91,7 @@ body {
 .btn {
     width: 100%;
     padding: 0.5rem 1.875rem;
-    background-color: #209CD8;
+    background-color: #ED563B;
     border: none;
     border-radius: 0;
     color: #fff;
@@ -102,11 +102,19 @@ body {
     transition: all .2s;
     
     &:hover {
-        background-color: #1889c2;
+        background-color: rgb(212, 76, 52);
         color: #fff;
     }
 }
 
 #detail-img{
     width: 25px;
+}
+
+.property-title{
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    width: 260px; 
+    height: 1.2em; 
+    white-space: nowrap;
 }

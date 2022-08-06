@@ -37,14 +37,14 @@ login_manager.init_app(app)
 #         return None
 
 
-# @login_manager.user_loader
-# def load_user(user_id):
-#     return Client.query.filter_by(client_ID=user_id).first()
-
-
 @login_manager.user_loader
 def load_user(user_id):
-    return Agent.query.filter_by(agent_ID=user_id).first()
+    return Client.query.filter_by(client_ID=user_id).first()
+
+
+# @login_manager.user_loader
+# def load_user(user_id):
+#     return Agent.query.filter_by(agent_ID=user_id).first()
 
 
 class Client(db.Model, UserMixin):
@@ -160,19 +160,19 @@ class scrape_property(db.Model):
         self.property_Origin_URL = property_Origin_URL
 
 
-class Booking(db.Model):
-    booking = "children"
-    booking_ID = db.Column(db.Integer, primary_key=True)
-    booking_Date = db.Column(db.DateTime, default=datetime.utcnow)
-    booking_Time = db.Column(db.TIMESTAMP)
+class Appointment(db.Model):
+    appointment = "children"
+    appointment_ID = db.Column(db.Integer, primary_key=True)
+    appointment_Date = db.Column(db.DateTime, default=datetime.utcnow)
+    appointment_Time = db.Column(db.TIMESTAMP)
     client_ID = db.Column(db.Integer, db.ForeignKey(
         'client.client_ID'), nullable=False)
     property_ID = db.Column(db.Integer, db.ForeignKey(
         'property.property_ID'), nullable=False)
 
-    def __init__(self, booking_Date, booking_Time, client_ID, property_ID):
-        self.booking_Date = booking_Date
-        self.booking_Time = booking_Time
+    def __init__(self, appointment_Date, appointment_Time, client_ID, property_ID):
+        self.appointment_Date = appointment_Date
+        self.appointment_Time = appointment_Time
         self.client_ID = client_ID
         self.property_ID = property_ID
 
@@ -417,6 +417,20 @@ def deleteProperty(property_ID):
         return redirect('/agentAllListing')
     except:
         return "There was a problem deleting the property Please try again."
+
+
+@app.route('/createAppointment', methods=['POST', 'GET'])
+def createAppointment():
+    if request.method == 'POST':
+        try:
+            db.session.add(Appointment(appointment_Date=request.form['appointment_Date'], appointment_Time=request.form[
+                           'appointment_Time'], client_ID=request.form['client_ID'], property_ID=request.form['property_ID']))
+            db.session.commit()
+            return redirect(url_for('index'))
+        except:
+            return render_template('index.html')
+    else:
+        return render_template('index.html')
 
 
 if __name__ == "__main__":
