@@ -25,16 +25,6 @@
   <!--Font Awesome (added because you use icons in your prepend/append)-->
   <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
 
-  <!-- DATETIMEPICKER CONFIG -->
-  <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"> -->
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
-  <script>
-    $(function () {
-      $("#datepicker").datepicker();
-    });
-  </script>
-
   <!-- Inline CSS based on choices in "Settings" tab -->
   <style>
     .bootstrap-iso .formden_header h2,
@@ -268,7 +258,7 @@
               <h4>Book Property Viewing</h4>
               <form action="/createAppointment" method="POST">
                 <div class="row mt-4">
-                  <div class="col-sm-1">
+                  <div class="col-sm-2">
                     <p class="mt-2">Date & Time:</p>
                     <p class="mt-2">Client ID: {{current_user.client_ID}}</p>
                     <p class="mt-2">Property ID: {{property_to_view.property_ID}}</p>

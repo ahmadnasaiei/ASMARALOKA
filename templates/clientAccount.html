@@ -77,8 +77,7 @@
                                         <span class="dropdown-partition">AGENT OPTIONS</span>
                                         <a class="dropdown-item" href="loginAgent">Login Agent</a>
                                         <a class="dropdown-item" href="registerAgent"
-                                            style="padding-bottom: 45px;">Register
-                                            Agent</a>
+                                            style="padding-bottom: 45px;">Register Agent</a>
                                     </div>
                                 </li>
                             </ul>
@@ -100,7 +99,47 @@
                 </div>
                 <div class="card-body">
                     <h2 class="title">Hello, {{current_user.client_First_Name}} {{current_user.client_Last_Name}}.</h2>
-                    <div class="input-group">
+                    <div class="row">
+                        <div class="col-md-auto">
+                            <div class="client-sidebar">
+                                <a href="clientAccount">My Profile</a>
+                                <a href="/updateClient/{{current_user.client_ID}}">Edit Profile</a>
+                                <a href="">My Appointment</a>
+                            </div>
+                        </div>
+                        <div class="col-md-auto">
+                            <div class="vl" style="border-left: 1px solid rgba(80, 80, 80, 0.26); height: 500px;"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-auto">
+                                <div class="col-md-auto">
+                                    <label for="">First Name</label>
+                                    <label for="">Last Name</label>
+                                    <label for="">Email</label>
+                                    <label for="">Phone No.</label>
+                                    <label for="">Address</label>
+                                </div>
+                            </div>
+                            <div class="col-md-auto">
+                                <div class="col-md-auto">
+                                    <input class="input--style-1" id="lname" type="text" name="client_First_Name"
+                                        value="{{current_user.client_First_Name}}" disabled>
+                                    <input class="input--style-1" id="lname" type="text" name="client_Last_Name"
+                                        value="{{current_user.client_Last_Name}}" disabled>
+                                    <input class="input--style-1" id="lname" type="text" name="client_Email"
+                                        value="{{current_user.client_Email}}" disabled>
+                                    <input class="input--style-1" id="lname" type="text" name="client_Phone_No"
+                                        value="{{current_user.client_Phone_No}}" disabled>
+                                    <input class="input--style-1" id="lname" type="text" name="client_Address"
+                                        value="{{current_user.client_Address}}" disabled>
+                                    <input class="input--style-1" id="lname" type="hidden" name="account_type"
+                                        value="{{current_user.account_type}}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="input-group">
                         <label for="">First Name</label>
                         <input class="input--style-1" id="lname" type="text" name="client_First_Name"
                             value="{{current_user.client_First_Name}}" disabled>
@@ -136,10 +175,10 @@
                         <a href="/updateClient/{{current_user.client_ID}}">
                             <button class="btn btn--radius btn--green" type="submit">Edit Profile</button>
                         </a>
-                    </div>
-                </div>
+                    </div> -->
             </div>
         </div>
+    </div>
     </div>
 
     <!-- Jquery JS-->
@@ -152,7 +191,12 @@
     <!-- Main JS-->
     <script src="js/global.js"></script>
 
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+    <script src="{{ url_for('static' , filename='../static/js/accordions.js') }}"></script>
+
+    <!-- Global Init -->
+    <script src="{{ url_for('static' , filename='../static/js/custom.js') }}"></script>
+
+</body>
 
 </html>
 <!-- end document-->

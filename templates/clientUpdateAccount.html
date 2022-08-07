@@ -10,6 +10,7 @@
     <meta name="author" content="Colorlib">
     <meta name="keywords" content="Colorlib Templates">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://kit.fontawesome.com/21bc1afb81.js" crossorigin="anonymous"></script>
     <link
         href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
         rel="stylesheet">
@@ -31,7 +32,6 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
         rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="{{ url_for('static' , filename='../static/images/favicon.png') }}">
-    <script src="https://kit.fontawesome.com/21bc1afb81.js" crossorigin="anonymous"></script>
 
     <!-- Main CSS-->
     <link rel="stylesheet" href="{{ url_for('static' , filename='../static/css/style.css') }}">
@@ -41,46 +41,49 @@
 <body>
     <!-- ***** Header Area Start ***** -->
     <header class="header-area header-sticky background-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
-                        <!-- ***** Logo Start ***** -->
-                        <a href="index" class="logo">ASMARA<em>LOKA</em></a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li><a href="index" class="active">Home</a></li>
-                            <li><a href="properties.html">Properties</a></li>
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                                    aria-haspopup="true" aria-expanded="false">About</a>
+        <div class="shadow-sm mb-5 bg-white rounded">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="main-nav">
+                            <!-- ***** Logo Start ***** -->
+                            <a href="/" class="logo">ASMARA<em>LOKA</em></a>
+                            <!-- ***** Logo End ***** -->
+                            <!-- ***** Menu Start ***** -->
+                            <ul class="nav">
+                                <li><a href="/" class="active">Home</a></li>
+                                <li><a href="properties">Properties</a></li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                        aria-haspopup="true" aria-expanded="false">About</a>
 
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="about.html">About Us</a>
-                                    <a class="dropdown-item" href="team.html">Team</a>
-                                    <a class="dropdown-item" href="blog.html">Blog</a>
-                                    <a class="dropdown-item" href="testimonials.html">Testimonials</a>
-                                    <a class="dropdown-item" href="terms.html">Terms</a>
-                                </div>
-                            </li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li class="dropdown">
-                                <a class="fa-solid fa-user" data-toggle="dropdown" role="button" aria-haspopup="true"
-                                    aria-expanded="false" style="font-size: 25px; cursor:pointer;"></a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="about.html">About Us</a>
+                                        <a class="dropdown-item" href="team.html">Team</a>
+                                        <a class="dropdown-item" href="blog.html">Blog</a>
+                                        <a class="dropdown-item" href="testimonials.html">Testimonials</a>
+                                        <a class="dropdown-item" href="terms.html">Terms</a>
+                                    </div>
+                                </li>
+                                <li><a href="contact.html">Contact</a></li>
+                                <li class="dropdown">
+                                    <a class="fa-solid fa-user" data-toggle="dropdown" role="button"
+                                        aria-haspopup="true" aria-expanded="false"
+                                        style="font-size: 25px; cursor:pointer;"></a>
 
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="loginClient">Login</a>
-                                    <a class="dropdown-item" href="registerClient">Register</a>
-                                    <span class="dropdown-partition">AGENT OPTIONS</span>
-                                    <a class="dropdown-item" href="loginAgent">Login Agent</a>
-                                    <a class="dropdown-item" href="registerAgent" style="padding-bottom: 45px;">Register
-                                        Agent</a>
-                                </div>
-                            </li>
-                        </ul>
-                        <!-- ***** Menu End ***** -->
-                    </nav>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="loginClient">Login</a>
+                                        <a class="dropdown-item" href="registerClient">Register</a>
+                                        <span class="dropdown-partition">AGENT OPTIONS</span>
+                                        <a class="dropdown-item" href="loginAgent">Login Agent</a>
+                                        <a class="dropdown-item" href="registerAgent"
+                                            style="padding-bottom: 45px;">Register Agent</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!-- ***** Menu End ***** -->
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
@@ -96,46 +99,51 @@
                 </div>
                 <div class="card-body">
                     <h2 class="title">Hello, {{current_user.client_First_Name}} {{current_user.client_Last_Name}}.</h2>
-                    <form action="/updateClient/{{client_to_update.client_ID}}" method="post">
-                        <div class="input-group">
-                            <label for="">First Name</label>
-                            <input class="input--style-1" id="lname" type="text" name="client_First_Name"
-                                value="{{client_to_update.client_First_Name}}" required>
+                    <div class="row">
+                        <div class="col-md-auto">
+                            <div class="client-sidebar">
+                                <a href="/clientAccount">My Profile</a>
+                                <a href="/updateClient/{{current_user.client_ID}}">Edit Profile</a>
+                                <a href="">My Appointment</a>
+                            </div>
                         </div>
-                        <div class="input-group">
-                            <label for="">Last Name</label>
-                            <input class="input--style-1" id="fname" type="text" name="client_Last_Name"
-                                value="{{client_to_update.client_Last_Name}}" required>
+                        <div class="col-md-auto">
+                            <div class="vl" style="border-left: 1px solid rgba(80, 80, 80, 0.26); height: 686px;"></div>
                         </div>
-                        <div class="input-group">
-                            <label for="">Email</label>
-                            <input class="input--style-1" id="lname" type="text" name="client_Email"
-                                value="{{client_to_update.client_Email}}" required>
+                        <div class="row">
+                            <div class="col-md-auto">
+                                <label for="">First Name</label>
+                                <label for="">Last Name</label>
+                                <label for="">Email</label>
+                                <label for="">Password</label>
+                                <label for="">Phone No.</label>
+                                <label for="">Address</label>
+                            </div>
+                            <div class="col-md-auto">
+                                <form action="/updateClient/{{client_to_update.client_ID}}" method="post">
+                                    <input class="input--style-1" id="lname" type="text" name="client_First_Name"
+                                        value="{{client_to_update.client_First_Name}}" required>
+                                    <input class="input--style-1" id="lname" type="text" name="client_Last_Name"
+                                        value="{{client_to_update.client_Last_Name}}" required>
+                                    <input class="input--style-1" id="lname" type="text" name="client_Email"
+                                        value="{{client_to_update.client_Email}}" required>
+                                    <input class="input--style-1" id="lname" type="password" name="client_Password"
+                                        value="{{client_to_update.client_Email}}" required>
+                                    <input class="input--style-1" id="lname" type="text" name="client_Phone_No"
+                                        value="{{client_to_update.client_Phone_No}}" required>
+                                    <input class="input--style-1" id="lname" type="text" name="client_Address"
+                                        value="{{client_to_update.client_Address}}" required>
+                                    <input class="input--style-1" id="lname" type="hidden" name="account_type"
+                                        value="{{current_user.account_type}}">
+                                    <input class="btn btn-primary profile-button" type="submit" value="Update">
+                                </form>
+                            </div>
                         </div>
-                        <div class="input-group">
-                            <label for="">Password</label>
-                            <input class="input--style-1" id="lname" type="text" name="client_Password"
-                                value="{{client_to_update.client_Password}}" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="">Phone No.</label>
-                            <input class="input--style-1" id="lname" type="text" name="client_Phone_No"
-                                value="{{client_to_update.client_Phone_No}}" required>
-                        </div>
-                        <div class="input-group">
-                            <label for="">Address</label>
-                            <input class="input--style-1" id="lname" type="text" name="client_Address"
-                                value="{{client_to_update.client_Address}}" required>
-                            <input class="input--style-1" id="lname" type="hidden" name="account_type"
-                                value="{{client_to_update.account_type}}">
-                        </div>
-                        <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit">Update</button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- Jquery JS-->
@@ -148,7 +156,12 @@
     <!-- Main JS-->
     <script src="js/global.js"></script>
 
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+    <script src="{{ url_for('static' , filename='../static/js/accordions.js') }}"></script>
+
+    <!-- Global Init -->
+    <script src="{{ url_for('static' , filename='../static/js/custom.js') }}"></script>
+
+</body>
 
 </html>
 <!-- end document-->

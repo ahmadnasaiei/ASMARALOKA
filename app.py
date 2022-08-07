@@ -37,14 +37,14 @@ login_manager.init_app(app)
 #         return None
 
 
-@login_manager.user_loader
-def load_user(user_id):
-    return Client.query.filter_by(client_ID=user_id).first()
-
-
 # @login_manager.user_loader
 # def load_user(user_id):
-#     return Agent.query.filter_by(agent_ID=user_id).first()
+#     return Client.query.filter_by(client_ID=user_id).first()
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Agent.query.filter_by(agent_ID=user_id).first()
 
 
 class Client(db.Model, UserMixin):
@@ -185,10 +185,6 @@ def agentDashboard():
     return render_template('agentDashboard.html')
 
 
-# @app.route('/clientDashboard')
-# def clientDashboard():
-#     return render_template('clientDashboard.html')
-
 
 @app.route('/home')
 def home():
@@ -209,11 +205,6 @@ def clientAccount():
 @app.route('/agentUpdateAccount')
 def agentUpdateAccount():
     return render_template('agentUpdateAccount.html')
-
-
-@app.route('/agentAllAppointment')
-def agentAllAppointment():
-    return render_template('agentAllAppointment.html')
 
 
 @app.route('/agentUpdateAppointment')
@@ -390,13 +381,12 @@ def agentAllListing():
     return render_template("agentAllListing.html", agent_property=result)
 
 
-# @app.route('/agentAllAppointment')
-# def agentAllAppointment():
-#     agent_ID = current_user.agent_ID
-#     # all_data = scrape_property.query.all()
-#     result = db.engine.execute(
-#         "SELECT * FROM property WHERE agent_ID = %s", agent_ID)
-#     return render_template("agentAllAppointment.html", agent_property=result)
+@app.route('/agentAllAppointment')
+def agentAllAppointment():
+    agent_ID = current_user.agent_ID
+    result = db.engine.execute(
+        "SELECT client.client_First_Name, client.client_Last_Name, client.client_Phone_No, appointment.appointment_Date, property.property_Title, property.property_ID, property.agent_ID FROM ((appointment INNER JOIN client ON client.client_ID = appointment.client_ID) INNER JOIN property ON appointment.property_ID = property.property_ID)  WHERE property.agent_ID = %s", agent_ID)
+    return render_template("agentAllAppointment.html", agent_appointment=result)
 
 
 @app.route('/logout')
@@ -423,9 +413,9 @@ def createAppointment():
         try:
             db.session.add(Appointment(appointment_Date=request.form['appointment_Date'], client_ID=request.form['client_ID'], property_ID=request.form['property_ID']))
             db.session.commit()
-            return redirect(url_for('index'))
+            return redirect(url_for('propertyDetails/{{property_ID}}'))
         except:
-            return render_template('index.html')
+            return redirect(url_for('propertyDetails/{{property_ID}}'))
     else:
         return render_template('index.html')
 
