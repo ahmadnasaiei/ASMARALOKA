@@ -11,7 +11,7 @@ import fontawesome as fa
 
 app = Flask(__name__)
 app.secret_key = "membuatLOginFlask1"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:''@localhost:3307/asmaraloka'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:''@localhost:3306/asmaraloka'
 db = SQLAlchemy(app)
 
 
@@ -164,15 +164,13 @@ class Appointment(db.Model):
     appointment = "children"
     appointment_ID = db.Column(db.Integer, primary_key=True)
     appointment_Date = db.Column(db.DateTime, default=datetime.utcnow)
-    appointment_Time = db.Column(db.TIMESTAMP)
     client_ID = db.Column(db.Integer, db.ForeignKey(
         'client.client_ID'), nullable=False)
     property_ID = db.Column(db.Integer, db.ForeignKey(
         'property.property_ID'), nullable=False)
 
-    def __init__(self, appointment_Date, appointment_Time, client_ID, property_ID):
+    def __init__(self, appointment_Date, client_ID, property_ID):
         self.appointment_Date = appointment_Date
-        self.appointment_Time = appointment_Time
         self.client_ID = client_ID
         self.property_ID = property_ID
 
@@ -423,8 +421,7 @@ def deleteProperty(property_ID):
 def createAppointment():
     if request.method == 'POST':
         try:
-            db.session.add(Appointment(appointment_Date=request.form['appointment_Date'], appointment_Time=request.form[
-                           'appointment_Time'], client_ID=request.form['client_ID'], property_ID=request.form['property_ID']))
+            db.session.add(Appointment(appointment_Date=request.form['appointment_Date'], client_ID=request.form['client_ID'], property_ID=request.form['property_ID']))
             db.session.commit()
             return redirect(url_for('index'))
         except:

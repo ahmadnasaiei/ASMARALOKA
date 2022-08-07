@@ -1886,9 +1886,9 @@ df_edge = pd.DataFrame({'property_Title': property_Title, 'property_District': p
                         'property_Bedroom': property_Bedroom, 'property_Bathroom': property_Bathroom,
                         'property_Image': property_Image, 'property_Origin_URL': property_Origin_URL})
 
-df_edge.to_excel('edgeprop_property_listing.xlsx', index=False)
+# df_edge.to_excel('edgeprop_property_listing.xlsx', index=False)
 
 # MYSQL
 engine = sqlalchemy.create_engine(
-    'mysql://root:''@localhost:3307/asmaraloka')
+    'mysql://root:''@localhost:3306/asmaraloka')
 df_edge.to_sql('scrape_property', engine, if_exists='replace')
