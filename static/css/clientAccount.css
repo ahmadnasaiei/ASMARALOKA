@@ -1,3 +1,5 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css);
+
 /* ==========================================================================
    #FONT
    ========================================================================== */
@@ -521,4 +523,15 @@ form>input {
   border: 5px solid #fff;
   position: relative;
   overflow: hidden;
+}
+
+.appt-card-details>label {
+  font-size: 9pt;
+  color: rgb(156, 156, 156);
+  margin: 10px 0px 0px 0px;
+}
+
+.appt-card-details>p {
+  font-size: 12pt;
+  color: rgb(43, 43, 43);
 }

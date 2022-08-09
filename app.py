@@ -384,6 +384,13 @@ def agentAllAppointment():
     return render_template("agentAllAppointment.html", agent_appointment=result)
 
 
+@app.route('/clientAllAppointment')
+def clientAllAppointment():
+    client_ID = current_user.client_ID
+    result = db.engine.execute("SELECT agent.agent_First_Name, agent.agent_Last_Name, agent.agent_Phone_No, property.property_Title, appointment.appointment_Date FROM agent INNER JOIN property ON agent.agent_ID = property.agent_ID INNER JOIN appointment ON property.property_ID = appointment.property_ID WHERE appointment.client_ID = %s", client_ID)
+    return render_template("clientAllAppointment.html", client_appointment=result)
+
+
 @app.route('/logout')
 @login_required
 def logout():
@@ -408,9 +415,9 @@ def createAppointment():
         try:
             db.session.add(Appointment(appointment_Date=request.form['appointment_Date'], client_ID=request.form['client_ID'], property_ID=request.form['property_ID']))
             db.session.commit()
-            return redirect(url_for('propertyDetails/{{property_ID}}'))
+            return redirect(url_for('properties'))
         except:
-            return redirect(url_for('propertyDetails/{{property_ID}}'))
+            return redirect(url_for('properties'))
     else:
         return render_template('index.html')
 
@@ -432,9 +439,15 @@ def updateAppointment(appointment_ID):
     return render_template('agentUpdateAppointment.html', appointment_to_update=appointment_to_update, client_data=result)
 
 
-@app.route('/agentUpdateAppointment')
-def agentUpdateAppointment():
-    return render_template('agentUpdateAppointment.html')
+@app.route('/deleteAppointment/<int:appointment_ID>')
+def deleteAppointment(appointment_ID):
+    appointment_to_delete = Appointment.query.get_or_404(appointment_ID)
+    try:
+        db.session.delete(appointment_to_delete)
+        db.session.commit()
+        return redirect('/agentAllAppointment')
+    except:
+        return "There was a problem deleting the property Please try again."
 
 
 if __name__ == "__main__":

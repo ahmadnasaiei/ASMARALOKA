@@ -99,85 +99,50 @@
                 </div>
                 <div class="card-body">
                     <h2 class="title">Hello, {{current_user.client_First_Name}} {{current_user.client_Last_Name}}.</h2>
-                    <div class="row">
+                    <div class="row mb-4">
                         <div class="col-md-auto">
                             <div class="client-sidebar">
                                 <a href="/clientAccount">My Profile</a>
                                 <a href="/updateClient/{{current_user.client_ID}}">Edit Profile</a>
-                                <a href="clientAllAppointment">My Appointment</a>
+                                <a href="/clientAllAppointment">My Appointment</a>
                             </div>
                         </div>
                         <div class="col-md-auto">
-                            <div class="vl" style="border-left: 1px solid rgba(80, 80, 80, 0.26); height: 500px;"></div>
+                            <div class="vl"
+                                style="border-left: 1px solid rgba(0, 0, 0, 0.178); height: -webkit-fill-available; position: absolute;">
+                            </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-auto">
-                                <div class="col-md-auto">
-                                    <label for="">First Name</label>
-                                    <label for="">Last Name</label>
-                                    <label for="">Email</label>
-                                    <label for="">Phone No.</label>
-                                    <label for="">Address</label>
+                        <div class="col-md-auto pl-4">
+                            {% for row in client_appointment %}
+                            <div class="col-sm-6 mw-100">
+                                <div class="card mb-3">
+                                    <div class="card-body mt-0 px-4 py-3">
+                                        <p class=""><i class="fa-regular fa-calendar-days"></i>
+                                            {{row.appointment_Date.strftime('%d-%m-%Y')}} &nbsp; <i
+                                                class="fa-regular fa-clock"></i>
+                                            {{row.appointment_Date.strftime("%I:%M %p")}}</p>
+                                        <h4 class="card-title mt-2"><b>{{row.property_Title}}</b></h4>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-md appt-card-details">
+                                                <label>Agent Name</label>
+                                                <p>{{row.agent_First_Name}} {{row.agent_Last_Name}}</p>
+                                            </div>
+                                            <div class="col-md appt-card-details">
+                                                <label>Agent Phone No</label>
+                                                <p>{{row.agent_Phone_No}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-auto">
-                                <div class="col-md-auto">
-                                    <input class="input--style-1" id="lname" type="text" name="client_First_Name"
-                                        value="{{current_user.client_First_Name}}" disabled>
-                                    <input class="input--style-1" id="lname" type="text" name="client_Last_Name"
-                                        value="{{current_user.client_Last_Name}}" disabled>
-                                    <input class="input--style-1" id="lname" type="text" name="client_Email"
-                                        value="{{current_user.client_Email}}" disabled>
-                                    <input class="input--style-1" id="lname" type="text" name="client_Phone_No"
-                                        value="{{current_user.client_Phone_No}}" disabled>
-                                    <input class="input--style-1" id="lname" type="text" name="client_Address"
-                                        value="{{current_user.client_Address}}" disabled>
-                                    <input class="input--style-1" id="lname" type="hidden" name="account_type"
-                                        value="{{current_user.account_type}}">
-                                </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
-                <!-- <div class="input-group">
-                        <label for="">First Name</label>
-                        <input class="input--style-1" id="lname" type="text" name="client_First_Name"
-                            value="{{current_user.client_First_Name}}" disabled>
-                    </div>
-                    <div class="input-group">
-                        <label for="">Last Name</label>
-                        <input class="input--style-1" id="fname" type="text" name="client_Last_Name"
-                            value="{{current_user.client_Last_Name}}" disabled>
-                    </div>
-                    <div class="input-group">
-                        <label for="">Email</label>
-                        <input class="input--style-1" id="lname" type="text" name="client_Email"
-                            value="{{current_user.client_Email}}" disabled>
-                    </div>
-                    <div class="input-group">
-                        <label for="">Password</label>
-                        <input class="input--style-1" id="lname" type="password" name="client_Password"
-                            value="{{current_user.client_Password}}" disabled>
-                    </div>
-                    <div class="input-group">
-                        <label for="">Phone No.</label>
-                        <input class="input--style-1" id="lname" type="text" name="client_Phone_No"
-                            value="{{current_user.client_Phone_No}}" disabled>
-                    </div>
-                    <div class="input-group">
-                        <label for="">Address</label>
-                        <input class="input--style-1" id="lname" type="text" name="client_Address"
-                            value="{{current_user.client_Address}}" disabled>
-                        <input class="input--style-1" id="lname" type="hidden" name="account_type"
-                            value="{{current_user.account_type}}">
-                    </div>
-                    <div class="p-t-20">
-                        <a href="/updateClient/{{current_user.client_ID}}">
-                            <button class="btn btn--radius btn--green" type="submit">Edit Profile</button>
-                        </a>
-                    </div> -->
             </div>
         </div>
+    </div>
     </div>
     </div>
 
