@@ -207,11 +207,6 @@ def agentUpdateAccount():
     return render_template('agentUpdateAccount.html')
 
 
-@app.route('/agentUpdateAppointment')
-def agentUpdateAppointment():
-    return render_template('agentUpdateAppointment.html')
-
-
 @app.route('/propertyDetails/<int:property_ID>')
 def propertyDetails(property_ID):
     all_data = Property.query.all()
@@ -385,7 +380,7 @@ def agentAllListing():
 def agentAllAppointment():
     agent_ID = current_user.agent_ID
     result = db.engine.execute(
-        "SELECT client.client_First_Name, client.client_Last_Name, client.client_Phone_No, appointment.appointment_Date, property.property_Title, property.property_ID, property.agent_ID FROM ((appointment INNER JOIN client ON client.client_ID = appointment.client_ID) INNER JOIN property ON appointment.property_ID = property.property_ID)  WHERE property.agent_ID = %s", agent_ID)
+        "SELECT client.client_ID, client.client_First_Name, client.client_Last_Name, client.client_Phone_No, appointment.appointment_ID, appointment.appointment_Date, property.property_Title, property.property_ID, property.agent_ID FROM ((appointment INNER JOIN client ON client.client_ID = appointment.client_ID) INNER JOIN property ON appointment.property_ID = property.property_ID)  WHERE property.agent_ID = %s", agent_ID)
     return render_template("agentAllAppointment.html", agent_appointment=result)
 
 
@@ -418,6 +413,28 @@ def createAppointment():
             return redirect(url_for('propertyDetails/{{property_ID}}'))
     else:
         return render_template('index.html')
+
+
+@app.route('/updateAppointment/<int:appointment_ID>', methods=['GET', 'POST'])
+def updateAppointment(appointment_ID):
+    agent_ID = current_user.agent_ID
+    result = db.engine.execute(
+        "SELECT client.client_ID, client.client_First_Name, client.client_Last_Name, client.client_Phone_No, appointment.appointment_ID, appointment.appointment_Date, property.property_Title, property.property_ID, property.agent_ID FROM ((appointment INNER JOIN client ON client.client_ID = appointment.client_ID) INNER JOIN property ON appointment.property_ID = property.property_ID)  WHERE property.agent_ID = %s", agent_ID)
+    appointment_to_update = Appointment.query.filter_by(appointment_ID=appointment_ID).first()
+    if request.method == 'POST':
+        appointment_to_update.appointment_Date = request.form['appointment_Date']
+        appointment_to_update.client_ID = request.form['client_ID']
+        appointment_to_update.property_ID = request.form['property_ID']
+        appointment_to_update.appointment = Appointment(appointment_Date=appointment_to_update.appointment_Date, client_ID=appointment_to_update.client_ID, property_ID=appointment_to_update.property_ID)
+        db.session.commit()
+        return redirect('/agentAllAppointment')
+
+    return render_template('agentUpdateAppointment.html', appointment_to_update=appointment_to_update, client_data=result)
+
+
+@app.route('/agentUpdateAppointment')
+def agentUpdateAppointment():
+    return render_template('agentUpdateAppointment.html')
 
 
 if __name__ == "__main__":

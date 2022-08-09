@@ -51,8 +51,12 @@
                                 <td>{{row.property_Sqft}} sqft</td>
                                 <td>RM{{"{:,}".format(row.property_Price)}}</td>
                                 <td>
-                                    <a class="btn btn-primary" href="/updateProperty/{{row.property_ID}}">Update</a>
-                                    <a class="btn btn-danger" href="/deleteProperty/{{row.property_ID}}">Delete</a>
+                                    <a class="btn btn-primary" href="/updateProperty/{{row.property_ID}}"><i
+                                            class="fa-solid fa-pen"></i></a>
+                                    <a class="btn btn-danger" href="/deleteProperty/{{row.property_ID}}"><i
+                                            class="fa-solid fa-trash-can"></i></a>
+                                    <a class="btn btn-success" href="/propertyDetails/{{row.property_ID}}"
+                                        target=”_blank”><i class="fa-regular fa-eye"></i> Live View</a>
                                 </td>
                             </tr>
                             {% endfor %}
