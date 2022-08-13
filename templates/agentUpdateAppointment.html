@@ -30,19 +30,16 @@
             <div class="col-lg-15 mt-4">
                 <div class="row">
                     <div class="col-sm-1 mb-5">
-                        <p class="mb-4"><b>First Name:</b></p>
-                        <p class="mb-4"><b>Last Name:</b></p>
-                        <p class="mb-4"><b>Phone No:</b></p>
                         <p class="mb-4"><b>Date & Time:</b></p>
                     </div>
                     <div class="col-sm-4 mb-5">
-                        <p class="mb-4">{{client_data.client_First_Name}}</p>
-                        <p class="mb-4">{{client_data.client_Last_Name}}</p>
-                        <p class="mb-4">{{client_data.client_Phone_No}}</p>
-                        <input type="datetime-local" class="ps-2 w-50 mb-2 pb-1 pt-1" name="appointment_Date"
-                            value="{{appointment_to_update.appointment_Date}}"><br>
-                        <input type="hidden" name="client_ID" value="{{appointment_to_update.client_ID}}">
-                        <input type="hidden" name="property_ID" value="{{appointment_to_update.property_ID}}">
+                        <form action="/updateAppointment/{{appointment_to_update.appointment_ID}}" method="POST">
+                            <input type="datetime-local" class="ps-2 w-50 mb-2 pb-1 pt-1" name="appointment_Date"
+                                value="{{appointment_to_update.appointment_Date}}"><br>
+                            <input type="hidden" name="client_ID" value="{{appointment_to_update.client_ID}}">
+                            <input type="hidden" name="property_ID" value="{{appointment_to_update.property_ID}}">
+                            <input type="submit" class="btn btn-primary mt-3" value="Update">
+                        </form>
                     </div>
                 </div>
             </div>

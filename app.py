@@ -11,7 +11,7 @@ import fontawesome as fa
 
 app = Flask(__name__)
 app.secret_key = "membuatLOginFlask1"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:''@localhost:3306/asmaraloka'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:''@localhost:3307/asmaraloka'
 db = SQLAlchemy(app)
 
 
@@ -39,12 +39,29 @@ login_manager.init_app(app)
 
 # @login_manager.user_loader
 # def load_user(user_id):
+#     account_type = session.get('account_type')
+#     if account_type == 'client':
+#         return Client.get(user_id)
+#     else:
+#         return Agent.get(user_id)
+
+
+# @login_manager.user_loader
+# def load_user(user_id):
 #     return Client.query.filter_by(client_ID=user_id).first()
 
 
 @login_manager.user_loader
 def load_user(user_id):
     return Agent.query.filter_by(agent_ID=user_id).first()
+
+
+# @login_manager.user_loader
+# def load_user(user_id):
+#     x = Agent.query.get(str(user_id))
+#     if x == None:
+#         x = Client.query.get(str(user_id))
+#     return x
 
 
 class Client(db.Model, UserMixin):
@@ -185,7 +202,6 @@ def agentDashboard():
     return render_template('agentDashboard.html')
 
 
-
 @app.route('/home')
 def home():
     return render_template('home.html')
@@ -215,11 +231,23 @@ def propertyDetails(property_ID):
     return render_template('propertyDetails.html', property_to_view=property_to_view, property_data=all_data)
 
 
-@app.route('/properties')
-def properties():
-    property_data = Property.query.all()
-    scrape_data = scrape_property.query.all()
+@app.route('/properties', methods=['GET', 'POST'], defaults={"page": 1})
+@app.route('/properties/<int:page>', methods=['GET', 'POST'])
+def properties(page):
+    page = page
+    pages = 30
+    # property_data = Property.query.all()
+    # scrape_data = scrape_property.query.all()
+    property_data = Property.query.paginate(page, pages, error_out=False)
+    scrape_data = scrape_property.query.paginate(page, pages, error_out=False)
     return render_template("properties.html", agent_property=property_data, scrape_property=scrape_data)
+
+
+# @app.route('/properties')
+# def properties():
+#     property_data = Property.query.all()
+#     scrape_data = scrape_property.query.all()
+#     return render_template("properties.html", agent_property=property_data, scrape_property=scrape_data)
 
 
 @app.route('/registerClient', methods=['POST', 'GET'])
@@ -255,7 +283,6 @@ def loginClient():
     if request.method == 'POST':
         client_Email = request.form['client_Email']
         client_Password = request.form['client_Password']
-
         client = Client.query.filter_by(client_Email=client_Email).first()
         if client:
             if client.client_Password == client_Password:
@@ -413,7 +440,8 @@ def deleteProperty(property_ID):
 def createAppointment():
     if request.method == 'POST':
         try:
-            db.session.add(Appointment(appointment_Date=request.form['appointment_Date'], client_ID=request.form['client_ID'], property_ID=request.form['property_ID']))
+            db.session.add(Appointment(
+                appointment_Date=request.form['appointment_Date'], client_ID=request.form['client_ID'], property_ID=request.form['property_ID']))
             db.session.commit()
             return redirect(url_for('properties'))
         except:
@@ -424,19 +452,18 @@ def createAppointment():
 
 @app.route('/updateAppointment/<int:appointment_ID>', methods=['GET', 'POST'])
 def updateAppointment(appointment_ID):
-    agent_ID = current_user.agent_ID
-    result = db.engine.execute(
-        "SELECT client.client_ID, client.client_First_Name, client.client_Last_Name, client.client_Phone_No, appointment.appointment_ID, appointment.appointment_Date, property.property_Title, property.property_ID, property.agent_ID FROM ((appointment INNER JOIN client ON client.client_ID = appointment.client_ID) INNER JOIN property ON appointment.property_ID = property.property_ID)  WHERE property.agent_ID = %s", agent_ID)
-    appointment_to_update = Appointment.query.filter_by(appointment_ID=appointment_ID).first()
+    appointment_to_update = Appointment.query.filter_by(
+        appointment_ID=appointment_ID).first()
     if request.method == 'POST':
         appointment_to_update.appointment_Date = request.form['appointment_Date']
         appointment_to_update.client_ID = request.form['client_ID']
         appointment_to_update.property_ID = request.form['property_ID']
-        appointment_to_update.appointment = Appointment(appointment_Date=appointment_to_update.appointment_Date, client_ID=appointment_to_update.client_ID, property_ID=appointment_to_update.property_ID)
+        appointment_to_update.appointment = Appointment(
+            appointment_Date=appointment_to_update.appointment_Date, client_ID=appointment_to_update.client_ID, property_ID=appointment_to_update.property_ID)
         db.session.commit()
         return redirect('/agentAllAppointment')
 
-    return render_template('agentUpdateAppointment.html', appointment_to_update=appointment_to_update, client_data=result)
+    return render_template('agentUpdateAppointment.html', appointment_to_update=appointment_to_update)
 
 
 @app.route('/deleteAppointment/<int:appointment_ID>')

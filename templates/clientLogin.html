@@ -19,7 +19,7 @@
         <img src="{{ url_for('static' , filename='../static/images/logo.png') }}" alt="">
         <h1>Log In</h1>
 
-        <form action="{{ url_for('loginClient') }}" method="POST">
+        <form action="loginClient" method="POST">
             <label id="icon" for="name"><i class="icon-envelope "></i></label>
             <input type="text" name="client_Email" id="email" placeholder="Email" required /><br>
             <label id="icon" for="name"><i class="icon-lock"></i></label>

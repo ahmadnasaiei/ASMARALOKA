@@ -118,3 +118,15 @@ body {
     height: 1.2em; 
     white-space: nowrap;
 }
+
+#filter-btn{
+    width: 50%;
+    background-color: #ED563B;
+    color: white;
+    margin-left: 95px;
+    height: 50px;
+}
+
+#filter-btn:hover{
+    background-color: #d4482f;
+}

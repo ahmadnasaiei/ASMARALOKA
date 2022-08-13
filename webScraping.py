@@ -1890,5 +1890,5 @@ df_edge = pd.DataFrame({'property_Title': property_Title, 'property_District': p
 
 # MYSQL
 engine = sqlalchemy.create_engine(
-    'mysql://root:''@localhost:3306/asmaraloka')
+    'mysql://root:''@localhost:3307/asmaraloka')
 df_edge.to_sql('scrape_property', engine, if_exists='replace')

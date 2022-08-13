@@ -19,7 +19,7 @@
         <img src="{{ url_for('static' , filename='../static/images/logo.png') }}" alt="">
         <h1>Log In Agent</h1>
 
-        <form action="{{ url_for('loginAgent') }}" method="POST">
+        <form action="loginAgent" method="POST">
             <label id="icon" for="name"><i class="icon-envelope "></i></label>
             <input type="text" name="agent_Email" id="email" placeholder="Email" required /><br>
             <label id="icon" for="name"><i class="icon-lock"></i></label>
