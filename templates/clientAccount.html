@@ -51,21 +51,23 @@
                             <!-- ***** Logo End ***** -->
                             <!-- ***** Menu Start ***** -->
                             <ul class="nav">
+                                {% if current_user.is_authenticated %}
                                 <li><a href="/clientLoggedIn" class="active">Home</a></li>
-                                <li><a href="properties">Properties</a></li>
+                                <li><a href="/properties">Properties</a></li>
                                 <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                                        aria-haspopup="true" aria-expanded="false">About</a>
-
+                                    <a class="fa-solid fa-user" data-toggle="dropdown" role="button"
+                                        aria-haspopup="true" aria-expanded="false"
+                                        style="font-size: 25px; cursor:pointer;"></a>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="about.html">About Us</a>
-                                        <a class="dropdown-item" href="team.html">Team</a>
-                                        <a class="dropdown-item" href="blog.html">Blog</a>
-                                        <a class="dropdown-item" href="testimonials.html">Testimonials</a>
-                                        <a class="dropdown-item" href="terms.html">Terms</a>
+                                        <a class="dropdown-item" href="/clientAccount">My Profile</a>
+                                        <a class="dropdown-item" href="/updateClient/{{current_user.client_ID}}">Account
+                                            settings</a>
+                                        <a class="dropdown-item" href="logout" style="padding-bottom: 45px;">Logout</a>
                                     </div>
                                 </li>
-                                <li><a href="contact.html">Contact</a></li>
+                                {% else %}
+                                <li><a href="/" class="active">Home</a></li>
+                                <li><a href="/properties">Properties</a></li>
                                 <li class="dropdown">
                                     <a class="fa-solid fa-user" data-toggle="dropdown" role="button"
                                         aria-haspopup="true" aria-expanded="false"
@@ -80,6 +82,7 @@
                                             style="padding-bottom: 45px;">Register Agent</a>
                                     </div>
                                 </li>
+                                {% endif %}
                             </ul>
                             <!-- ***** Menu End ***** -->
                         </nav>
@@ -139,58 +142,24 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="input-group">
-                        <label for="">First Name</label>
-                        <input class="input--style-1" id="lname" type="text" name="client_First_Name"
-                            value="{{current_user.client_First_Name}}" disabled>
-                    </div>
-                    <div class="input-group">
-                        <label for="">Last Name</label>
-                        <input class="input--style-1" id="fname" type="text" name="client_Last_Name"
-                            value="{{current_user.client_Last_Name}}" disabled>
-                    </div>
-                    <div class="input-group">
-                        <label for="">Email</label>
-                        <input class="input--style-1" id="lname" type="text" name="client_Email"
-                            value="{{current_user.client_Email}}" disabled>
-                    </div>
-                    <div class="input-group">
-                        <label for="">Password</label>
-                        <input class="input--style-1" id="lname" type="password" name="client_Password"
-                            value="{{current_user.client_Password}}" disabled>
-                    </div>
-                    <div class="input-group">
-                        <label for="">Phone No.</label>
-                        <input class="input--style-1" id="lname" type="text" name="client_Phone_No"
-                            value="{{current_user.client_Phone_No}}" disabled>
-                    </div>
-                    <div class="input-group">
-                        <label for="">Address</label>
-                        <input class="input--style-1" id="lname" type="text" name="client_Address"
-                            value="{{current_user.client_Address}}" disabled>
-                        <input class="input--style-1" id="lname" type="hidden" name="account_type"
-                            value="{{current_user.account_type}}">
-                    </div>
-                    <div class="p-t-20">
-                        <a href="/updateClient/{{current_user.client_ID}}">
-                            <button class="btn btn--radius btn--green" type="submit">Edit Profile</button>
-                        </a>
-                    </div> -->
             </div>
         </div>
     </div>
     </div>
 
-    <!-- Jquery JS-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <!-- Vendor JS-->
-    <script src="vendor/select2/select2.min.js"></script>
-    <script src="vendor/datepicker/moment.min.js"></script>
-    <script src="vendor/datepicker/daterangepicker.js"></script>
+    <!-- jQuery -->
+    <script src="{{ url_for('static' , filename='../static/js/jquery-2.1.0.min.js') }}"></script>
 
-    <!-- Main JS-->
-    <script src="js/global.js"></script>
+    <!-- Bootstrap -->
+    <script src="{{ url_for('static' , filename='../static/js/popper.js') }}"></script>
+    <script src="{{ url_for('static' , filename='../static/js/bootstrap.min.js') }}"></script>
 
+    <!-- Plugins -->
+    <script src="{{ url_for('static' , filename='../static/js/scrollreveal.min.js') }}"></script>
+    <script src="{{ url_for('static' , filename='../static/js/waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static' , filename='../static/js/jquery.counterup.min.js') }}"></script>
+    <script src="{{ url_for('static' , filename='../static/js/imgfix.min.js') }}"></script>
+    <script src="{{ url_for('static' , filename='../static/js/mixitup.js') }}"></script>
     <script src="{{ url_for('static' , filename='../static/js/accordions.js') }}"></script>
 
     <!-- Global Init -->

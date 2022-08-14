@@ -1,3 +1,1 @@
-
-def load_user(user_id):
-    return Client.query.filter_by(client_ID=user_id).first()
+scrape_data = scrape_property.query.paginate(page, pages, error_out=False)

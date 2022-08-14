@@ -58,21 +58,22 @@
               <!-- ***** Logo End ***** -->
               <!-- ***** Menu Start ***** -->
               <ul class="nav">
-                <li><a href="/" class="active">Home</a></li>
-                <li><a href="properties">Properties</a></li>
+                {% if current_user.is_authenticated %}
+                <li><a href="/clientLoggedIn">Home</a></li>
+                <li><a href="/properties" class="active">Properties</a></li>
                 <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-                    aria-expanded="false">About</a>
-
+                  <a class="fa-solid fa-user" data-toggle="dropdown" role="button" aria-haspopup="true"
+                    aria-expanded="false" style="font-size: 25px; cursor:pointer;"></a>
                   <div class="dropdown-menu">
-                    <a class="dropdown-item" href="about.html">About Us</a>
-                    <a class="dropdown-item" href="team.html">Team</a>
-                    <a class="dropdown-item" href="blog.html">Blog</a>
-                    <a class="dropdown-item" href="testimonials.html">Testimonials</a>
-                    <a class="dropdown-item" href="terms.html">Terms</a>
+                    <a class="dropdown-item" href="clientAccount">My Profile</a>
+                    <a class="dropdown-item" href="/updateClient/{{current_user.client_ID}}">Account
+                      settings</a>
+                    <a class="dropdown-item" href="logout" style="padding-bottom: 45px;">Logout</a>
                   </div>
                 </li>
-                <li><a href="contact.html">Contact</a></li>
+                {% else %}
+                <li><a href="/">Home</a></li>
+                <li><a href="/properties" class="active">Properties</a></li>
                 <li class="dropdown">
                   <a class="fa-solid fa-user" data-toggle="dropdown" role="button" aria-haspopup="true"
                     aria-expanded="false" style="font-size: 25px; cursor:pointer;"></a>
@@ -82,10 +83,10 @@
                     <a class="dropdown-item" href="registerClient">Register</a>
                     <span class="dropdown-partition">AGENT OPTIONS</span>
                     <a class="dropdown-item" href="loginAgent">Login Agent</a>
-                    <a class="dropdown-item" href="registerAgent" style="padding-bottom: 45px;">Register
-                      Agent</a>
+                    <a class="dropdown-item" href="registerAgent" style="padding-bottom: 45px;">Register Agent</a>
                   </div>
                 </li>
+                {% endif %}
               </ul>
               <!-- ***** Menu End ***** -->
             </nav>
@@ -95,24 +96,6 @@
     </div>
   </header>
   <!-- ***** Header Area End ***** -->
-
-  <!-- ***** Call to Action Start ***** -->
-  <!-- <section class="section section-bg" id="call-to-action"
-    style="background-image: url(static/images/banner-image-1-1920x500.jpg)">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-10 offset-lg-1">
-          <div class="cta-content">
-            <br>
-            <br>
-            <h2><del>$80 000</del> <em>$70 000</em></h2>
-            <p>House &nbsp;/&nbsp; For Sale &nbsp;/&nbsp; 100 sq m &nbsp;/&nbsp; 2010</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-  <!-- ***** Call to Action End ***** -->
 
   <!-- ***** Fleet Starts ***** -->
   <section class="section" id="trainers">
@@ -260,8 +243,6 @@
                 <div class="row mt-4">
                   <div class="col-sm-2">
                     <p class="mt-2">Date & Time:</p>
-                    <p class="mt-2">Client ID: {{current_user.client_ID}}</p>
-                    <p class="mt-2">Property ID: {{property_to_view.property_ID}}</p>
                   </div>
                   <div class="col-sm-4 mb-5">
                     <input type="datetime-local" class="w-100 mb-2 pb-1 pt-1" name="appointment_Date"><br>

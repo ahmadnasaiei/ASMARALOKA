@@ -33,21 +33,8 @@
                             <!-- ***** Menu Start ***** -->
                             <ul class="nav">
                                 {% if current_user.is_authenticated %}
-                                <li><a href="/clientLoggedIn" class="active">Home</a></li>
-                                <li><a href="properties">Properties</a></li>
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                                        aria-haspopup="true" aria-expanded="false">About</a>
-
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="about.html">About Us</a>
-                                        <a class="dropdown-item" href="team.html">Team</a>
-                                        <a class="dropdown-item" href="blog.html">Blog</a>
-                                        <a class="dropdown-item" href="testimonials.html">Testimonials</a>
-                                        <a class="dropdown-item" href="terms.html">Terms</a>
-                                    </div>
-                                </li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="/clientLoggedIn">Home</a></li>
+                                <li><a href="/properties" class="active">Properties</a></li>
                                 <li class="dropdown">
                                     <a class="fa-solid fa-user" data-toggle="dropdown" role="button"
                                         aria-haspopup="true" aria-expanded="false"
@@ -60,21 +47,8 @@
                                     </div>
                                 </li>
                                 {% else %}
-                                <li><a href="/" class="active">Home</a></li>
-                                <li><a href="properties">Properties</a></li>
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                                        aria-haspopup="true" aria-expanded="false">About</a>
-
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="about.html">About Us</a>
-                                        <a class="dropdown-item" href="team.html">Team</a>
-                                        <a class="dropdown-item" href="blog.html">Blog</a>
-                                        <a class="dropdown-item" href="testimonials.html">Testimonials</a>
-                                        <a class="dropdown-item" href="terms.html">Terms</a>
-                                    </div>
-                                </li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/properties" class="active">Properties</a></li>
                                 <li class="dropdown">
                                     <a class="fa-solid fa-user" data-toggle="dropdown" role="button"
                                         aria-haspopup="true" aria-expanded="false"
@@ -128,87 +102,73 @@
             <!-- ----------------------------- FILTERING START ----------------------------- -->
 
             <div class="contact-form">
-                <form action="#" id="contact" autocomplete="off">
+                <form action="#" method="post" autocomplete="off">
                     <div class="row">
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="form-group">
-                                <label>For Rent/For Sale:</label>
-
-                                <select>
-                                    <option value="">All</option>
-                                    <option value="For Rent">For Rent</option>
-                                    <option value="For Sale">For Sale</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="form-group">
                                 <label>Location:</label>
-
-                                <select>
-                                    <option value="">--All --</option>
-                                    <option value="">--All --</option>
-                                    <option value="">--All --</option>
-                                    <option value="">--All --</option>
-                                    <option value="">--All --</option>
+                                <select name="tag">
+                                    <option value="Selangor">-- All --</option>
+                                    <option value="Selangor">Selangor</option>
+                                    <option value="Johor">Johor</option>
+                                    <option value="Penang">Penang</option>
+                                    <option value="Perak">Perak</option>
+                                    <option value="Negeri Sembilan">Negeri Sembilan</option>
+                                    <option value="Sabah">Sabah</option>
+                                    <option value="Sarawak">Sarawak</option>
+                                    <option value="Kedah">Kedah</option>
+                                    <option value="Kelantan">Kelantan</option>
+                                    <option value="Pahang">Pahang</option>
+                                    <option value="Melaka">Melaka</option>
+                                    <option value="Terengganu">Terengganu</option>
+                                    <option value="Putrajaya">Putrajaya</option>
+                                    <option value="Perlis">Perlis</option>
+                                    <option value="Labuan">Labuan</option>
                                 </select>
                             </div>
                         </div>
 
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Type:</label>
+                        <!-- <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label>Floor area:</label>
 
-                                <select>
-                                    <option value="">-- All --</option>
-                                    <option value="">House</option>
-                                    <option value="">Apartment</option>
-                                </select>
-                            </div>
+                            <input type="text">
                         </div>
+                    </div>
 
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Floor area:</label>
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label>Bedrooms:</label>
 
-                                <input type="text">
-                            </div>
+                            <select>
+                                <option value="">1</option>
+                                <option value="">2</option>
+                                <option value="">3</option>
+                                <option value="">4</option>
+                            </select>
                         </div>
+                    </div>
 
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Bedrooms:</label>
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            <label>Bathrooms:</label>
 
-                                <select>
-                                    <option value="">1</option>
-                                    <option value="">2</option>
-                                    <option value="">3</option>
-                                    <option value="">4</option>
-                                </select>
-                            </div>
+                            <select>
+                                <option value="">1</option>
+                                <option value="">2</option>
+                                <option value="">3</option>
+                                <option value="">4</option>
+                            </select>
                         </div>
-
-                        <div class="col-md-4 col-sm-6 col-xs-12">
-                            <div class="form-group">
-                                <label>Bathrooms:</label>
-
-                                <select>
-                                    <option value="">1</option>
-                                    <option value="">2</option>
-                                    <option value="">3</option>
-                                    <option value="">4</option>
-                                </select>
-                            </div>
-                        </div>
+                    </div> -->
                     </div>
 
                     <div class="col-sm-4 offset-sm-4">
                         <input type="submit" class="btn btn-primary" id="filter-btn" value="Submit">
                     </div>
-                    <br>
-                    <br>
                 </form>
+                <br>
+                <br>
             </div>
 
             <!-- ----------------------------- FILTERING END ----------------------------- -->

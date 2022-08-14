@@ -27,41 +27,14 @@ login_manager.login_view = 'login'
 login_manager.init_app(app)
 
 
-# @login_manager.user_loader
-# def load_user(user_id):
-#     if session['account_type'] == 'client':
-#         return Client.query.filter_by(client_ID=user_id).first()
-#     elif session['account_type'] == 'agent':
-#         return Agent.query.filter_by(agent_ID=user_id).first()
-#     else:
-#         return None
-
-
-# @login_manager.user_loader
-# def load_user(user_id):
-#     account_type = session.get('account_type')
-#     if account_type == 'client':
-#         return Client.get(user_id)
-#     else:
-#         return Agent.get(user_id)
-
-
-# @login_manager.user_loader
-# def load_user(user_id):
-#     return Client.query.filter_by(client_ID=user_id).first()
-
-
 @login_manager.user_loader
 def load_user(user_id):
-    return Agent.query.filter_by(agent_ID=user_id).first()
+    return Client.query.filter_by(client_ID=user_id).first()
 
 
 # @login_manager.user_loader
 # def load_user(user_id):
-#     x = Agent.query.get(str(user_id))
-#     if x == None:
-#         x = Client.query.get(str(user_id))
-#     return x
+#     return Agent.query.filter_by(agent_ID=user_id).first()
 
 
 class Client(db.Model, UserMixin):
@@ -208,7 +181,6 @@ def home():
 
 
 @app.route('/clientLoggedIn')
-# @login_required()
 def clientLoggedIn():
     return render_template('clientLoggedIn.html', user=current_user)
 
@@ -240,6 +212,13 @@ def properties(page):
     # scrape_data = scrape_property.query.all()
     property_data = Property.query.paginate(page, pages, error_out=False)
     scrape_data = scrape_property.query.paginate(page, pages, error_out=False)
+
+    if request.method == 'POST' and 'tag' in request.form:
+        tag = request.form["tag"]
+        search = "%{}%".format(tag)
+        scrape_data = scrape_property.query.filter(scrape_property.property_State.like(
+            search)).paginate(per_page=pages, error_out=False)
+        return render_template("properties.html", agent_property=property_data, scrape_property=scrape_data, tag=tag)
     return render_template("properties.html", agent_property=property_data, scrape_property=scrape_data)
 
 
@@ -291,7 +270,6 @@ def loginClient():
                 return redirect(url_for('clientLoggedIn'))
         else:
             flash('Invalid password or email. Please try again.', category='error')
-
     return render_template("clientLogin.html")
 
 
