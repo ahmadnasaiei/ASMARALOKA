@@ -208,17 +208,38 @@ def propertyDetails(property_ID):
 def properties(page):
     page = page
     pages = 30
-    # property_data = Property.query.all()
-    # scrape_data = scrape_property.query.all()
     property_data = Property.query.paginate(page, pages, error_out=False)
     scrape_data = scrape_property.query.paginate(page, pages, error_out=False)
 
-    if request.method == 'POST' and 'tag' in request.form:
-        tag = request.form["tag"]
-        search = "%{}%".format(tag)
+    if request.method == 'POST' and 'location' in request.form:
+        location = request.form["location"]
+        filter_by_state = "%{}%".format(location)
         scrape_data = scrape_property.query.filter(scrape_property.property_State.like(
-            search)).paginate(per_page=pages, error_out=False)
-        return render_template("properties.html", agent_property=property_data, scrape_property=scrape_data, tag=tag)
+            filter_by_state)).paginate(per_page=pages, error_out=False)
+        property_data = Property.query.filter(Property.property_State.like(
+            filter_by_state)).paginate(per_page=pages, error_out=False)
+        print("FILTER BY STATE")
+        return render_template("properties.html", agent_property=property_data, scrape_property=scrape_data, location=location)
+
+    elif request.method == 'POST' and 'bedroom' in request.form:
+        bedroom = request.form["bedroom"]
+        filter_by_bedroom = "%{}%".format(bedroom)
+        scrape_data = scrape_property.query.filter(scrape_property.property_Bedroom.like(
+            filter_by_bedroom)).paginate(per_page=pages, error_out=False)
+        property_data = Property.query.filter(Property.property_Bedroom.like(
+            filter_by_bedroom)).paginate(per_page=pages, error_out=False)
+        print("FILTER BY BEDROOM")
+        return render_template("properties.html", agent_property=property_data, scrape_property=scrape_data, bedroom=bedroom)
+
+    elif request.method == 'POST' and 'bathroom' in request.form:
+        bathroom = request.form["bathroom"]
+        filter_by_bathroom = "%{}%".format(bathroom)
+        scrape_data = scrape_property.query.filter(scrape_property.property_Bathroom.like(
+            filter_by_bathroom)).paginate(per_page=pages, error_out=False)
+        property_data = Property.query.filter(Property.property_Bathroom.like(
+            filter_by_bathroom)).paginate(per_page=pages, error_out=False)
+        print("FILTER BY BATHROOM")
+        return render_template("properties.html", agent_property=property_data, scrape_property=scrape_data, bathroom=bathroom)
     return render_template("properties.html", agent_property=property_data, scrape_property=scrape_data)
 
 
