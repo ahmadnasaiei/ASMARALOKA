@@ -8,7 +8,6 @@ from datetime import datetime
 import bcrypt
 import fontawesome as fa
 
-
 app = Flask(__name__)
 app.secret_key = "membuatLOginFlask1"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:''@localhost:3307/asmaraloka'
